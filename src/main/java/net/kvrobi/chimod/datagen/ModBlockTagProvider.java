@@ -1,0 +1,58 @@
+package net.kvrobi.chimod.datagen;
+
+import net.kvrobi.chimod.ChiMod;
+import net.kvrobi.chimod.block.ModBlocks;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.CompletableFuture;
+
+public class ModBlockTagProvider extends BlockTagsProvider {
+    public ModBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, ChiMod.MOD_ID, existingFileHelper);
+    }
+
+    @Override
+    protected void addTags(HolderLookup.Provider provider) {
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.RAW_CHI_BLOCK.get())
+                .add(ModBlocks.DEEPSLATE_CHI_ORE_BLOCK.get())
+                .add(ModBlocks.CHI_ORE_BLOCK.get())
+                .add(ModBlocks.CHI_ORB_BLOCK.get())
+                .add(ModBlocks.FIRE_CHI_ORB_BLOCK.get())
+                .add(ModBlocks.LION_ROCK_TILES.get())
+                .add(ModBlocks.LION_ROCK_TILES_SLAB.get())
+                .add(ModBlocks.LION_ROCK_TILES_STAIRS.get())
+                .add(ModBlocks.LION_ROCK_TILES_DOOR.get())
+                .add(ModBlocks.LION_ROCK_TILES_TRAPDOOR.get())
+                .add(ModBlocks.LION_ROCK_TILES_FENCE.get())
+                .add(ModBlocks.LION_ROCK_TILES_FENCE_GATE.get())
+                .add(ModBlocks.LION_ROCK_TILES_WALL.get())
+                .add(ModBlocks.LION_ROCK_TILES_BUTTON.get())
+                .add(ModBlocks.LION_ROCK_TILES_PRESSURE_PLATE.get())
+                .add(ModBlocks.BLUE_CHI_LAMP.get());
+
+        tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.RAW_CHI_BLOCK.get()).add(ModBlocks.CHI_ORE_BLOCK.get());
+
+        tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.DEEPSLATE_CHI_ORE_BLOCK.get());
+
+        tag(BlockTags.NEEDS_STONE_TOOL).add(ModBlocks.LION_ROCK_TILES.get())
+                .add(ModBlocks.LION_ROCK_TILES_SLAB.get())
+                .add(ModBlocks.LION_ROCK_TILES_STAIRS.get())
+                .add(ModBlocks.LION_ROCK_TILES_DOOR.get())
+                .add(ModBlocks.LION_ROCK_TILES_TRAPDOOR.get())
+                .add(ModBlocks.LION_ROCK_TILES_FENCE.get())
+                .add(ModBlocks.LION_ROCK_TILES_FENCE_GATE.get())
+                .add(ModBlocks.LION_ROCK_TILES_WALL.get())
+                .add(ModBlocks.LION_ROCK_TILES_BUTTON.get())
+                .add(ModBlocks.LION_ROCK_TILES_PRESSURE_PLATE.get());
+
+        tag(BlockTags.FENCES).add(ModBlocks.LION_ROCK_TILES_FENCE.get());
+        tag(BlockTags.FENCE_GATES).add(ModBlocks.LION_ROCK_TILES_FENCE_GATE.get());
+        tag(BlockTags.WALLS).add(ModBlocks.LION_ROCK_TILES_WALL.get());
+
+    }
+}

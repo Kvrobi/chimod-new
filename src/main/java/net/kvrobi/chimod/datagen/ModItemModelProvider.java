@@ -1,0 +1,91 @@
+package net.kvrobi.chimod.datagen;
+
+import net.kvrobi.chimod.ChiMod;
+import net.kvrobi.chimod.block.ModBlocks;
+import net.kvrobi.chimod.item.ModItems;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
+
+public class ModItemModelProvider extends ItemModelProvider {
+
+
+    public ModItemModelProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+        super(output, ChiMod.MOD_ID, exFileHelper);
+    }
+
+    @Override
+    protected void registerModels() {
+        basicItem(ModItems.RAW_CHI.get());
+        basicItem(ModItems.CHISEL.get());
+        basicItem(ModItems.CHI_ORB.get());
+        basicItem(ModItems.BANANA.get());
+        basicItem(ModItems.BANANA_JUICE.get());
+        basicItem(ModItems.BANANA_PEEL.get());
+        basicItem(ModItems.CRUDE_OIL_DROP.get());
+        basicItem(ModItems.OIL_DROP.get());
+        basicItem(ModItems.CHI_WATER_BUCKET.getId());
+        basicItem(ModItems.GOLDEN_SHOULDER_PADS.get());
+        basicItem(ModItems.GOLDEN_SHOULDER_SPIKED.get());
+
+
+        basicItem(ModBlocks.LION_ROCK_TILES_DOOR.asItem());
+
+        buttonItem(ModBlocks.LION_ROCK_TILES_BUTTON, ModBlocks.LION_ROCK_TILES);
+        fenceItem(ModBlocks.LION_ROCK_TILES_FENCE, ModBlocks.LION_ROCK_TILES);
+        wallItem(ModBlocks.LION_ROCK_TILES_WALL, ModBlocks.LION_ROCK_TILES);
+
+        chiLampItem(ModBlocks.BLUE_CHI_LAMP);
+
+
+        geckoItem(ModItems.LION_VALIOUS_GRAY);
+        geckoItem(ModItems.LION_CLUBIUS_MAXIMUS);
+        geckoItem(ModItems.LION_JABAKA);
+        geckoItem(ModItems.LION_JAHAK);
+        geckoItem(ModItems.LION_CHI_JABAKA);
+        geckoItem(ModItems.LION_FANGIOUS);
+        geckoItem(ModItems.LION_DECALUS);
+        //generateArmorModel(ModItems.GOLDEN_SHOULDER_PADS);
+        //geckoItem(ModItems.LION_VALIOUS_GRAY_INACTIVE);
+
+
+    }
+    public void generateArmorModel(DeferredHolder<Item, Item> item) {
+        getBuilder(item.getId().getPath())
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"));
+    }
+
+    private void geckoItem(DeferredItem<Item> item) {
+        withExistingParent(item.getId().getPath(), mcLoc("item/generated"))
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"));
+    }
+
+    public void chiLampItem(DeferredBlock<?> block) {
+        this.withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath() + "_inactive_unlit"));
+    }
+
+    public void buttonItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+        this.withExistingParent(block.getId().getPath(), mcLoc("block/button_inventory"))
+                .texture("texture", ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
+                        "block/" + baseBlock.getId().getPath()));
+    }
+
+    public void fenceItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+        this.withExistingParent(block.getId().getPath(), mcLoc("block/fence_inventory"))
+                .texture("texture", ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
+                        "block/" + baseBlock.getId().getPath()));
+    }
+
+    public void wallItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+        this.withExistingParent(block.getId().getPath(), mcLoc("block/wall_inventory"))
+                .texture("wall", ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
+                        "block/" + baseBlock.getId().getPath()));
+    }
+}

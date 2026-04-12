@@ -1,0 +1,17 @@
+{
+	"format_version": "1.12.0",
+	"animations": {
+		"active": {
+			"loop": true
+		},
+		"inactive": {
+			"loop": true
+		},
+		"activating": {
+			"loop": true
+		},
+		"deactivating": {
+			"loop": true
+		}
+	}
+}
