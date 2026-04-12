@@ -35,5 +35,15 @@ public class ModNetworking {
                     });
                 }
         );
+        registrar.playToServer(
+                OpenRaceMenuPayload.TYPE,
+                OpenRaceMenuPayload.CODEC,
+                OpenRaceMenuPayload::handleData
+        );
+        registrar.playToServer(
+                RaceSelectPayload.TYPE,
+                RaceSelectPayload.CODEC,
+                RaceSelectPayload::handleData
+        );
     }
 }

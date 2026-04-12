@@ -54,6 +54,9 @@ public class ModLangProvider extends LanguageProvider {
         addItem(ModItems.LION_JABAKA, "Jabaka");
         addItem(ModItems.LION_JAHAK, "Jahak");
 
+        add("menu.kvrobichimod.race_title", "Select Your Lineage");
+
+
         //creativeTabs
         add("creativetab.kvrobichimod.chi_blocks", "Kvrobi's Chi Mod Blocks");
         add("creativetab.kvrobichimod.chi_items", "Kvrobi's Chi Mod Items");

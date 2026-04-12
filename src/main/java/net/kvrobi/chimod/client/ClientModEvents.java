@@ -4,6 +4,7 @@ import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.client.renderer.ChiArmorRenderer;
 import net.kvrobi.chimod.client.renderer.ChiWeaponRenderer;
 import net.kvrobi.chimod.client.screen.ChiMenuScreen;
+import net.kvrobi.chimod.client.screen.RaceSelectionScreen;
 import net.kvrobi.chimod.fluid.ModFluids;
 import net.kvrobi.chimod.item.ModItems;
 import net.kvrobi.chimod.item.armor.custom.ChiArmor;
@@ -63,6 +64,7 @@ public class ClientModEvents {
         // This tells the game: "When you see ChiMenu, use ChiMenuScreen to draw it"
         ChiMod.LOGGER.info("Registering Screen for: " + ModMenuTypes.CHI_MENU.getId());
         event.register(ModMenuTypes.CHI_MENU.get(), ChiMenuScreen::new);
+        event.register(ModMenuTypes.RACE_MENU.get(), RaceSelectionScreen::new);
     }
 
     private static void registerSimpleFluid(RegisterClientExtensionsEvent event, FluidType type, int tint) {

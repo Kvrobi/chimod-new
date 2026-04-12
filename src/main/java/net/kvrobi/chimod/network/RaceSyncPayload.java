@@ -1,5 +1,6 @@
 package net.kvrobi.chimod.network;
 
+import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.util.Race;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -9,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public record RaceSyncPayload(Race race) implements CustomPacketPayload {
 
-    public static final Type<RaceSyncPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("your_mod_id", "race_sync"));
+    public static final Type<RaceSyncPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "race_sync"));
 
     // StreamCodec defines how to write/read the data to the network buffer
     public static final StreamCodec<RegistryFriendlyByteBuf, RaceSyncPayload> STREAM_CODEC = StreamCodec.composite(

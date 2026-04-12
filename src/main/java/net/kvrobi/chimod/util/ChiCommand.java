@@ -6,6 +6,7 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.kvrobi.chimod.network.ChiSyncPayload;
 import net.kvrobi.chimod.network.RaceSyncPayload;
+import net.kvrobi.chimod.world.gui.RaceSelectionMenu;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
@@ -14,6 +15,7 @@ import net.minecraft.commands.synchronization.ArgumentTypeInfo;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.repository.PackDetector;
+import net.minecraft.world.SimpleMenuProvider;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.Arrays;
@@ -90,7 +92,6 @@ public class ChiCommand {
                                     Component.literal("Current Chi: " + data.getEnergy()), false);
                             return 1;
                         })
-
                 )
         );
         dispatcher.register(Commands.literal("chi_race").then(Commands.literal("set")
@@ -122,6 +123,17 @@ public class ChiCommand {
                                         Component.literal("Current Race: " + data.getRace()), false);
                                 return 1;
                             })
+                )// Inside ChiCommand.register
+                .then(Commands.literal("open")
+                        .requires(source -> source.hasPermission(0))
+                        .executes(context -> {
+                            ServerPlayer player = context.getSource().getPlayerOrException();
+                            player.openMenu(new SimpleMenuProvider(
+                                    (id, inv, p) -> new RaceSelectionMenu(id, inv),
+                                    Component.literal("Select Your Race")
+                            ));
+                            return 1;
+                        })
                 )
         );
     }

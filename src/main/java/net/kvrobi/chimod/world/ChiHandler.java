@@ -5,10 +5,12 @@ import net.kvrobi.chimod.item.armor.custom.ChiArmor;
 import net.kvrobi.chimod.item.custom.ChiOrbItem;
 import net.kvrobi.chimod.item.custom.ChiWeapon;
 import net.kvrobi.chimod.network.ChiSyncPayload;
+import net.kvrobi.chimod.network.OpenRaceMenuPayload;
 import net.kvrobi.chimod.util.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.world.inventory.ChiMenu;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -71,5 +73,9 @@ public class ChiHandler {
                 orbStack.shrink(1);
             }
         }
+    }
+
+    private void handleOpenRaceMenu(Minecraft mc) {
+        PacketDistributor.sendToServer(new OpenRaceMenuPayload());
     }
 }
