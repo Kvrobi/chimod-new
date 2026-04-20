@@ -23,20 +23,44 @@ public class RaceProxy implements GeoAnimatable {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "base_controller", 0, state -> {
+        controllers.add(new AnimationController<>(this, "base_controller", 2, state -> {
             Race race = player.getData(ModAttachments.RACE_DATA.get()).getRace();
-            boolean isMoving = player.walkDist > player.walkDistO || player.swingTime > 0;
-            System.out.println("hellobello kontrolalok dolgokat");
+            boolean isHorizontallyMoving = player.getDeltaMovement().horizontalDistanceSqr() > 0.001 /*|| player.swingTime > 0*/;
+            boolean isPunching = player.swinging;
+            boolean isShifting = player.isCrouching();
+            boolean isSwimming = player.isSwimming();
+            //System.out.println("hellobello kontrolalok dolgokat");
             String animName;
-            animName = isMoving ? "walk" : "idle";
+            if(isHorizontallyMoving) {
+                animName = isPunching ? "punchwalk" : "walk";
+            } else {
+                animName = isPunching ? "punch" : "idle" ;
+            }
+            if(isHorizontallyMoving) {
+                if (isHorizontallyMoving) {
+                    animName = isPunching ? "punchshiftwalk" : "shiftwalk";
+                } else {
+                    animName = isPunching ? "punchshift" : "shift";
+                }
+            }
+            if(isSwimming) {
+                if(isHorizontallyMoving) {
+                    animName = isPunching ? "punchswimming" : "swimming";
+                }
+            }
 
             // Race-specific overrides (Example: Eagle flying)
-            if (race == Race.EAGLE && !player.onGround()) {
-                animName = "idleflight";
+            if ((race == Race.EAGLE || race == Race.CROW) && player.getAbilities().flying) {
+                if (isHorizontallyMoving) {
+                    animName = isPunching ? "punchingmovingflight" : "movingflight" ;
+                } else {
+                    animName = isPunching ? "punchidleflight" : "idleflight";
+                }
             }
 
             return state.setAndContinue(RawAnimation.begin().thenLoop(animName));
-        }));
+        }).triggerableAnim("activatechi", RawAnimation.begin().thenPlay("activatingchi"))
+          .triggerableAnim("usespecialmove", RawAnimation.begin().thenPlay("specialmove")));
     }
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {

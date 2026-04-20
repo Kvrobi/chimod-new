@@ -41,9 +41,12 @@ public class RaceLayerWrapper extends RenderLayer<AbstractClientPlayer, PlayerMo
                 // GeckoLib 4 uses the instance cache to handle the tick logic
                 long animId = player.getId();
                 var manager = proxy.getAnimatableInstanceCache().getManagerForId(animId);
-                double currentTick = proxy.getTick(proxy);
-                manager.updatedAt(currentTick);
+                manager.updatedAt(proxy.getTick(proxy));
+                boolean isMoving = player.walkDist > player.walkDistO || !player.onGround();
+                software.bernie.geckolib.animation.AnimationState<RaceProxy> state =
+                        new software.bernie.geckolib.animation.AnimationState<>(proxy, limbSwing, limbSwingAmount, partialTick, isMoving);
 
+                this.internalGeoLayer.getRenderer().getGeoModel().handleAnimations(proxy, animId, state, partialTick);
             }
 
             this.internalGeoLayer.renderRace(poseStack, proxy, buffer, partialTick, packedLight, OverlayTexture.NO_OVERLAY);

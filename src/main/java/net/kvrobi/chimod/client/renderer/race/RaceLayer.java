@@ -21,8 +21,9 @@ public class RaceLayer extends GeoRenderLayer<RaceProxy> {
     public void renderRace(PoseStack poseStack, RaceProxy animatable, MultiBufferSource bufferSource,
                            float partialTick, int packedLight, int packedOverlay) {
 
-        ResourceLocation modelLoc = this.raceModel.getModelResource(animatable);
-        BakedGeoModel bakedModel = GeckoLibCache.getBakedModels().get(modelLoc);
+        var model = getRenderer().getGeoModel();
+        ResourceLocation modelLoc = model.getModelResource(animatable);
+        BakedGeoModel bakedModel = model.getBakedModel(modelLoc);
 
         if (bakedModel != null) {
             poseStack.pushPose();
@@ -31,9 +32,9 @@ public class RaceLayer extends GeoRenderLayer<RaceProxy> {
             poseStack.mulPose(Axis.XP.rotationDegrees(180f));
             poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(180f));
             // You may also need to translate it back into position depending on your .geo.json
-            poseStack.translate(0.501, -2.001, 0.501);
+            poseStack.translate(-0.501, -2.001, -0.501);
 
-            RenderType renderType = RenderType.entityCutoutNoCull(this.raceModel.getTextureResource(animatable));
+            RenderType renderType = net.minecraft.client.renderer.RenderType.entityCutoutNoCull(model.getTextureResource(animatable));
 
             getRenderer().reRender(bakedModel, poseStack, bufferSource, animatable,
                     renderType, bufferSource.getBuffer(renderType),
