@@ -3,7 +3,7 @@ package net.kvrobi.chimod.util;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.kvrobi.chimod.client.renderer.race.custom.HumanProxy;
+//import net.kvrobi.chimod.client.renderer.race.custom.HumanProxy;
 
 import static net.kvrobi.chimod.util.Race.HUMAN;
 
@@ -31,7 +31,7 @@ public class RaceData {
                 return "wolf";
             case FOX:
                 return "fox";
-            case CROW:
+            case RAVEN:
                 return "crow";
             default:
                 return "human";

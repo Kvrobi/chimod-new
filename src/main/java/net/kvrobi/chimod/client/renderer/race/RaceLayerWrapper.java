@@ -19,7 +19,7 @@ import java.util.UUID;
 public class RaceLayerWrapper extends RenderLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
     // We cache proxies to avoid creating new objects every frame [cite: 185]
     private final RaceLayer internalGeoLayer = new RaceLayer(new RaceProxyRenderer());
-    private static final Map<UUID, RaceProxy> PROXY_CACHE = new HashMap<>();
+    public static final Map<UUID, RaceProxy> PROXY_CACHE = new HashMap<>();
 
     public RaceLayerWrapper(RenderLayerParent<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> parent) {
         super(parent);
@@ -49,7 +49,7 @@ public class RaceLayerWrapper extends RenderLayer<AbstractClientPlayer, PlayerMo
                 this.internalGeoLayer.getRenderer().getGeoModel().handleAnimations(proxy, animId, state, partialTick);
             }
 
-            this.internalGeoLayer.renderRace(poseStack, proxy, buffer, partialTick, packedLight, OverlayTexture.NO_OVERLAY);
+            this.internalGeoLayer.renderRace(poseStack, proxy, buffer, partialTick, packedLight, OverlayTexture.NO_OVERLAY, this.getParentModel());
         }
     }
 }

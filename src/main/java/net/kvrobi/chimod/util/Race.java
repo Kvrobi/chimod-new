@@ -6,7 +6,7 @@ import net.minecraft.util.StringRepresentable;
 import java.util.Locale;
 
 public enum Race implements StringRepresentable{
-    HUMAN, LION, EAGLE, CROCODILE, BEAR, WOLF, FOX, CROW;
+    HUMAN, LION, EAGLE, CROCODILE, BEAR, WOLF, FOX, RAVEN;
 
     // The Codec still works exactly the same
     public static final Codec<Race> RACE_CODEC = StringRepresentable.fromEnum(Race::values);

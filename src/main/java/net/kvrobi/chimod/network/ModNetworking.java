@@ -34,13 +34,13 @@ public class ModNetworking {
                             // Sync the local race data
                             context.player().getData(ModAttachments.RACE_DATA.get()).setRace(payload.race());
 
-                            // FORCE FIGURA TO EQUIP THE AVATAR
+                            /*// FORCE FIGURA TO EQUIP THE AVATAR
                             if (payload.race() == Race.EAGLE) {
                                 // This is where you call the Figura API or AvatarManager
                                 // to set the avatar for the player's UUID.
                                 // Note: You will need to convert your local resource to NBT
                                 // or use LocalAvatarLoader.loadLocalAvatar(Path).
-                            }
+                            }*/
                         }
                     });
                 }

@@ -10,8 +10,6 @@ import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import static software.bernie.geckolib.util.RenderUtil.getCurrentTick;
-
 public class RaceProxy implements GeoAnimatable {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final AbstractClientPlayer player;
@@ -23,41 +21,42 @@ public class RaceProxy implements GeoAnimatable {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "base_controller", 2, state -> {
+        controllers.add(new AnimationController<>(this, "base_controller", 10, state -> {
             Race race = player.getData(ModAttachments.RACE_DATA.get()).getRace();
             boolean isHorizontallyMoving = player.getDeltaMovement().horizontalDistanceSqr() > 0.001 /*|| player.swingTime > 0*/;
-            boolean isPunching = player.swinging;
-            boolean isShifting = player.isCrouching();
             boolean isSwimming = player.isSwimming();
-            //System.out.println("hellobello kontrolalok dolgokat");
             String animName;
-            if(isHorizontallyMoving) {
-                animName = isPunching ? "punchwalk" : "walk";
-            } else {
-                animName = isPunching ? "punch" : "idle" ;
-            }
-            if(isHorizontallyMoving) {
+            /*boolean isPunching = player.swinging;
+            boolean isSneaking = player.isCrouching();*/
+            //System.out.println("hellobello kontrolalok dolgokat");
+            //String extraAnimName = null;
+            animName = isHorizontallyMoving ? "sprint" : "idle" ;
+
+            /*if(isSneaking) {
                 if (isHorizontallyMoving) {
-                    animName = isPunching ? "punchshiftwalk" : "shiftwalk";
+                    animName = isPunching ? "punchsneakwalk" : "sneakwalk";
                 } else {
-                    animName = isPunching ? "punchshift" : "shift";
+                    animName = isPunching ? "punchsneak" : "sneak";
                 }
-            }
+            }*/
             if(isSwimming) {
-                if(isHorizontallyMoving) {
-                    animName = isPunching ? "punchswimming" : "swimming";
-                }
+                animName = "swimming";
             }
 
             // Race-specific overrides (Example: Eagle flying)
-            if ((race == Race.EAGLE || race == Race.CROW) && player.getAbilities().flying) {
-                if (isHorizontallyMoving) {
-                    animName = isPunching ? "punchingmovingflight" : "movingflight" ;
+            if ((race == Race.EAGLE || race == Race.RAVEN) && player.getAbilities().flying) {
+                animName = "idleflight";
+
+                /*if (isHorizontallyMoving) {
+                    extraAnimName = isPunching ? "punchstartmovingflight" : "startmovingflight";
+                    animName = isPunching ? "punchmovingflight" : "movingflight" ;
                 } else {
                     animName = isPunching ? "punchidleflight" : "idleflight";
-                }
+                }*/
             }
-
+            /*if(extraAnimName != null) {
+                return state.setAndContinue(RawAnimation.begin().thenPlay(extraAnimName).thenLoop(animName));
+            }*/
             return state.setAndContinue(RawAnimation.begin().thenLoop(animName));
         }).triggerableAnim("activatechi", RawAnimation.begin().thenPlay("activatingchi"))
           .triggerableAnim("usespecialmove", RawAnimation.begin().thenPlay("specialmove")));

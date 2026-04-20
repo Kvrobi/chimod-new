@@ -56,6 +56,7 @@ public class ChiMod {
             modEventBus.addListener(ClientModEvents::onRegisterKeyMappings);
             //modEventBus.addListener(ClientModEvents::onClientSetup);
             NeoForge.EVENT_BUS.addListener(RaceRenderHandler::onPlayerRender);
+            NeoForge.EVENT_BUS.addListener(ClientInputHandler::onRenderArm);
             modEventBus.addListener(ClientModEvents::onAddLayers);
             ClientInputHandler inputHandler = new ClientInputHandler();
             NeoForge.EVENT_BUS.register(inputHandler);
