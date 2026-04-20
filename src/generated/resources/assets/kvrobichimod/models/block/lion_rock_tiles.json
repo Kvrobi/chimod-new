@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "kvrobichimod:block/lion_rock_tiles"
+  }
+}

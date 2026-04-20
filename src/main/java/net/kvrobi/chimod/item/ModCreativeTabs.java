@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -45,6 +46,7 @@ public class ModCreativeTabs {
                         output.accept(ModItems.CHI_ORB);
                         output.accept(ModItems.RAW_CHI);
                         output.accept(ModItems.BANANA_PEEL);
+                        output.accept((ItemLike) ModItems.CHI_WATER_BUCKET);
 
             }).build());
 
@@ -65,6 +67,7 @@ public class ModCreativeTabs {
             () -> CreativeModeTab.builder().icon( () -> new ItemStack(ModItems.LION_VALIOUS_GRAY.get())).withTabsBefore(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
                     "chi_weapons_tab")).title(Component.translatable("creativetab.kvrobichimod.chi_weapons")).displayItems((parameters, output) -> {
                 output.accept(ModItems.GOLDEN_SHOULDER_PADS);
+                output.accept(ModItems.GOLDEN_SHOULDER_SPIKED);
 
             }).build());
 

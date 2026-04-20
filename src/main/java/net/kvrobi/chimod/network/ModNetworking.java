@@ -1,7 +1,8 @@
 package net.kvrobi.chimod.network;
 
 import net.kvrobi.chimod.ChiMod;
-import net.kvrobi.chimod.util.data.ClientRaceData;
+import net.kvrobi.chimod.util.ModAttachments;
+import net.kvrobi.chimod.util.Race;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
@@ -28,10 +29,19 @@ public class ModNetworking {
                 RaceSyncPayload.TYPE,
                 RaceSyncPayload.STREAM_CODEC,
                 (payload, context) -> {
-                    // This runs on the CLIENT thread
                     context.enqueueWork(() -> {
-                        // Update the client-side data
-                        ClientRaceData.setLocalRace(payload.race());
+                        if (context.player() != null) {
+                            // Sync the local race data
+                            context.player().getData(ModAttachments.RACE_DATA.get()).setRace(payload.race());
+
+                            // FORCE FIGURA TO EQUIP THE AVATAR
+                            if (payload.race() == Race.EAGLE) {
+                                // This is where you call the Figura API or AvatarManager
+                                // to set the avatar for the player's UUID.
+                                // Note: You will need to convert your local resource to NBT
+                                // or use LocalAvatarLoader.loadLocalAvatar(Path).
+                            }
+                        }
                     });
                 }
         );

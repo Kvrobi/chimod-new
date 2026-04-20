@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "kvrobichimod:block/raw_chi_block"
+  }
+}

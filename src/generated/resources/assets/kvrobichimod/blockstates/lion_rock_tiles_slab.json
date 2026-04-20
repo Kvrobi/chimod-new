@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "kvrobichimod:block/lion_rock_tiles_slab"
+    },
+    "type=double": {
+      "model": "kvrobichimod:block/lion_rock_tiles"
+    },
+    "type=top": {
+      "model": "kvrobichimod:block/lion_rock_tiles_slab_top"
+    }
+  }
+}

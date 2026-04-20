@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "kvrobichimod:block/fire_chi_orb_block"
+    },
+    "waterlogged=true": {
+      "model": "kvrobichimod:block/fire_chi_orb_block"
+    }
+  }
+}

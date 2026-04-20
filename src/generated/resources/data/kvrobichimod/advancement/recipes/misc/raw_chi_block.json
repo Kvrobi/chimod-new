@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_chi": {
+      "conditions": {
+        "items": [
+          {
+            "items": "kvrobichimod:rawchi"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "kvrobichimod:raw_chi_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_chi"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "kvrobichimod:raw_chi_block"
+    ]
+  }
+}

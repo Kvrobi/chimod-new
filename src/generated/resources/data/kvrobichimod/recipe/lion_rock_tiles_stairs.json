@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "lion_rock_tiles",
+  "key": {
+    "#": {
+      "item": "kvrobichimod:lion_rock_tiles"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "kvrobichimod:lion_rock_tiles_stairs"
+  }
+}

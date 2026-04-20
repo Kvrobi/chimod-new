@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chi_orb_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "kvrobichimod:chi_orb_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "kvrobichimod:chi_orb_from_chi_orb_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_chi_orb_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "kvrobichimod:chi_orb_from_chi_orb_block"
+    ]
+  }
+}

@@ -1,9 +1,12 @@
 package net.kvrobi.chimod;
 
+import com.mojang.logging.LogUtils;
 import net.kvrobi.chimod.block.ModBlocks;
 import net.kvrobi.chimod.block.entity.ModBlockEntities;
 import net.kvrobi.chimod.client.ClientInputHandler;
 import net.kvrobi.chimod.client.ClientModEvents;
+import net.kvrobi.chimod.client.renderer.race.RaceLayer;
+import net.kvrobi.chimod.client.renderer.race.RaceRenderHandler;
 import net.kvrobi.chimod.component.ModDataComponents;
 import net.kvrobi.chimod.datagen.DataGenerators;
 import net.kvrobi.chimod.fluid.ModFluids;
@@ -11,35 +14,22 @@ import net.kvrobi.chimod.item.ModCreativeTabs;
 import net.kvrobi.chimod.item.ModItems;
 import net.kvrobi.chimod.item.armor.ModArmorMaterials;
 import net.kvrobi.chimod.network.ModNetworking;
-import net.kvrobi.chimod.network.OpenMenuPayload;
 import net.kvrobi.chimod.util.ChiCommand;
-import net.kvrobi.chimod.util.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.attachment.AttachmentType;
-import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
-import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
-
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-
-import java.util.function.Supplier;
+import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(ChiMod.MOD_ID)
@@ -64,9 +54,12 @@ public class ChiMod {
             modEventBus.addListener(ClientModEvents::registerExtensions);
             modEventBus.addListener(ClientModEvents::registerScreens);
             modEventBus.addListener(ClientModEvents::onRegisterKeyMappings);
-
+            //modEventBus.addListener(ClientModEvents::onClientSetup);
+            NeoForge.EVENT_BUS.addListener(RaceRenderHandler::onPlayerRender);
+            modEventBus.addListener(ClientModEvents::onAddLayers);
             ClientInputHandler inputHandler = new ClientInputHandler();
             NeoForge.EVENT_BUS.register(inputHandler);
+
         }
 
 
@@ -79,6 +72,7 @@ public class ChiMod {
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
+        //NeoForge.EVENT_BUS.addListener(PlayerEvents::onPlayerTick);
 
         ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         ModBlockEntities.register(modEventBus);

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_side",
+  "textures": {
+    "texture": "kvrobichimod:block/lion_rock_tiles"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "active=false,clicked=false": {
+      "model": "kvrobichimod:block/blue_chi_lamp_inactive_unlit"
+    },
+    "active=false,clicked=true": {
+      "model": "kvrobichimod:block/blue_chi_lamp_inactive_lit"
+    },
+    "active=true,clicked=false": {
+      "model": "kvrobichimod:block/blue_chi_lamp_active_unlit"
+    },
+    "active=true,clicked=true": {
+      "model": "kvrobichimod:block/blue_chi_lamp_active_lit"
+    }
+  }
+}

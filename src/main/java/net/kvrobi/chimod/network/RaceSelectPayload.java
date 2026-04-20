@@ -26,11 +26,22 @@ public record RaceSelectPayload(Race race) implements CustomPacketPayload {
     public static void handleData(final RaceSelectPayload data, final IPayloadContext context) {
         context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player) {
+                // 1. Update your mod's internal race data
                 RaceData raceData = player.getData(ModAttachments.RACE_DATA);
                 raceData.setRace(data.race());
-                // Sync to client so the client-side RaceData is updated too
+
+                // 2. Sync race to client for logic
                 PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.race()));
+
+                // 3. SEAMLESS TRANSITION (The "Magic" part)
+                // If the race is EAGLE, we tell the client to force-load the avatar
+                if (data.race() == Race.EAGLE) {
+                    // Since setAvatar is a CLIENT-side method in AvatarManager,
+                    // you actually need to call this in your RaceSyncPayload handler
+                    // on the Client, not here on the Server.
+                }
             }
         });
     }
 }
+

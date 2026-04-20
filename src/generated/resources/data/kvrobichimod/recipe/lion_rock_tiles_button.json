@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "lion_rock_tiles",
+  "ingredients": [
+    {
+      "item": "kvrobichimod:lion_rock_tiles"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "kvrobichimod:lion_rock_tiles_button"
+  }
+}

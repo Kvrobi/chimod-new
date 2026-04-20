@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "kvrobichimod:block/lion_rock_tiles"
+  }
+}

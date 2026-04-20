@@ -1,8 +1,12 @@
 package net.kvrobi.chimod.client;
 
+//import com.tom.cpm.api.CustomPlayerModels;
+
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.client.renderer.ChiArmorRenderer;
 import net.kvrobi.chimod.client.renderer.ChiWeaponRenderer;
+import net.kvrobi.chimod.client.renderer.race.RaceLayer;
+import net.kvrobi.chimod.client.renderer.race.RaceLayerWrapper;
 import net.kvrobi.chimod.client.screen.ChiMenuScreen;
 import net.kvrobi.chimod.client.screen.RaceSelectionScreen;
 import net.kvrobi.chimod.fluid.ModFluids;
@@ -11,23 +15,21 @@ import net.kvrobi.chimod.item.armor.custom.ChiArmor;
 import net.kvrobi.chimod.world.registration.ModMenuTypes;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.fluids.FluidType;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -50,7 +52,6 @@ public class ClientModEvents {
         //registerClientExtensions(event, ModItems.GOLDEN_SHOULDER_PADS.get());
 
         registerSimpleFluid(event, ModFluids.CHI_WATER_TYPE.get(), 0xFF00E5FF);
-
     }
 
 
@@ -91,6 +92,16 @@ public class ClientModEvents {
         }, type);
     }
 
+    public static void onAddLayers(EntityRenderersEvent.AddLayers event) {
+        for (net.minecraft.client.resources.PlayerSkin.Model skinModel : net.minecraft.client.resources.PlayerSkin.Model.values()) {
+            PlayerRenderer renderer = event.getSkin(skinModel);
+            if (renderer != null) {
+                renderer.addLayer(new RaceLayerWrapper(renderer));
+            }
+        }
+    }
+
+
     private static void registerChiArmor(RegisterClientExtensionsEvent event, Item item) {
         event.registerItem(new IClientItemExtensions() {
             private ChiArmorRenderer renderer;
@@ -110,7 +121,17 @@ public class ClientModEvents {
                 return this.renderer;
             }
         }, item);
+
+
     }
+
+
+    /*public static void onClientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            // Correct API access for CPM 0.6.x
+            com.tom.cpm.api.IClientAPI.api.registerModel(ChiMod.MOD_ID, "eagle");
+        });
+    }*/
 
     private static void registerChiWeapon(RegisterClientExtensionsEvent event, Item item) {
         event.registerItem(new IClientItemExtensions() {

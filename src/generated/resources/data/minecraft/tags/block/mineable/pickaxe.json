@@ -1,0 +1,20 @@
+{
+  "values": [
+    "kvrobichimod:raw_chi_block",
+    "kvrobichimod:deepslate_chi_ore_block",
+    "kvrobichimod:chi_ore_block",
+    "kvrobichimod:chi_orb_block",
+    "kvrobichimod:fire_chi_orb_block",
+    "kvrobichimod:lion_rock_tiles",
+    "kvrobichimod:lion_rock_tiles_slab",
+    "kvrobichimod:lion_rock_tiles_stairs",
+    "kvrobichimod:lion_rock_tiles_door",
+    "kvrobichimod:lion_rock_tiles_trapdoor",
+    "kvrobichimod:lion_rock_tiles_fence",
+    "kvrobichimod:lion_rock_tiles_fence_gate",
+    "kvrobichimod:lion_rock_tiles_wall",
+    "kvrobichimod:lion_rock_tiles_button",
+    "kvrobichimod:lion_rock_tiles_pressure_plate",
+    "kvrobichimod:blue_chi_lamp"
+  ]
+}

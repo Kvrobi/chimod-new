@@ -1,25 +1,19 @@
 package net.kvrobi.chimod.world.inventory;
 
-import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.item.custom.ChiOrbItem;
 import net.kvrobi.chimod.util.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.world.registration.ModMenuTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import org.jetbrains.annotations.Nullable;
+import org.figuramc.figura.avatar.AvatarManager;
 
 public class ChiMenu extends AbstractContainerMenu {
     private final Player player;
@@ -84,6 +78,8 @@ public class ChiMenu extends AbstractContainerMenu {
         }
         return itemstack;
     }
+
+
 
     @Override
     public boolean stillValid(Player player) { return true; }

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "kvrobichimod:raw_chi_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "kvrobichimod:rawchi"
+  }
+}

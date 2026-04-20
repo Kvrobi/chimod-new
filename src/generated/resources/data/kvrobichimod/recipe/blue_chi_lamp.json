@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "T": {
+      "item": "kvrobichimod:lion_rock_tiles"
+    }
+  },
+  "pattern": [
+    "TGT",
+    "G G",
+    "TGT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "kvrobichimod:blue_chi_lamp"
+  }
+}

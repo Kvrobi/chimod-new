@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "kvrobichimod:block/lion_rock_tiles"
+  }
+}

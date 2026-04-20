@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_fence_gate_open",
+  "textures": {
+    "texture": "kvrobichimod:block/lion_rock_tiles"
+  }
+}

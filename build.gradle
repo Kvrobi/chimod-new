@@ -35,6 +35,13 @@ repositories {
             includeGroup("software.bernie.geckolib")
         }
     }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 base {
@@ -127,6 +134,7 @@ configurations {
 dependencies {
     implementation "net.neoforged:neoforge:21.1.222"
     implementation "software.bernie.geckolib:geckolib-neoforge-1.21.1:4.8.4"
+
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"

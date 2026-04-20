@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "kvrobichimod:block/deepslate_chi_ore_block"
+  }
+}

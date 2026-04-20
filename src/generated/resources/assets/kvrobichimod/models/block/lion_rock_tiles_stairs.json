@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "kvrobichimod:block/lion_rock_tiles",
+    "side": "kvrobichimod:block/lion_rock_tiles",
+    "top": "kvrobichimod:block/lion_rock_tiles"
+  }
+}

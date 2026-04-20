@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "kvrobichimod:block/blue_chi_lamp_active_lit"
+  }
+}
