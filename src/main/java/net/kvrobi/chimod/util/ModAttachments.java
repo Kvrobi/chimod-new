@@ -38,9 +38,10 @@ public class ModAttachments {
                     .build());
 
     public static final Supplier<AttachmentType<RaceData>> RACE_DATA = ATTACHMENT_TYPES.register(
-            "race_data", () -> AttachmentType.builder(() -> new RaceData())
-                    .serialize(RaceData.CODEC) // Saves to disk
-                    .copyOnDeath()             // Keeps race after dying
+            "race_data",
+            () -> AttachmentType.builder(() -> new RaceData())
+                    .serialize(RaceData.CODEC) // 1. Forces the game to save it to the hard drive
+                    .copyOnDeath()             // 2. Ensures the player doesn't revert to Human when they respawn!
                     .build()
     );
 

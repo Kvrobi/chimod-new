@@ -59,7 +59,7 @@ public class ClientInputHandler {
 
         if (race == net.kvrobi.chimod.util.Race.HUMAN) return;
 
-        // Cancel vanilla arm
+        // Cancel the blocky vanilla arm
         event.setCanceled(true);
 
         net.kvrobi.chimod.client.renderer.race.RaceProxy proxy =
@@ -73,7 +73,7 @@ public class ClientInputHandler {
 
         boolean isRight = event.getArm() == net.minecraft.world.entity.HumanoidArm.RIGHT;
 
-        // --- 1. ISOLATE THE CORRECT ARM ---
+        // Isolate the arm
         var rightArm = model.getAnimationProcessor().getBone("right_arm");
         var leftArm = model.getAnimationProcessor().getBone("left_arm");
         if (rightArm != null) rightArm.setHidden(!isRight);
@@ -82,32 +82,32 @@ public class ClientInputHandler {
         com.mojang.blaze3d.vertex.PoseStack poseStack = event.getPoseStack();
         poseStack.pushPose();
 
-        // --- 2. CAMERA MATRIX MATH ---
-        poseStack.scale(-1.0f, -1.0f, 1.0f);
+        poseStack.scale(-0.9f, -0.9f, 0.9f);
+        float shiftX = isRight ? -0.3f : -0.1f;                     // up down
+        float shiftY = isRight ? -0.475f : -0.75f;                  // forward backward
+        float shiftZ = isRight ? 0.45f : 0.6f;                      // left right
 
-        // This shifts your Blockbench shoulder pivot (X=5, Y=22) up to the camera origin (0,0,0).
-        // If your arm is slightly off-center on screen, adjust these two numbers!
-        float shiftX = isRight ? -5.0f / 16.0f : 5.0f / 16.0f;
-        float shiftY = 22.0f / 16.0f;
-        poseStack.translate(shiftX, shiftY, 0.0f);
+        poseStack.translate(shiftX, shiftY, shiftZ);
+
+        float pitch = -90.0f;                    //left rigth rot
+        float yaw = -0.0f;     //no clue
+        float roll = 0.0f;                      //no clue
+
+        poseStack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(pitch));
+        poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(yaw));
+        poseStack.mulPose(com.mojang.math.Axis.ZP.rotationDegrees(roll));
+
 
         net.minecraft.client.renderer.RenderType renderType =
                 net.minecraft.client.renderer.RenderType.entityCutoutNoCull(model.getTextureResource(proxy));
 
         float partialTick = net.minecraft.client.Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true);
 
-        // --- 3. RENDER ---
         ARM_RENDERER.reRender(bakedModel, poseStack, event.getMultiBufferSource(), proxy,
                 renderType, event.getMultiBufferSource().getBuffer(renderType),
                 partialTick, event.getPackedLight(),
                 net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY, -1);
 
         poseStack.popPose();
-    }
-    private static void setBoneHidden(software.bernie.geckolib.cache.object.GeoBone bone, boolean hidden) {
-        bone.setHidden(hidden);
-        for (software.bernie.geckolib.cache.object.GeoBone child : bone.getChildBones()) {
-            setBoneHidden(child, hidden);
-        }
     }
 }

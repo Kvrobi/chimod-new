@@ -3,6 +3,7 @@ package net.kvrobi.chimod.network;
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.util.Race;
+import net.minecraft.client.Minecraft;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
@@ -30,17 +31,18 @@ public class ModNetworking {
                 RaceSyncPayload.STREAM_CODEC,
                 (payload, context) -> {
                     context.enqueueWork(() -> {
-                        if (context.player() != null) {
-                            // Sync the local race data
-                            context.player().getData(ModAttachments.RACE_DATA.get()).setRace(payload.race());
+                        net.minecraft.client.player.LocalPlayer localPlayer = Minecraft.getInstance().player;
 
-                            /*// FORCE FIGURA TO EQUIP THE AVATAR
-                            if (payload.race() == Race.EAGLE) {
-                                // This is where you call the Figura API or AvatarManager
-                                // to set the avatar for the player's UUID.
-                                // Note: You will need to convert your local resource to NBT
-                                // or use LocalAvatarLoader.loadLocalAvatar(Path).
-                            }*/
+                        // 2. If the packet is for US, update immediately (even if the world is still loading!)
+                        if (localPlayer != null && localPlayer.getId() == payload.entityId()) {
+                            localPlayer.getData(ModAttachments.RACE_DATA.get()).setRace(payload.race());
+                        }
+                        // 3. If the packet is for ANOTHER player, safely find them in the world
+                        else if (Minecraft.getInstance().level != null) {
+                            net.minecraft.world.entity.Entity entity = Minecraft.getInstance().level.getEntity(payload.entityId());
+                            if (entity instanceof net.minecraft.world.entity.player.Player otherPlayer) {
+                                otherPlayer.getData(ModAttachments.RACE_DATA.get()).setRace(payload.race());
+                            }
                         }
                     });
                 }

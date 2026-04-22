@@ -31,7 +31,7 @@ public record RaceSelectPayload(Race race) implements CustomPacketPayload {
                 raceData.setRace(data.race());
 
                 // 2. Sync race to client for logic
-                PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.race()));
+                PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.race(), player.getId()));
 
                 // 3. SEAMLESS TRANSITION (The "Magic" part)
                 // If the race is EAGLE, we tell the client to force-load the avatar

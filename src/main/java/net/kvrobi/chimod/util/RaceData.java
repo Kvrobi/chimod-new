@@ -9,8 +9,12 @@ import static net.kvrobi.chimod.util.Race.HUMAN;
 
 
 public class RaceData {
-    private Race race = HUMAN;
+    private Race race;
 
+    public RaceData() { this.race = HUMAN; }
+    public RaceData(Race race) {
+        this.race = race;
+    }
     public Race getRace() {return race;}
     public String getRaceString() {return raceToString();}
     public void setRace(Race race) {this.race = race;}
@@ -41,12 +45,15 @@ public class RaceData {
 
     public static final Codec<RaceData> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("race").forGetter(d -> d.race.name())
-            ).apply(instance, name -> {
-                RaceData data = new RaceData();
-                data.setRace(Race.fromString(name));
-                return data;
-            })
+                    Codec.STRING.xmap(
+                            name -> {
+                                try { return Race.valueOf(name.toUpperCase()); }
+                                catch (IllegalArgumentException e) { return Race.HUMAN; }
+                            },
+
+                            Race::name
+                    ).fieldOf("race").forGetter(RaceData::getRace)
+            ).apply(instance, RaceData::new)
     );
 }
 

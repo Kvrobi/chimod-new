@@ -109,7 +109,7 @@ public class ChiCommand {
                     data.setRace(Race.fromString(raceName));
 
                     // Sync to client (Important for the future menu!)
-                    PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.getRace()));
+                    PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.getRace(), player.getId()));
 
                     context.getSource().sendSuccess(() ->
                             Component.literal("Race set to: " + raceName), true);

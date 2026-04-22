@@ -14,6 +14,7 @@ import net.kvrobi.chimod.item.ModCreativeTabs;
 import net.kvrobi.chimod.item.ModItems;
 import net.kvrobi.chimod.item.armor.ModArmorMaterials;
 import net.kvrobi.chimod.network.ModNetworking;
+import net.kvrobi.chimod.network.RaceSyncEvents;
 import net.kvrobi.chimod.util.ChiCommand;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -57,6 +58,7 @@ public class ChiMod {
             //modEventBus.addListener(ClientModEvents::onClientSetup);
             NeoForge.EVENT_BUS.addListener(RaceRenderHandler::onPlayerRender);
             NeoForge.EVENT_BUS.addListener(ClientInputHandler::onRenderArm);
+            //NeoForge.EVENT_BUS.addListener();
             modEventBus.addListener(ClientModEvents::onAddLayers);
             ClientInputHandler inputHandler = new ClientInputHandler();
             NeoForge.EVENT_BUS.register(inputHandler);
