@@ -44,7 +44,7 @@ public class RaceProxy implements GeoAnimatable {
             }
 
             // Race-specific overrides (Example: Eagle flying)
-            if ((race == Race.EAGLE || race == Race.RAVEN) && player.getAbilities().flying) {
+            if ((race == Race.EAGLE || race == Race.RAVEN) && (player.getAbilities().flying || player.isFallFlying())) {
                 animName = "idleflight";
 
                 /*if (isHorizontallyMoving) {

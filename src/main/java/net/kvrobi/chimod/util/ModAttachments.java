@@ -1,22 +1,13 @@
 package net.kvrobi.chimod.util;
 
 import net.kvrobi.chimod.ChiMod;
-import net.kvrobi.chimod.component.ModDataComponents;
-import net.kvrobi.chimod.item.armor.custom.ChiArmor;
+import net.kvrobi.chimod.util.data.ChiData;
+import net.kvrobi.chimod.util.data.FlightData;
+import net.kvrobi.chimod.util.data.RaceData;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
-import net.neoforged.neoforge.attachment.IAttachmentHolder;
-import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -43,6 +34,11 @@ public class ModAttachments {
                     .serialize(RaceData.CODEC) // 1. Forces the game to save it to the hard drive
                     .copyOnDeath()             // 2. Ensures the player doesn't revert to Human when they respawn!
                     .build()
+    );
+
+    public static final Supplier<net.neoforged.neoforge.attachment.AttachmentType<FlightData>> FLIGHT_DATA = ATTACHMENT_TYPES.register(
+            "flight_data",
+            () -> net.neoforged.neoforge.attachment.AttachmentType.builder(() -> new FlightData()).build()
     );
 
 

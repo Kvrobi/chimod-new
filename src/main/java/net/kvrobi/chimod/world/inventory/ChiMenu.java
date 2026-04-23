@@ -1,16 +1,14 @@
 package net.kvrobi.chimod.world.inventory;
 
 import net.kvrobi.chimod.item.custom.ChiOrbItem;
-import net.kvrobi.chimod.util.ChiData;
+import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.world.registration.ModMenuTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 

@@ -1,20 +1,19 @@
 package net.kvrobi.chimod.util;
 
-import com.jcraft.jogg.Packet;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.kvrobi.chimod.network.ChiSyncPayload;
 import net.kvrobi.chimod.network.RaceSyncPayload;
+import net.kvrobi.chimod.util.data.ChiData;
+import net.kvrobi.chimod.util.data.RaceData;
 import net.kvrobi.chimod.world.gui.RaceSelectionMenu;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.packs.repository.PackDetector;
 import net.minecraft.world.SimpleMenuProvider;
 import net.neoforged.neoforge.network.PacketDistributor;
 

@@ -1,11 +1,10 @@
-package net.kvrobi.chimod.util;
+package net.kvrobi.chimod.util.data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.neoforged.neoforge.items.ItemStackHandler;
-import org.checkerframework.checker.units.qual.C;
 
 public class ChiData {
     private int energy = 0;

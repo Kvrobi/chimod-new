@@ -2,7 +2,7 @@ package net.kvrobi.chimod.network;
 
 import io.netty.buffer.ByteBuf;
 import net.kvrobi.chimod.ChiMod;
-import net.kvrobi.chimod.util.ChiData;
+import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;

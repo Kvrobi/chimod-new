@@ -3,9 +3,8 @@ package net.kvrobi.chimod.client.renderer.race;
 
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.util.ModAttachments;
-import net.kvrobi.chimod.util.RaceData;
+import net.kvrobi.chimod.util.data.RaceData;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.GeoModel;
 
 

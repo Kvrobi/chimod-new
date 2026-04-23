@@ -18,7 +18,7 @@ public class RaceSyncEvents {
         }
     }
     @SubscribeEvent
-    public static void onPlayerR(PlayerEvent.PlayerRespawnEvent event) {
+    public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
         if(event.getEntity() instanceof ServerPlayer serverPlayer) {
             Race race = serverPlayer.getData(ModAttachments.RACE_DATA.get()).getRace();
             PacketDistributor.sendToPlayer(serverPlayer, new RaceSyncPayload(race, serverPlayer.getId()));

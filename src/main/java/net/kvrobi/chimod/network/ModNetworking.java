@@ -7,9 +7,12 @@ import net.minecraft.client.Minecraft;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ModNetworking {
 
-    // Keep it static, but remove @SubscribeEvent if you want to be fully manual
+    public static final Map<Integer, Race> PENDING_RACES = new HashMap<>();
 
     public static void register(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar(ChiMod.MOD_ID);
@@ -26,23 +29,46 @@ public class ModNetworking {
                 ToggleArmorPayload.CODEC,
                 ToggleArmorPayload::handleData
         );
+
+        registrar.playToServer(
+                RequestRaceSyncPayload.TYPE,
+                RequestRaceSyncPayload.CODEC,
+                (payload, context) -> {
+                    context.enqueueWork(() -> {
+                        if (context.player() instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
+                            net.kvrobi.chimod.util.Race race = serverPlayer.getData(net.kvrobi.chimod.util.ModAttachments.RACE_DATA.get()).getRace();
+                            net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(serverPlayer, new RaceSyncPayload(race, serverPlayer.getId()));
+                        }
+                    });
+                }
+        );
+
+        registrar.playToServer(
+                UpdateFlightPayload.TYPE,
+                UpdateFlightPayload.CODEC,
+                (payload, context) -> {
+                    context.enqueueWork(() -> {
+                        if (context.player() instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
+                            var data = serverPlayer.getData(net.kvrobi.chimod.util.ModAttachments.FLIGHT_DATA.get());
+                            data.isHovering = payload.isHovering();
+                            data.isGliding = payload.isGliding();
+                        }
+                    });
+                }
+        );
+
         registrar.playToClient(
                 RaceSyncPayload.TYPE,
                 RaceSyncPayload.STREAM_CODEC,
                 (payload, context) -> {
                     context.enqueueWork(() -> {
-                        net.minecraft.client.player.LocalPlayer localPlayer = Minecraft.getInstance().player;
+                        net.minecraft.client.player.LocalPlayer localPlayer = net.minecraft.client.Minecraft.getInstance().player;
+                        net.minecraft.client.multiplayer.ClientLevel level = net.minecraft.client.Minecraft.getInstance().level;
 
-                        // 2. If the packet is for US, update immediately (even if the world is still loading!)
                         if (localPlayer != null && localPlayer.getId() == payload.entityId()) {
                             localPlayer.getData(ModAttachments.RACE_DATA.get()).setRace(payload.race());
-                        }
-                        // 3. If the packet is for ANOTHER player, safely find them in the world
-                        else if (Minecraft.getInstance().level != null) {
-                            net.minecraft.world.entity.Entity entity = Minecraft.getInstance().level.getEntity(payload.entityId());
-                            if (entity instanceof net.minecraft.world.entity.player.Player otherPlayer) {
-                                otherPlayer.getData(ModAttachments.RACE_DATA.get()).setRace(payload.race());
-                            }
+                        } else if (level != null && level.getEntity(payload.entityId()) instanceof net.minecraft.world.entity.player.Player otherPlayer) {
+                            otherPlayer.getData(ModAttachments.RACE_DATA.get()).setRace(payload.race());
                         }
                     });
                 }

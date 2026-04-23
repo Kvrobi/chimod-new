@@ -22,4 +22,11 @@ public class ModKeyBindings {
             GLFW.GLFW_KEY_V,
             KEY_CATEGORY_CHI
             );
+
+    public static final KeyMapping HOVER_KEY = new KeyMapping("key.chimod.hover",
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_H,
+            KEY_CATEGORY_CHI
+    );
 }

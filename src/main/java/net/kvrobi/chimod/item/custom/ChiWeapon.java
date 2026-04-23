@@ -1,12 +1,10 @@
 package net.kvrobi.chimod.item.custom;
 
-import com.google.j2objc.annotations.Property;
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.component.ModDataComponents;
-import net.kvrobi.chimod.util.ChiData;
+import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.ItemDisplaySettings;
 import net.kvrobi.chimod.util.ModAttachments;
-import net.kvrobi.chimod.util.ModUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -17,13 +15,11 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;

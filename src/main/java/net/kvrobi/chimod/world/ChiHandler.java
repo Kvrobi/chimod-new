@@ -1,12 +1,12 @@
 package net.kvrobi.chimod.world;
 
-import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.item.armor.custom.ChiArmor;
 import net.kvrobi.chimod.item.custom.ChiOrbItem;
 import net.kvrobi.chimod.item.custom.ChiWeapon;
 import net.kvrobi.chimod.network.ChiSyncPayload;
 import net.kvrobi.chimod.network.OpenRaceMenuPayload;
-import net.kvrobi.chimod.util.ChiData;
+import net.kvrobi.chimod.util.Race;
+import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.world.inventory.ChiMenu;
 import net.minecraft.ChatFormatting;
@@ -61,6 +61,71 @@ public class ChiHandler {
 
         if (data.getEnergy() != oldEnergy) {
             PacketDistributor.sendToPlayer((ServerPlayer) player, new ChiSyncPayload(data.getEnergy()));
+        }
+
+        //FLightData
+
+
+
+    }
+
+    private static void flightLogic(Player player) {
+        Race race = player.getData(ModAttachments.RACE_DATA.get()).getRace();
+        if(race == Race.EAGLE || race == Race.RAVEN) {
+            var data = player.getData(ModAttachments.FLIGHT_DATA.get());
+            if (player.onGround()) {
+                if (data.isGliding || data.isHovering) {
+                    data.isGliding = false;
+                    data.isHovering = false;
+                    if (player.level().isClientSide()) {
+                        net.neoforged.neoforge.network.PacketDistributor.sendToServer(new net.kvrobi.chimod.network.UpdateFlightPayload(false, false));
+                    }
+                }
+
+                // Recharge energy quickly while walking!
+                if (data.getCurrentEnergy() < data.getMaxEnergy()) {
+                    data.recharge(5);
+                }
+                return; // Skip the rest of the flight physics
+            }
+
+            // --- 2. HOVER MECHANICS ---
+            if (data.isHovering) {
+                if (data.getCurrentEnergy() > 0) {
+                    // Lock Y to exactly 0.
+                    player.setDeltaMovement(player.getDeltaMovement().x, 0.0, player.getDeltaMovement().z);
+                    player.fallDistance = 0;
+
+                    // Hovering takes a lot of energy!
+                    data.consume(4);
+                } else {
+                    // Out of energy! Cancel flight so they fall!
+                    data.isHovering = false;
+                }
+            }
+
+            // --- 3. GLIDE SPEED LOCK ---
+            else if (data.isGliding) {
+                if (data.getCurrentEnergy() > 0) {
+
+                    // Get the direction the camera is facing
+                    net.minecraft.world.phys.Vec3 look = player.getLookAngle();
+
+                    // The locked horizontal speed multiplier
+                    double forwardSpeed = 0.6;
+                    // The locked downward fall speed
+                    double lockedY = -0.05;
+
+                    // LOCK THE SPEED: Force X and Z to move constantly forward based on camera angle
+                    player.setDeltaMovement(look.x * forwardSpeed, lockedY, look.z * forwardSpeed);
+                    player.fallDistance = 0;
+
+                    // Gliding is efficient, consumes less energy
+                    data.consume(1);
+                } else {
+                    data.isGliding = false;
+                }
+            }
         }
     }
 

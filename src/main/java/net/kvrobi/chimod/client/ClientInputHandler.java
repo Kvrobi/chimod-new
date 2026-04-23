@@ -3,6 +3,8 @@ package net.kvrobi.chimod.client;
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.network.OpenMenuPayload;
 import net.kvrobi.chimod.network.ToggleArmorPayload;
+import net.kvrobi.chimod.util.ModAttachments;
+import net.kvrobi.chimod.util.Race;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
@@ -28,15 +30,58 @@ public class ClientInputHandler {
         keyActions.put(key, action);
     }
 
+    private boolean wasJumping = false;
     @SubscribeEvent
     public void onClientTick(ClientTickEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
         if(mc.player == null) return;
 
+        Race race = mc.player.getData(ModAttachments.RACE_DATA.get()).getRace();
+
+        if (race == Race.EAGLE) {
+            var flightData = mc.player.getData(ModAttachments.FLIGHT_DATA.get());
+            boolean stateChanged = false;
+
+            // --- 1. DOUBLE JUMP TO GLIDE ---
+            boolean isJumping = mc.options.keyJump.isDown();
+            // If they pressed jump, they weren't jumping a millisecond ago, and they are in the air!
+            if (isJumping && !wasJumping && !mc.player.onGround()) {
+                flightData.isGliding = !flightData.isGliding; // Toggle glide
+                if (flightData.isGliding) flightData.isHovering = false;
+                stateChanged = true;
+            }
+            this.wasJumping = isJumping;
+
+            // --- 2. H KEY TO HOVER ---
+            while (ModKeyBindings.HOVER_KEY.consumeClick()) {
+                flightData.isHovering = !flightData.isHovering; // Toggle hover
+                if (flightData.isHovering) flightData.isGliding = false;
+                stateChanged = true;
+            }
+
+            // If a flight mode changed, instantly sync the new physics to the server!
+            if (stateChanged) {
+                net.neoforged.neoforge.network.PacketDistributor.sendToServer(
+                        new net.kvrobi.chimod.network.UpdateFlightPayload(flightData.isHovering, flightData.isGliding)
+                );
+            }
+        }
+
+
         for(Map.Entry<KeyMapping, Consumer<Minecraft>> entry : keyActions.entrySet()) {
             while(entry.getKey().consumeClick()) {
                 entry.getValue().accept(mc);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public void onPlayerSpawn(net.neoforged.neoforge.event.entity.EntityJoinLevelEvent event) {
+        // When the Local Player physically appears in the client world
+        if (event.getLevel().isClientSide() && event.getEntity() instanceof net.minecraft.client.player.LocalPlayer) {
+
+            // Shout to the server: "I have loaded! Send me my race!"
+            net.neoforged.neoforge.network.PacketDistributor.sendToServer(new net.kvrobi.chimod.network.RequestRaceSyncPayload());
         }
     }
 
@@ -83,9 +128,9 @@ public class ClientInputHandler {
         poseStack.pushPose();
 
         poseStack.scale(-0.9f, -0.9f, 0.9f);
-        float shiftX = isRight ? -0.3f : -0.1f;                     // up down
-        float shiftY = isRight ? -0.475f : -0.75f;                  // forward backward
-        float shiftZ = isRight ? 0.45f : 0.6f;                      // left right
+        float shiftX = isRight ? -0.3f : -0.7f;                     // up down || left right
+        float shiftY = isRight ? -0.475f : -0.475f;                  // forward backward
+        float shiftZ = isRight ? 0.45f : 0.45f;                      // left right
 
         poseStack.translate(shiftX, shiftY, shiftZ);
 

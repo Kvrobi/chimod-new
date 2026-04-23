@@ -1,12 +1,10 @@
 package net.kvrobi.chimod.util;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.kvrobi.chimod.util.data.ChiData;
 import net.minecraft.nbt.CompoundTag;
 import net.neoforged.neoforge.attachment.IAttachmentHolder;
 import net.neoforged.neoforge.attachment.IAttachmentSerializer;
 import net.minecraft.core.HolderLookup;
-import org.jetbrains.annotations.Nullable;
 
 public class ChiDataSerializer implements IAttachmentSerializer<CompoundTag, ChiData> {
 

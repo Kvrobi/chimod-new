@@ -1,8 +1,7 @@
 package net.kvrobi.chimod.item.custom;
 
-import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.network.ChiSyncPayload;
-import net.kvrobi.chimod.util.ChiData;
+import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;

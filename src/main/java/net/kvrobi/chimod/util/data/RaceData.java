@@ -1,8 +1,9 @@
-package net.kvrobi.chimod.util;
+package net.kvrobi.chimod.util.data;
 
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.kvrobi.chimod.util.Race;
 //import net.kvrobi.chimod.client.renderer.race.custom.HumanProxy;
 
 import static net.kvrobi.chimod.util.Race.HUMAN;
