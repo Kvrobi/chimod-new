@@ -63,6 +63,7 @@ public class ChiHandler {
             PacketDistributor.sendToPlayer((ServerPlayer) player, new ChiSyncPayload(data.getEnergy()));
         }
 
+        flightLogic(player);
         //FLightData
 
 
