@@ -10,7 +10,7 @@ import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.world.inventory.ChiMenu;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
+//import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -36,7 +36,6 @@ public class ChiHandler {
         ItemStack chesplate = player.getItemBySlot(EquipmentSlot.CHEST);
         ItemStack mainHand = player.getMainHandItem();
         ServerLevel level = (ServerLevel) player.level();
-        // Logic: Drain 1 energy per second if weapon is active
         if (player.level().getGameTime() % 20 == 0) {
             if (mainHand.getItem() instanceof ChiWeapon weapon && weapon.isActive(mainHand)) {
                 data.consumeEnergy(1);
@@ -56,7 +55,6 @@ public class ChiHandler {
             }
         }
 
-        // SYNC CHECK: If the energy value changed this tick, send a packet!
         handleMenuRefill(player, data);
 
         if (data.getEnergy() != oldEnergy) {
@@ -64,15 +62,12 @@ public class ChiHandler {
         }
 
         flightLogic(player);
-        //FLightData
 
 
 
     }
 
     private static void flightLogic(Player player) {
-        // CRITICAL SAFETY: Ignore actual Creative or Spectator mode players
-        // We don't want to drain their energy or randomly revoke their built-in flight!
         if (player.isCreative() || player.isSpectator()) return;
 
         Race race = player.getData(ModAttachments.RACE_DATA.get()).getRace();
@@ -80,34 +75,34 @@ public class ChiHandler {
 
         if (race == Race.EAGLE || race == Race.RAVEN) {
 
-            // 1. Recharge while walking on the ground
-            if (player.onGround() && data.getCurrentEnergy() < data.getMaxEnergy()) {
-                data.recharge(0.1f);
+            if (!player.getAbilities().flying /*player.isInWater() || player.isUnderWater() || player.onGround()*/ && data.getCurrentEnergy() < data.getMaxEnergy()) {
+                data.recharge(0.75f);
             }
 
-            // 2. Flight Logic
+
             if (data.getCurrentEnergy() > 0) {
-                // If they have energy, give them permission to double-jump to fly!
                 if (!player.getAbilities().mayfly) {
                     player.getAbilities().mayfly = true;
-                    player.onUpdateAbilities(); // This magically syncs the permission to the Client!
+                    player.onUpdateAbilities();
                 }
 
-                // If Vanilla Minecraft says they are actively flying, drain the energy
                 if (player.getAbilities().flying) {
-                    data.consume(1); // Drains 20 energy per second
+                    data.consume(1);
                 }
 
             } else {
-                // Out of energy! Revoke flight and force them to fall
                 if (player.getAbilities().mayfly || player.getAbilities().flying) {
                     player.getAbilities().mayfly = false;
                     player.getAbilities().flying = false;
-                    player.onUpdateAbilities(); // Syncs the fall to the Client!
+                    player.onUpdateAbilities();
                 }
             }
+
+            if (player.level().getGameTime() % 200 == 0) {
+                net.neoforged.neoforge.network.PacketDistributor.sendToPlayer((net.minecraft.server.level.ServerPlayer) player,
+                        new net.kvrobi.chimod.network.FlightSyncPayload(data.getCurrentEnergy(), data.getMaxEnergy()));
+            }
         } else {
-            // Failsafe: If a player switches from Eagle back to Human, revoke flight
             if (player.getAbilities().mayfly) {
                 player.getAbilities().mayfly = false;
                 player.getAbilities().flying = false;
@@ -127,7 +122,5 @@ public class ChiHandler {
         }
     }
 
-    private void handleOpenRaceMenu(Minecraft mc) {
-        PacketDistributor.sendToServer(new OpenRaceMenuPayload());
-    }
+
 }

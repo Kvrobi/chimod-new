@@ -2,6 +2,7 @@ package net.kvrobi.chimod.client;
 
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.network.OpenMenuPayload;
+import net.kvrobi.chimod.network.OpenRaceMenuPayload;
 import net.kvrobi.chimod.network.ToggleArmorPayload;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.util.Race;
@@ -42,8 +43,8 @@ public class ClientInputHandler {
             if (race == Race.EAGLE || race == Race.RAVEN) {
                 var flightData = mc.player.getData(ModAttachments.FLIGHT_DATA.get());
 
-                if (mc.player.onGround() && flightData.getCurrentEnergy() < flightData.getMaxEnergy()) {
-                    flightData.recharge(0.5f);
+                if ((!mc.player.getAbilities().flying /*mc.player.isUnderWater() || mc.player.isInWater() || mc.player.onGround()*/) && flightData.getCurrentEnergy() < flightData.getMaxEnergy()) {
+                    flightData.recharge(0.75f);
                 }
 
                 if (mc.player.getAbilities().flying) {
@@ -58,6 +59,10 @@ public class ClientInputHandler {
                 entry.getValue().accept(mc);
             }
         }
+    }
+
+    private void handleOpenRaceMenu(Minecraft mc) {
+        PacketDistributor.sendToServer(new OpenRaceMenuPayload());
     }
 
     @SubscribeEvent

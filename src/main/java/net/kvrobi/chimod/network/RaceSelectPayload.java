@@ -33,20 +33,17 @@ public record RaceSelectPayload(Race race) implements CustomPacketPayload {
                 var flightData = player.getData(ModAttachments.FLIGHT_DATA.get());
 
                 if (data.race() == Race.EAGLE) {
-                    flightData.maxEnergy = 1000;
-                    flightData.currentEnergy = 1000;
+                    flightData.maxEnergy = 750;
+                    flightData.currentEnergy = 750;
                 }
                 else if (data.race() == Race.RAVEN) {
                     flightData.maxEnergy = 500;
                     flightData.currentEnergy = 500;
                 }
 
+                PacketDistributor.sendToPlayer(player, new FlightSyncPayload(flightData.currentEnergy, flightData.maxEnergy));
+
                 PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.race(), player.getId()));
-
-
-                if (data.race() == Race.EAGLE) {
-
-                }
             }
         });
     }

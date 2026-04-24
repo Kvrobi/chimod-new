@@ -73,6 +73,13 @@ public class ModNetworking {
                     });
                 }
         );
+
+        registrar.playToClient(
+                FlightSyncPayload.TYPE,
+                FlightSyncPayload.CODEC,
+                FlightSyncPayload::handleData
+        );
+
         registrar.playToServer(
                 OpenRaceMenuPayload.TYPE,
                 OpenRaceMenuPayload.CODEC,
