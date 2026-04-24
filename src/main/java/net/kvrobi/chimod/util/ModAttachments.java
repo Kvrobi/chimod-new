@@ -38,7 +38,10 @@ public class ModAttachments {
 
     public static final Supplier<net.neoforged.neoforge.attachment.AttachmentType<FlightData>> FLIGHT_DATA = ATTACHMENT_TYPES.register(
             "flight_data",
-            () -> net.neoforged.neoforge.attachment.AttachmentType.builder(() -> new FlightData()).build()
+            () -> net.neoforged.neoforge.attachment.AttachmentType.builder(() -> new FlightData())
+                    .serialize(FlightData.CODEC)
+                    .copyOnDeath()
+                    .build()
     );
 
 

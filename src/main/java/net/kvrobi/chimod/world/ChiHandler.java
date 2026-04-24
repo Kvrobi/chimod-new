@@ -71,61 +71,47 @@ public class ChiHandler {
     }
 
     private static void flightLogic(Player player) {
+        // CRITICAL SAFETY: Ignore actual Creative or Spectator mode players
+        // We don't want to drain their energy or randomly revoke their built-in flight!
+        if (player.isCreative() || player.isSpectator()) return;
+
         Race race = player.getData(ModAttachments.RACE_DATA.get()).getRace();
-        if(race == Race.EAGLE || race == Race.RAVEN) {
-            var data = player.getData(ModAttachments.FLIGHT_DATA.get());
-            if (player.onGround()) {
-                if (data.isGliding || data.isHovering) {
-                    data.isGliding = false;
-                    data.isHovering = false;
-                    if (player.level().isClientSide()) {
-                        net.neoforged.neoforge.network.PacketDistributor.sendToServer(new net.kvrobi.chimod.network.UpdateFlightPayload(false, false));
-                    }
-                }
+        var data = player.getData(ModAttachments.FLIGHT_DATA.get());
 
-                // Recharge energy quickly while walking!
-                if (data.getCurrentEnergy() < data.getMaxEnergy()) {
-                    data.recharge(5);
-                }
-                return; // Skip the rest of the flight physics
+        if (race == Race.EAGLE || race == Race.RAVEN) {
+
+            // 1. Recharge while walking on the ground
+            if (player.onGround() && data.getCurrentEnergy() < data.getMaxEnergy()) {
+                data.recharge(0.1f);
             }
 
-            // --- 2. HOVER MECHANICS ---
-            if (data.isHovering) {
-                if (data.getCurrentEnergy() > 0) {
-                    // Lock Y to exactly 0.
-                    player.setDeltaMovement(player.getDeltaMovement().x, 0.0, player.getDeltaMovement().z);
-                    player.fallDistance = 0;
+            // 2. Flight Logic
+            if (data.getCurrentEnergy() > 0) {
+                // If they have energy, give them permission to double-jump to fly!
+                if (!player.getAbilities().mayfly) {
+                    player.getAbilities().mayfly = true;
+                    player.onUpdateAbilities(); // This magically syncs the permission to the Client!
+                }
 
-                    // Hovering takes a lot of energy!
-                    data.consume(4);
-                } else {
-                    // Out of energy! Cancel flight so they fall!
-                    data.isHovering = false;
+                // If Vanilla Minecraft says they are actively flying, drain the energy
+                if (player.getAbilities().flying) {
+                    data.consume(1); // Drains 20 energy per second
+                }
+
+            } else {
+                // Out of energy! Revoke flight and force them to fall
+                if (player.getAbilities().mayfly || player.getAbilities().flying) {
+                    player.getAbilities().mayfly = false;
+                    player.getAbilities().flying = false;
+                    player.onUpdateAbilities(); // Syncs the fall to the Client!
                 }
             }
-
-            // --- 3. GLIDE SPEED LOCK ---
-            else if (data.isGliding) {
-                if (data.getCurrentEnergy() > 0) {
-
-                    // Get the direction the camera is facing
-                    net.minecraft.world.phys.Vec3 look = player.getLookAngle();
-
-                    // The locked horizontal speed multiplier
-                    double forwardSpeed = 0.6;
-                    // The locked downward fall speed
-                    double lockedY = -0.05;
-
-                    // LOCK THE SPEED: Force X and Z to move constantly forward based on camera angle
-                    player.setDeltaMovement(look.x * forwardSpeed, lockedY, look.z * forwardSpeed);
-                    player.fallDistance = 0;
-
-                    // Gliding is efficient, consumes less energy
-                    data.consume(1);
-                } else {
-                    data.isGliding = false;
-                }
+        } else {
+            // Failsafe: If a player switches from Eagle back to Human, revoke flight
+            if (player.getAbilities().mayfly) {
+                player.getAbilities().mayfly = false;
+                player.getAbilities().flying = false;
+                player.onUpdateAbilities();
             }
         }
     }

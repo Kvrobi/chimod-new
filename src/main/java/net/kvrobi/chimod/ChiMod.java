@@ -65,6 +65,9 @@ public class ChiMod {
             ClientInputHandler inputHandler = new ClientInputHandler();
             NeoForge.EVENT_BUS.register(inputHandler);
 
+            net.kvrobi.chimod.client.gui.FlightEnergyOverlay energyOverlay = new net.kvrobi.chimod.client.gui.FlightEnergyOverlay();
+            NeoForge.EVENT_BUS.register(energyOverlay);
+
         }
 
 

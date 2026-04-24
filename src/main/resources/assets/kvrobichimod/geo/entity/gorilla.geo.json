@@ -1,0 +1,122 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 180,
+				"texture_height": 180,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name": "bone3",
+					"pivot": [0, 12, 0]
+				},
+				{
+					"name": "waist",
+					"parent": "bone3",
+					"pivot": [0, 12, 0]
+				},
+				{
+					"name": "head",
+					"parent": "waist",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [13, 131]},
+						{"origin": [-4, 24, -4], "size": [8, 8, 8], "inflate": 0.5, "uv": [135, 18]},
+						{"origin": [-4, 31, 0], "size": [8, 3, 4], "uv": [156, 173]},
+						{"origin": [-4, 31, -4], "size": [8, 4, 3], "pivot": [0, 31, -3], "rotation": [-60, 0, 0], "uv": [133, 172]}
+					]
+				},
+				{
+					"name": "beak",
+					"parent": "head",
+					"pivot": [0, 24, 2],
+					"cubes": [
+						{"origin": [-1.4, 24.3, -6], "size": [2.8, 2.7, 2], "uv": [165, 3]},
+						{"origin": [-1.4, 27.825, -5.525], "size": [2.8, 3, 2], "pivot": [0, 27.825, -6.525], "rotation": [-55.5, 0, 0], "uv": [171, 2]},
+						{"origin": [-2.64632, 24.3, -5.58211], "size": [2, 2.1, 1], "pivot": [-1.525, 24.3, -4.875], "rotation": [0, 45, 0], "uv": [174, 4]},
+						{
+							"origin": [-2.64632, 26.175, -5.10711],
+							"size": [2.075, 0.7, 1.375],
+							"pivot": [-1.425, 26.175, -4.925],
+							"rotation": [55.63699, 42.94716, -1.59349],
+							"uv": {
+								"north": {"uv": [172.5, 9], "uv_size": [1, 1]},
+								"east": {"uv": [171.5, 9], "uv_size": [1, 1]},
+								"south": {"uv": [174.5, 9], "uv_size": [2.5, 1]},
+								"west": {"uv": [173.5, 9], "uv_size": [1, 1]},
+								"up": {"uv": [171.5, 8], "uv_size": [2, 1]},
+								"down": {"uv": [173.5, 9], "uv_size": [2, -1]}
+							}
+						},
+						{
+							"origin": [0.55368, 25.775, -4.63211],
+							"size": [2.1, 0.7, 1.4],
+							"pivot": [1.675, 25.775, -4.825],
+							"rotation": [62.44524, -44.05937, 0.96035],
+							"uv": {
+								"north": {"uv": [169, 9], "uv_size": [2, 1]},
+								"east": {"uv": [167, 9], "uv_size": [2, 1]},
+								"south": {"uv": [165, 9], "uv_size": [2, 1]},
+								"west": {"uv": [165, 8], "uv_size": [2, 1]},
+								"up": {"uv": [167, 8], "uv_size": [2, 1]},
+								"down": {"uv": [169, 9], "uv_size": [2, -1]}
+							}
+						},
+						{"origin": [0.57868, 24.3, -5.40711], "size": [2, 2, 1], "pivot": [1.7, 24.3, -4.7], "rotation": [0, -45, 0], "uv": [174, 4]},
+						{"origin": [-2, 24.3, -5], "size": [4, 2, 1], "uv": [0, 1]}
+					]
+				},
+				{
+					"name": "body",
+					"parent": "waist",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [17, 147]},
+						{"origin": [-4, 12, -2], "size": [8, 12, 4], "inflate": 0.25, "uv": [100, 0]}
+					]
+				},
+				{
+					"name": "right_arm",
+					"parent": "waist",
+					"pivot": [-5, 22, 0],
+					"cubes": [
+						{"origin": [-8, 11.95309, -1.71212], "size": [4, 12, 4], "uv": [42, 147]},
+						{"origin": [-8, 11.95309, -1.71212], "size": [4, 12, 4], "inflate": 0.25, "uv": [125, 0]}
+					]
+				},
+				{
+					"name": "left_arm",
+					"parent": "waist",
+					"pivot": [5, 22, 0],
+					"cubes": [
+						{"origin": [4, 11.86009, -2.07879], "size": [4, 12, 4], "uv": [0, 147]},
+						{"origin": [4, 11.86009, -2.07879], "size": [4, 12, 4], "inflate": 0.25, "uv": [83, 0]}
+					]
+				},
+				{
+					"name": "right-leg",
+					"parent": "bone3",
+					"pivot": [-1.9, 12, 0],
+					"cubes": [
+						{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "uv": [31, 164]},
+						{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [113, 17]}
+					]
+				},
+				{
+					"name": "left_leg",
+					"parent": "bone3",
+					"pivot": [1.9, 12, 0],
+					"cubes": [
+						{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "uv": [13, 164]},
+						{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [95, 17]}
+					]
+				}
+			]
+		}
+	]
+}

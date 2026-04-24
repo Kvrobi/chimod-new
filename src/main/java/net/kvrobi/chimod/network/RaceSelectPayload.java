@@ -30,15 +30,22 @@ public record RaceSelectPayload(Race race) implements CustomPacketPayload {
                 RaceData raceData = player.getData(ModAttachments.RACE_DATA);
                 raceData.setRace(data.race());
 
-                // 2. Sync race to client for logic
+                var flightData = player.getData(ModAttachments.FLIGHT_DATA.get());
+
+                if (data.race() == Race.EAGLE) {
+                    flightData.maxEnergy = 1000;
+                    flightData.currentEnergy = 1000;
+                }
+                else if (data.race() == Race.RAVEN) {
+                    flightData.maxEnergy = 500;
+                    flightData.currentEnergy = 500;
+                }
+
                 PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.race(), player.getId()));
 
-                // 3. SEAMLESS TRANSITION (The "Magic" part)
-                // If the race is EAGLE, we tell the client to force-load the avatar
+
                 if (data.race() == Race.EAGLE) {
-                    // Since setAvatar is a CLIENT-side method in AvatarManager,
-                    // you actually need to call this in your RaceSyncPayload handler
-                    // on the Client, not here on the Server.
+
                 }
             }
         });

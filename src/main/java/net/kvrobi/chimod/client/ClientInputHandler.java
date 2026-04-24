@@ -30,40 +30,25 @@ public class ClientInputHandler {
         keyActions.put(key, action);
     }
 
-    private boolean wasJumping = false;
+
     @SubscribeEvent
     public void onClientTick(ClientTickEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
         if(mc.player == null) return;
 
-        Race race = mc.player.getData(ModAttachments.RACE_DATA.get()).getRace();
+        if (!mc.player.isCreative() && !mc.player.isSpectator()) {
+            Race race = mc.player.getData(ModAttachments.RACE_DATA.get()).getRace();
 
-        if (race == Race.EAGLE) {
-            var flightData = mc.player.getData(ModAttachments.FLIGHT_DATA.get());
-            boolean stateChanged = false;
+            if (race == Race.EAGLE || race == Race.RAVEN) {
+                var flightData = mc.player.getData(ModAttachments.FLIGHT_DATA.get());
 
-            // --- 1. DOUBLE JUMP TO GLIDE ---
-            boolean isJumping = mc.options.keyJump.isDown();
-            // If they pressed jump, they weren't jumping a millisecond ago, and they are in the air!
-            if (isJumping && !wasJumping && !mc.player.onGround()) {
-                flightData.isGliding = !flightData.isGliding; // Toggle glide
-                if (flightData.isGliding) flightData.isHovering = false;
-                stateChanged = true;
-            }
-            this.wasJumping = isJumping;
+                if (mc.player.onGround() && flightData.getCurrentEnergy() < flightData.getMaxEnergy()) {
+                    flightData.recharge(0.5f);
+                }
 
-            // --- 2. H KEY TO HOVER ---
-            while (ModKeyBindings.HOVER_KEY.consumeClick()) {
-                flightData.isHovering = !flightData.isHovering; // Toggle hover
-                if (flightData.isHovering) flightData.isGliding = false;
-                stateChanged = true;
-            }
-
-            // If a flight mode changed, instantly sync the new physics to the server!
-            if (stateChanged) {
-                net.neoforged.neoforge.network.PacketDistributor.sendToServer(
-                        new net.kvrobi.chimod.network.UpdateFlightPayload(flightData.isHovering, flightData.isGliding)
-                );
+                if (mc.player.getAbilities().flying) {
+                    flightData.consume(1);
+                }
             }
         }
 

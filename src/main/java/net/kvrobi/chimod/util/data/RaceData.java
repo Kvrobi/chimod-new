@@ -34,8 +34,8 @@ public class RaceData {
                 return "bear";
             case WOLF:
                 return "wolf";
-            case FOX:
-                return "fox";
+            case GORILLA:
+                return "gorilla";
             case RAVEN:
                 return "crow";
             default:
