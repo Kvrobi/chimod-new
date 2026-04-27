@@ -23,7 +23,7 @@ public record OpenRaceMenuPayload() implements CustomPacketPayload {
             if (context.player() instanceof ServerPlayer player) {
                 player.openMenu(new SimpleMenuProvider(
                         (id, inv, p) -> new RaceSelectionMenu(id, inv),
-                        Component.literal("Select Your Race")
+                        Component.literal("Select Your Tribe")
                 ));
             }
         });

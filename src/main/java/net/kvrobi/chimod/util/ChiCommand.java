@@ -124,7 +124,7 @@ public class ChiCommand {
                             ServerPlayer player = context.getSource().getPlayerOrException();
                             player.openMenu(new SimpleMenuProvider(
                                     (id, inv, p) -> new RaceSelectionMenu(id, inv),
-                                    Component.literal("Select Your Race")
+                                    Component.literal("Select Your Tribe")
                             ));
                             return 1;
                         })
