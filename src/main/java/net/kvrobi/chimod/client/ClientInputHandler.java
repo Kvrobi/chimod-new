@@ -1,6 +1,7 @@
 package net.kvrobi.chimod.client;
 
-import net.kvrobi.chimod.ChiMod;
+import net.kvrobi.chimod.client.renderer.race.RaceLayerWrapper;
+import net.kvrobi.chimod.client.renderer.race.RaceProxy;
 import net.kvrobi.chimod.network.OpenMenuPayload;
 import net.kvrobi.chimod.network.OpenRaceMenuPayload;
 import net.kvrobi.chimod.network.ToggleArmorPayload;
@@ -8,12 +9,10 @@ import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.util.Race;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -67,10 +66,8 @@ public class ClientInputHandler {
 
     @SubscribeEvent
     public void onPlayerSpawn(net.neoforged.neoforge.event.entity.EntityJoinLevelEvent event) {
-        // When the Local Player physically appears in the client world
         if (event.getLevel().isClientSide() && event.getEntity() instanceof net.minecraft.client.player.LocalPlayer) {
 
-            // Shout to the server: "I have loaded! Send me my race!"
             net.neoforged.neoforge.network.PacketDistributor.sendToServer(new net.kvrobi.chimod.network.RequestRaceSyncPayload());
         }
     }
@@ -85,6 +82,11 @@ public class ClientInputHandler {
         PacketDistributor.sendToServer(new ToggleArmorPayload());
     }
 
+    @SubscribeEvent
+    public void onLogOut(ClientPlayerNetworkEvent.LoggingOut evemt) {
+        RaceLayerWrapper.PROXY_CACHE.clear();
+    }
+
     private static final net.kvrobi.chimod.client.renderer.race.RaceArmRenderer ARM_RENDERER =
             new net.kvrobi.chimod.client.renderer.race.RaceArmRenderer();
 
@@ -94,7 +96,6 @@ public class ClientInputHandler {
 
         if (race == net.kvrobi.chimod.util.Race.HUMAN) return;
 
-        // Cancel the blocky vanilla arm
         event.setCanceled(true);
 
         net.kvrobi.chimod.client.renderer.race.RaceProxy proxy =
@@ -102,13 +103,17 @@ public class ClientInputHandler {
                         player.getUUID(), id -> new net.kvrobi.chimod.client.renderer.race.RaceProxy(player)
                 );
 
+        if(proxy.getPlayer() != player) {
+            proxy = new RaceProxy(player);
+            RaceLayerWrapper.PROXY_CACHE.put(player.getUUID(), proxy);
+        }
+
         var model = ARM_RENDERER.getGeoModel();
         var bakedModel = model.getBakedModel(model.getModelResource(proxy));
         if (bakedModel == null) return;
 
         boolean isRight = event.getArm() == net.minecraft.world.entity.HumanoidArm.RIGHT;
 
-        // Isolate the arm
         var rightArm = model.getAnimationProcessor().getBone("right_arm");
         var leftArm = model.getAnimationProcessor().getBone("left_arm");
         if (rightArm != null) rightArm.setHidden(!isRight);
@@ -118,15 +123,15 @@ public class ClientInputHandler {
         poseStack.pushPose();
 
         poseStack.scale(-0.9f, -0.9f, 0.9f);
-        float shiftX = isRight ? -0.3f : -0.7f;                     // up down || left right
-        float shiftY = isRight ? -0.475f : -0.475f;                  // forward backward
-        float shiftZ = isRight ? 0.45f : 0.45f;                      // left right
+        float shiftX = isRight ? -0.3f : -0.7f;
+        float shiftY = isRight ? -0.475f : -0.475f;
+        float shiftZ = isRight ? 0.45f : 0.45f;
 
         poseStack.translate(shiftX, shiftY, shiftZ);
 
-        float pitch = -90.0f;                    //left rigth rot
-        float yaw = -0.0f;     //no clue
-        float roll = 0.0f;                      //no clue
+        float pitch = -90.0f;
+        float yaw = -0.0f;
+        float roll = 0.0f;
 
         poseStack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(pitch));
         poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(yaw));

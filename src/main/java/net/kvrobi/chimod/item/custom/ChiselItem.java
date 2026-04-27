@@ -2,7 +2,6 @@ package net.kvrobi.chimod.item.custom;
 
 import net.kvrobi.chimod.block.ModBlocks;
 import net.kvrobi.chimod.component.ModDataComponents;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

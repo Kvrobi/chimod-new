@@ -1,15 +1,11 @@
 package net.kvrobi.chimod.network;
 
-
 import net.kvrobi.chimod.ChiMod;
-import net.kvrobi.chimod.component.ModDataComponents;
 import net.kvrobi.chimod.item.armor.custom.ChiArmor;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -26,7 +22,6 @@ public record ToggleArmorPayload() implements CustomPacketPayload {
             Player player = context.player();
             ItemStack stack = player.getItemBySlot(EquipmentSlot.CHEST);
 
-            // This is the clean way: let the item handle itself
             if (stack.getItem() instanceof ChiArmor chiArmor) {
                 chiArmor.toggle(player, stack);
             }

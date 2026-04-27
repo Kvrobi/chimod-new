@@ -3,7 +3,6 @@ package net.kvrobi.chimod.network;
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -31,7 +30,6 @@ public record FlightSyncPayload(float currentEn, float maxEn) implements CustomP
             if (context.flow().isClientbound()) {
                 var player = Minecraft.getInstance().player;
                 if (player != null) {
-                    // FORCE the client to update its math to match the Server!
                     var flightData = player.getData(ModAttachments.FLIGHT_DATA.get());
                     flightData.currentEnergy = data.currentEn();
                     flightData.maxEnergy = data.maxEn();

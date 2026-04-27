@@ -3,9 +3,7 @@ package net.kvrobi.chimod.network;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.util.Race;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.packs.repository.Pack;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 

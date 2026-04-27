@@ -1,7 +1,6 @@
 package net.kvrobi.chimod.client.renderer;
 
 import net.kvrobi.chimod.item.armor.custom.ChiArmor;
-import net.kvrobi.chimod.item.custom.ChiWeapon;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;

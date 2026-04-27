@@ -100,7 +100,6 @@ public class ChiWeapon extends Item implements GeoItem {
     }
 
     private boolean toggleState(Player player, InteractionHand hand, ItemStack stack) {
-        // 1. Check the current state of our Data Component
         if (isChiAble) {
             boolean isActive = stack.getOrDefault(ModDataComponents.IS_ACTIVE.get(), false);
             ChiData data = player.getData(ModAttachments.CHI_ENERGY);
@@ -135,10 +134,7 @@ public class ChiWeapon extends Item implements GeoItem {
                             ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "weapon_reach"),
                             reach, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build();
 
-            // Overwrite the vanilla component for attributes
             stack.set(DataComponents.ATTRIBUTE_MODIFIERS, newModifiers);
-
-            // Sync visual animation
             triggerTransformAnimation(player, stack, level, false);
 
         }
@@ -170,10 +166,6 @@ public class ChiWeapon extends Item implements GeoItem {
             return isPickaxe;
         }
 
-
-
-
-
         return super.canPerformAction(stack, itemAbility);
     }
 
@@ -195,24 +187,6 @@ public class ChiWeapon extends Item implements GeoItem {
         stack.hurtAndBreak(1, attacker, LivingEntity.getSlotForHand(attacker.getUsedItemHand()));
         return true;
     }
-
-    /*private void playSwitchAnim(Level level, Player player, InteractionHand hand, ItemStack stack) {
-        ResourceLocation currentId = BuiltInRegistries.ITEM.getKey(stack.getItem());
-        String path = currentId.getPath();
-        if(level instanceof ServerLevel serverLevel) {
-            if (!hasActivateAnim) {
-                return;
-            }
-            if (path.endsWith("_active")) {
-                triggerAnim(player, GeoItem.getOrAssignId(stack, serverLevel), "base_controller", "activate");
-                return;
-            } else if (path.endsWith("_inactive")) {
-                triggerAnim(player, GeoItem.getOrAssignId(stack, serverLevel), "base_controller", "deactivate");
-                return;
-            }
-        }
-        return;
-    }*/
 
     @Override
     public Component getName(ItemStack stack) {
@@ -273,17 +247,12 @@ public class ChiWeapon extends Item implements GeoItem {
                                 ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "weapon_reach"),
                                         reach, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build();
 
-                // Overwrite the vanilla component for attributes
                 stack.set(DataComponents.ATTRIBUTE_MODIFIERS, newModifiers);
-
-                // Sync visual animation
                 triggerTransformAnimation(player, stack, serverLevel, newState);
 
-                // SUCCESS on server forces the data to sync to the client
                 return InteractionResultHolder.fail(stack);
             }
 
-            // FAIL on client stops the hand-swing/punch animation
             return InteractionResultHolder.fail(stack);
         }
         return  InteractionResultHolder.pass(stack);

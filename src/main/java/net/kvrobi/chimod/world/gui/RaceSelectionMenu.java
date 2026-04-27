@@ -8,7 +8,6 @@ import net.minecraft.world.item.ItemStack;
 
 public class RaceSelectionMenu extends AbstractContainerMenu {
     public RaceSelectionMenu(int id, Inventory inv) {
-        // Pass the MenuType and window ID to the super constructor
         super(ModMenuTypes.RACE_MENU.get(), id);
     }
 

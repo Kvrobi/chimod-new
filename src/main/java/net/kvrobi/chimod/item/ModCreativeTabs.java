@@ -64,7 +64,7 @@ public class ModCreativeTabs {
             }).build());
 
     public static final Supplier<CreativeModeTab> CHI_ARMORS_TAB = CREATIVE_MODE_TAB.register("chi_armors_tab",
-            () -> CreativeModeTab.builder().icon( () -> new ItemStack(ModItems.LION_VALIOUS_GRAY.get())).withTabsBefore(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
+            () -> CreativeModeTab.builder().icon( () -> new ItemStack(ModItems.GOLDEN_SHOULDER_PADS.get())).withTabsBefore(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
                     "chi_weapons_tab")).title(Component.translatable("creativetab.kvrobichimod.chi_weapons")).displayItems((parameters, output) -> {
                 output.accept(ModItems.GOLDEN_SHOULDER_PADS);
                 output.accept(ModItems.GOLDEN_SHOULDER_SPIKED);

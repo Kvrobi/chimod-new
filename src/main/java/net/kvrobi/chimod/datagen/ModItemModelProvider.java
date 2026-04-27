@@ -52,14 +52,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         geckoItem(ModItems.LION_CHI_JABAKA);
         geckoItem(ModItems.LION_FANGIOUS);
         geckoItem(ModItems.LION_DECALUS);
-        //generateArmorModel(ModItems.GOLDEN_SHOULDER_PADS);
-        //geckoItem(ModItems.LION_VALIOUS_GRAY_INACTIVE);
 
 
-    }
-    public void generateArmorModel(DeferredHolder<Item, Item> item) {
-        getBuilder(item.getId().getPath())
-                .parent(new ModelFile.UncheckedModelFile("builtin/entity"));
     }
 
     private void geckoItem(DeferredItem<Item> item) {

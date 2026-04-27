@@ -4,9 +4,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.Nullable;
-import oshi.jna.platform.windows.PowrProf;
-
-import java.util.Properties;
 
 public class ModFuel extends Item {
     int burnTime = 0;

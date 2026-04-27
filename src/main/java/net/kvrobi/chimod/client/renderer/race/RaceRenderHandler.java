@@ -3,9 +3,6 @@ package net.kvrobi.chimod.client.renderer.race;
 
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.util.Race;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.client.event.RenderPlayerEvent;
 import java.util.HashMap;
@@ -36,26 +33,5 @@ public class RaceRenderHandler {
             model.leftPants.visible = false;
         }
     }
-
-    //for now!!! it's for the inventory
-    /*public static void onPlayerRenderPost(RenderPlayerEvent.Post event) {
-        // IMPORTANT: Reset visibility so the player still looks normal
-        // in the Inventory GUI or when switching back to Human.
-        var model = event.getRenderer().getModel();
-
-        model.head.visible = true;
-        model.hat.visible = true;
-        model.body.visible = true;
-        model.rightArm.visible = true;
-        model.leftArm.visible = true;
-        model.rightLeg.visible = true;
-        model.leftLeg.visible = true;
-
-        model.jacket.visible = true;
-        model.rightSleeve.visible = true;
-        model.leftSleeve.visible = true;
-        model.rightPants.visible = true;
-        model.leftPants.visible = true;
-    }*/
 }
 

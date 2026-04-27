@@ -1,0 +1,59 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"loop": true,
+			"animation_length": 5.25,
+			"bones": {
+				"right_arm": {
+					"position": {
+						"vector": [0, 0, -0.1]
+					}
+				},
+				"left_arm": {
+					"position": {
+						"vector": [0, 0, 0.3]
+					}
+				}
+			}
+		},
+		"swimming": {
+			"loop": true,
+			"animation_length": 5.25
+		},
+		"sprint": {
+			"loop": true,
+			"animation_length": 1.2917
+		},
+		"idleflight": {
+			"loop": true,
+			"animation_length": 2
+		},
+		"movingflight": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"bone3": {
+					"rotation": {
+						"vector": [45, 0, 0]
+					}
+				}
+			}
+		},
+		"startmovingflight": {
+			"animation_length": 2,
+			"bones": {
+				"bone3": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [45, 0, 0]
+						}
+					}
+				}
+			}
+		}
+	}
+}

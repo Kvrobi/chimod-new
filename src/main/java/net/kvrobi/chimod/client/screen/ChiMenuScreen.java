@@ -2,14 +2,11 @@ package net.kvrobi.chimod.client.screen;
 
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.world.inventory.ChiMenu;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 
 public class ChiMenuScreen extends AbstractContainerScreen<ChiMenu> {
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "textures/gui/chi_menu.png");

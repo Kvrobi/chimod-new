@@ -21,7 +21,6 @@ public record OpenRaceMenuPayload() implements CustomPacketPayload {
     public static void handleData(final OpenRaceMenuPayload data, final IPayloadContext context) {
         context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player) {
-                // PUT THE CODE HERE
                 player.openMenu(new SimpleMenuProvider(
                         (id, inv, p) -> new RaceSelectionMenu(id, inv),
                         Component.literal("Select Your Race")

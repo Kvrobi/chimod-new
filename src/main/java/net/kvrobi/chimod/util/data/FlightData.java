@@ -17,7 +17,6 @@ public class FlightData {
     public boolean isGliding = false;
     public float maxEnergy = 500;
     public float currentEnergy = 500;
-    ///I need to lock speed in place, for gliding
     public FlightData() {
         maxEnergy = 500;
         currentEnergy = 500;

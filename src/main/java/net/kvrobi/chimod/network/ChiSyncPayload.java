@@ -25,7 +25,6 @@ public record ChiSyncPayload(int energy) implements CustomPacketPayload {
 
     public static void handleData(final ChiSyncPayload data, final IPayloadContext context) {
         context.enqueueWork(() -> {
-            // This runs on the CLIENT
             if (context.player() != null) {
                 context.player().setData(ModAttachments.CHI_ENERGY, new ChiData(data.energy()));
             }

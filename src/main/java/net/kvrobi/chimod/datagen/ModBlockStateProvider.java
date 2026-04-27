@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -108,19 +107,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .end();
     }
 
-/*private void lampBlock(DeferredBlock<?> block, String name) {
-    // 1. Create the models first so they "exist"
-    ModelFile modelOn = models().cubeAll(name + "_on", modLoc("block/" + name + "_on"));
-    ModelFile modelOff = models().cubeAll(name + "_off", modLoc("block/" + name + "_off"));
 
-    // 2. Map the BlockState properties to those models
-    getVariantBuilder(block.get()).forAllStates(state -> {
-        boolean isLit = state.getValue(ChiLampBlock.CLICKED); // Or BismuthLampBlock.CLICKED
-
-        return ConfiguredModel.builder()
-                .modelFile(isLit ? modelOn : modelOff)
-                .build();
-    });*/
 private void lampBlock(DeferredBlock<?> block, String name) {
 
     getVariantBuilder(block.get()).forAllStates(state -> {

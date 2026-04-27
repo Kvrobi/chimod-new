@@ -12,14 +12,11 @@ public record RaceSyncPayload(Race race, int entityId) implements CustomPacketPa
 
     public static final Type<RaceSyncPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "race_sync"));
 
-    // StreamCodec defines how to write/read the data to the network buffer
-    public static final StreamCodec<RegistryFriendlyByteBuf, RaceSyncPayload> STREAM_CODEC = StreamCodec.of(
-            (buf, payload) -> {
-                buf.writeEnum(payload.race());
-                buf.writeInt(payload.entityId());
-            },
-            buf -> new RaceSyncPayload(buf.readEnum(Race.class), buf.readInt())
-            );
+    public static final StreamCodec<RegistryFriendlyByteBuf, RaceSyncPayload> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.idMapper(i -> Race.values()[i], Race::ordinal), RaceSyncPayload::race,
+            ByteBufCodecs.INT, RaceSyncPayload::entityId,
+            RaceSyncPayload::new
+    );
 
     @Override
     public Type<? extends CustomPacketPayload> type() {

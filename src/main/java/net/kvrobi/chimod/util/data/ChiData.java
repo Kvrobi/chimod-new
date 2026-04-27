@@ -60,7 +60,6 @@ public class ChiData {
     public CompoundTag serializeNBT(HolderLookup.Provider registries) {
         CompoundTag tag = new CompoundTag();
         tag.putInt("energy", this.energy);
-        // This part saves your item/orb slot
         tag.put("inventory", this.inventory.serializeNBT(registries));
         return tag;
     }

@@ -7,7 +7,6 @@ public class RaceArmModel<T extends RaceProxy> extends GeoModel<T> {
 
     @Override
     public ResourceLocation getModelResource(RaceProxy proxy) {
-        // Automatically grabs "eagle_arm.geo.json", "crow_arm.geo.json", etc.
         String race = proxy.getPlayer().getData(net.kvrobi.chimod.util.ModAttachments.RACE_DATA.get()).getRace().toString().toLowerCase();
         return ResourceLocation.fromNamespaceAndPath("kvrobichimod", "geo/entity/" + race + "_arm.geo.json");
     }

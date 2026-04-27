@@ -1,12 +1,9 @@
 package net.kvrobi.chimod.block.entity;
 
 import net.kvrobi.chimod.ChiMod;
-import net.kvrobi.chimod.block.ModBlocks;
-
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModBlockEntities {

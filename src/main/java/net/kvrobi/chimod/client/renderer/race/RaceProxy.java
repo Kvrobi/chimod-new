@@ -28,7 +28,6 @@ public class RaceProxy implements GeoAnimatable {
             String animName;
             /*boolean isPunching = player.swinging;
             boolean isSneaking = player.isCrouching();*/
-            //System.out.println("hellobello kontrolalok dolgokat");
             //String extraAnimName = null;
             animName = isHorizontallyMoving ? "sprint" : "idle" ;
 
@@ -43,10 +42,8 @@ public class RaceProxy implements GeoAnimatable {
                 animName = "swimming";
             }
 
-            // Race-specific overrides (Example: Eagle flying)
             if ((race == Race.EAGLE || race == Race.RAVEN) && (player.getAbilities().flying || player.isFallFlying())) {
                 animName = "idleflight";
-
                 /*if (isHorizontallyMoving) {
                     extraAnimName = isPunching ? "punchstartmovingflight" : "startmovingflight";
                     animName = isPunching ? "punchmovingflight" : "movingflight" ;

@@ -2,14 +2,12 @@ package net.kvrobi.chimod.client.renderer.race;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
 import net.kvrobi.chimod.util.Race;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib.cache.GeckoLibCache;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
@@ -30,9 +28,6 @@ public class RaceLayer extends GeoRenderLayer<RaceProxy> {
         AbstractClientPlayer player = animatable.getPlayer();
         Race race = player.getData(net.kvrobi.chimod.util.ModAttachments.RACE_DATA.get()).getRace();
         //boolean isFlying = (race == net.kvrobi.chimod.util.Race.EAGLE || race == net.kvrobi.chimod.util.Race.RAVEN) && player.getAbilities().flying;
-        boolean isCrouching = player.isCrouching();
-        float crouchPushBack = isCrouching ? 4.0f : 0.0f;
-        float crouchPullUp   = isCrouching ? -2.2f : 0.0f;
 
         //var head = model.getAnimationProcessor().getBone("head");
         syncBone(model, "body", vanillaModel.body, 0.0f, 0.0f, 0.0f);
@@ -83,20 +78,15 @@ public class RaceLayer extends GeoRenderLayer<RaceProxy> {
                 partialTick,
                 packedLight,
                 packedOverlay,
-                -1 // Color (White/Default)
+                -1
         );
     }
     private void syncBone(GeoModel<?> model, String geckoBoneName, ModelPart vanillaPart, float defaultX, float defaultY, float defaultZ) {
         var bone = model.getAnimationProcessor().getBone(geckoBoneName);
         if (bone != null) {
-            // 1. Sync Rotations
             bone.setRotX(-vanillaPart.xRot);
             bone.setRotY(-vanillaPart.yRot);
             bone.setRotZ(vanillaPart.zRot);
-
-            // 2. Sync Positions (Calculate the shift from the default standing pose)
-            // Note: We invert X and Y because GeckoLib's coordinate system handles positive/negative space
-            // slightly differently than Vanilla Minecraft's internal model logic.
             bone.setPosX(-(vanillaPart.x - defaultX));
             bone.setPosY(-(vanillaPart.y - defaultY));
             bone.setPosZ((vanillaPart.z - defaultZ));

@@ -11,6 +11,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -83,13 +84,12 @@ public class ChiArmor extends ArmorItem implements GeoItem {
     @Override
     public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
         consumer.accept(new GeoRenderProvider() {
-            private ChiArmorRenderer armorRenderer; // For the body
-            private ChiWeaponRenderer itemRenderer;  // For the GUI/Hand
+            private ChiArmorRenderer armorRenderer;
+            private ChiWeaponRenderer itemRenderer;
 
             @Override
             public BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
                 if (this.itemRenderer == null) {
-                    // Use your Weapon Renderer for the 3D item look
                     this.itemRenderer = new ChiWeaponRenderer(getGeoModelPath());
                 }
                 return this.itemRenderer;
@@ -113,19 +113,15 @@ public class ChiArmor extends ArmorItem implements GeoItem {
     public void deactivate(ItemStack stack, Player player, ServerLevel level) {
 
         stack.set(ModDataComponents.IS_ACTIVE.get(), false);
-        //getDefaultAttributeModifiers();
         triggerTransformAnimation(player, stack, level, false);
 
-
     }
+
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if (!level.isClientSide() && entity instanceof Player player) {
-            // Only check if the armor is actually active
             if (isActive(stack)) {
                 ChiData data = player.getData(ModAttachments.CHI_ENERGY.get());
-
-                // If energy is empty, force deactivation
                 if (data.getEnergy() <= 0) {
                     if (level instanceof ServerLevel serverLevel) {
                         this.deactivate(stack, player, serverLevel);
@@ -158,9 +154,9 @@ public class ChiArmor extends ArmorItem implements GeoItem {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         boolean active = stack.getOrDefault(ModDataComponents.IS_ACTIVE.get(), false);
 
-        // needs transalation
-        tooltip.add(Component.translatable(active ? "tooltip.chimod.active" : "tooltip.chimod.inactive")
-                .withStyle(active ? ChatFormatting.AQUA : ChatFormatting.GRAY));
+        // fordítás kell
+        /*tooltip.add(Component.translatable(active ? "tooltip.chimod.active" : "tooltip.chimod.inactive")
+                .withStyle(active ? ChatFormatting.AQUA : ChatFormatting.GRAY));*/
 
         super.appendHoverText(stack, context, tooltip, flag);
     }
@@ -170,9 +166,19 @@ public class ChiArmor extends ArmorItem implements GeoItem {
         ChiData data = player.getData(ModAttachments.CHI_ENERGY);
         if (player.level() instanceof ServerLevel serverLevel) {
             if (data.getEnergy() >= 1) {
-                player.displayClientMessage(Component.literal("Activating armor").withStyle(ChatFormatting.AQUA).withStyle(ChatFormatting.BOLD), true);
+                player.displayClientMessage( Component.literal(newState ? "Activating armor" : "Deactivating armor").withStyle(ChatFormatting.AQUA).withStyle(ChatFormatting.BOLD), true);
+                double armorValue = newState ? activeProt : baseProt;
+                double toughnessValue = newState ? activeToughness : baseToughness;
+                ItemAttributeModifiers newModifiers = ItemAttributeModifiers.builder()
+                .add(Attributes.ARMOR, new AttributeModifier(
+                        ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "armor_protection"),
+                        armorValue, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+                        .add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(
+                        ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "armor_toughness"),
+                        toughnessValue, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST).build();
+                stack.set(DataComponents.ATTRIBUTE_MODIFIERS, newModifiers);
                 this.triggerTransformAnimation(player, stack, serverLevel, newState);
-                serverLevel.playSound(null, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 0.4F, 1.8F);
+                serverLevel.playSound(null, player.blockPosition(), newState ? SoundEvents.BEACON_ACTIVATE : SoundEvents.BEACON_DEACTIVATE, SoundSource.PLAYERS, 0.4F, 1.8F);
                 stack.set(ModDataComponents.IS_ACTIVE.get(), newState);
             } else {
                 player.displayClientMessage(Component.literal("You need more energy to activate your armor").withStyle(ChatFormatting.RED), true);
@@ -184,7 +190,6 @@ public class ChiArmor extends ArmorItem implements GeoItem {
         long id = GeoItem.getOrAssignId(stack, level);
         ChiData data = player.getData(ModAttachments.CHI_ENERGY.get());
         //getDefaultAttributeModifiers();
-        //System.out.println("Aktívál? " + activating);
         triggerAnim(player, id, "base_controller", data.getGolden() ? (activating ? "activate_golden" : "deactivate_golden") : (activating ? "activate_chi" : "deactivate_chi"));
     }
 
@@ -216,8 +221,6 @@ public class ChiArmor extends ArmorItem implements GeoItem {
             }
 
             boolean isActive = stack.getOrDefault(ModDataComponents.IS_ACTIVE.get(), false);
-            //System.out.println("Arany? " + isGolden);
-
 
             return state.setAndContinue(isActive ?(isGolden ? RawAnimation.begin().thenLoop("active_golden")
                         : RawAnimation.begin().thenLoop("active_chi"))

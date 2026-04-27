@@ -54,9 +54,7 @@ public class ModLangProvider extends LanguageProvider {
         addItem(ModItems.LION_JABAKA, "Jabaka");
         addItem(ModItems.LION_JAHAK, "Jahak");
 
-        add("menu.kvrobichimod.race_title", "Select Your Race");
-
-
+        add("menu.kvrobichimod.race_title", "Select Your Tribe");
 
         //creativeTabs
         add("creativetab.kvrobichimod.chi_blocks", "Kvrobi's Chi Mod Blocks");
@@ -65,13 +63,14 @@ public class ModLangProvider extends LanguageProvider {
         add("creativetab.kvrobichimod.chi_foods", "Kvrobi's Chi Mod Food");
         add("creativetab.kvrobichimod.chi_misc", "Kvrobi's Chi Mod Miscellanous");
 
+        //keysbinds
         add("key.categories.kvrobichimod", "Kvrobi's Chi Mod Keybinds");
         add("key.kvrobichimod.open_menu", "Open Chi Energy Menu");
         add("key.kvrobichimod.toggle_armor", "Toggle Chi Armor");
 
 
         //fluids
-        add("fluid.kvrobichimod.chi", "Chi Fluid");
+        add("fluid.kvrobichimod.chi", "Chi Water");
 
 
     }

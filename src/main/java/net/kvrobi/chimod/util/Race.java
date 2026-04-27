@@ -8,7 +8,6 @@ import java.util.Locale;
 public enum Race implements StringRepresentable{
     HUMAN, LION, EAGLE, CROCODILE, BEAR, WOLF, RAVEN, GORILLA, RHINO;
 
-    // The Codec still works exactly the same
     public static final Codec<Race> RACE_CODEC = StringRepresentable.fromEnum(Race::values);
 
     public static Race fromString(String name) {
@@ -21,7 +20,6 @@ public enum Race implements StringRepresentable{
 
     @Override
     public String getSerializedName() {
-        // This takes "HUMAN" and turns it into "human" automatically
         return this.name().toLowerCase(Locale.ROOT);
     }
 }

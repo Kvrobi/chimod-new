@@ -113,11 +113,6 @@ public class ModItems {
                     1f, 0f, 0.3f, 0f, 0f, 0f, 0f)));
 
 
-    /*public static final DeferredItem<Item> LION_VALIOUS_GRAY_INACTIVE = ITEMS.register("lion_valious_gray_inactive",
-            () -> new ChiWeapon(new Item.Properties().durability(256), true, 0,1.6, ChatFormatting.GRAY,
-                    new ItemDisplaySettings(0.8f ,0.95f, -0.65f, 0.03f, 0f, 45f, 90f, 0f)));
-*/
-
     public static void register(IEventBus eventBus)  {
         ITEMS.register(eventBus);
     }

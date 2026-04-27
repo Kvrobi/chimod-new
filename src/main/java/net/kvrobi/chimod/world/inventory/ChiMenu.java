@@ -46,12 +46,8 @@ public class ChiMenu extends AbstractContainerMenu {
     }
 
     public float getEnergyPercentage() {
-        // 1. Get the data from the player's attachments
         ChiData data = player.getData(ModAttachments.CHI_ENERGY);
-
         int energy = data.getEnergy();
-
-        // We multiply by 100 first to keep precision with integers
         return (energy / (float) 450.0f);
     }
 
@@ -63,9 +59,9 @@ public class ChiMenu extends AbstractContainerMenu {
         if (slot != null && slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
-            if (index == 0) { // From Machine to Inventory
+            if (index == 0) {
                 if (!this.moveItemStackTo(itemstack1, 1, 37, true)) return ItemStack.EMPTY;
-            } else { // From Inventory to Machine
+            } else {
                 if (itemstack1.getItem() instanceof ChiOrbItem) {
                     if (!this.moveItemStackTo(itemstack1, 0, 1, false)) return ItemStack.EMPTY;
                 }

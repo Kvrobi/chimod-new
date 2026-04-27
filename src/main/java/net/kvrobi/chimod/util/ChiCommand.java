@@ -16,13 +16,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleMenuProvider;
 import net.neoforged.neoforge.network.PacketDistributor;
-
 import java.util.Arrays;
 import java.util.Collection;
 
 public class ChiCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        // Build the command: /chi set <value>
         dispatcher.register(Commands.literal("chi_energy")
                 .then(Commands.literal("set")
                         .requires(source -> source.hasPermission(2)) // Require Operator level 2
@@ -93,21 +91,18 @@ public class ChiCommand {
                         })
                 )
         );
-        dispatcher.register(Commands.literal("chi_race").then(Commands.literal("set")
+        dispatcher.register(Commands.literal("chi_tribe").then(Commands.literal("set")
                 .requires(source -> source.hasPermission(2))
                 .then(Commands.argument("type", StringArgumentType.word())
-                // Autocomplete for race names
                 .suggests((ctx, builder) -> SharedSuggestionProvider.suggest(
                         Arrays.stream(Race.values()).map(Race::name).toList(), builder))
                 .executes(context -> {
                     String raceName = StringArgumentType.getString(context, "type");
                     ServerPlayer player = context.getSource().getPlayerOrException();
 
-                    // Set the data
                     RaceData data = player.getData(ModAttachments.RACE_DATA);
                     data.setRace(Race.fromString(raceName));
 
-                    // Sync to client (Important for the future menu!)
                     PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.getRace(), player.getId()));
 
                     context.getSource().sendSuccess(() ->
@@ -122,7 +117,7 @@ public class ChiCommand {
                                         Component.literal("Current Race: " + data.getRace()), false);
                                 return 1;
                             })
-                )// Inside ChiCommand.register
+                )
                 .then(Commands.literal("open")
                         .requires(source -> source.hasPermission(0))
                         .executes(context -> {

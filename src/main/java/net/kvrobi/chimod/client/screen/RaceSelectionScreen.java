@@ -24,22 +24,31 @@ public class RaceSelectionScreen extends AbstractContainerScreen<RaceSelectionMe
         this.imageHeight = 200;
     }
 
+    @Override
+    public boolean shouldCloseOnEsc() {
+        return false;
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (this.minecraft != null && this.minecraft.options.keyInventory.matches(keyCode, scanCode)) {
+            return true;
+        }
+        return super.keyPressed(keyCode, scanCode, modifiers);
+    }
+
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        // We override this and leave it empty to prevent "Inventory"
-        // and the menu title from being drawn in their default positions.
     }
 
     @Override
     protected void init() {
         super.init();
 
-        // The list dimensions
         int listTop = this.topPos + 30;
         int listBottom = this.topPos + 180;
         int listHeight = listBottom - listTop;
-        int itemHeight = 24; // This is the distance from the top of one button to the top of the next
+        int itemHeight = 24;
 
-        // Parameters: mc, width, height, top, itemHeight
         this.list = new RaceList(this.minecraft, this.width, listHeight, listTop, itemHeight);
         this.addRenderableWidget(this.list);
     }
@@ -49,18 +58,15 @@ public class RaceSelectionScreen extends AbstractContainerScreen<RaceSelectionMe
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
 
-        // This takes the 194x135 area from your PNG
-        // and stretches it to fit 256x200 on the screen.
         guiGraphics.blit(GUI_TEXTURE, x, y, 0, 0,
-                this.imageWidth, this.imageHeight, // Width/Height on screen
-                194, 135,                          // Width/Height to take from PNG
-                256, 256);                         // Total PNG size
+                this.imageWidth, this.imageHeight,
+                194, 135,
+                256, 256);
     }
 
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
-        // Render title manually if it's not part of the texture
         guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, this.topPos + 10, 0x00E5FF);
     }
 

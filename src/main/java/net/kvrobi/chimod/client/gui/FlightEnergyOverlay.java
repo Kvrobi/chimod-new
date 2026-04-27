@@ -35,16 +35,10 @@ public class FlightEnergyOverlay {
 
             GuiGraphics graphics = event.getGuiGraphics();
 
-            // Colors use ARGB hex format: 0x [Alpha] [Red] [Green] [Blue]
-            // Alpha is opacity. FF = 100% visible.
-
-            // 1. Draw a 1-pixel Black Border
             graphics.fill(x - 1, y - 1, x + barWidth + 1, y + barHeight + 1, 0xFF000000);
 
-            // 2. Draw the Background (Dark Gray)
             graphics.fill(x, y, x + barWidth, y + barHeight, 0xFF444444);
 
-            // 3. Draw the Foreground Energy (Cool Cyan / Chi Blue)
             graphics.fill(x, y, x + filledWidth, y + barHeight, 0xFF00E5FF);
         }
     }

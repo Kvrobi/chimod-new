@@ -2,17 +2,11 @@ package net.kvrobi.chimod.network;
 
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.util.ModAttachments;
-import net.kvrobi.chimod.util.Race;
-import net.minecraft.client.Minecraft;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ModNetworking {
 
-    public static final Map<Integer, Race> PENDING_RACES = new HashMap<>();
 
     public static void register(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar(ChiMod.MOD_ID);

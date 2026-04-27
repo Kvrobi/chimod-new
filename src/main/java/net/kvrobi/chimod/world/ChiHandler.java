@@ -4,26 +4,45 @@ import net.kvrobi.chimod.item.armor.custom.ChiArmor;
 import net.kvrobi.chimod.item.custom.ChiOrbItem;
 import net.kvrobi.chimod.item.custom.ChiWeapon;
 import net.kvrobi.chimod.network.ChiSyncPayload;
-import net.kvrobi.chimod.network.OpenRaceMenuPayload;
+import net.kvrobi.chimod.network.RaceSyncPayload;
 import net.kvrobi.chimod.util.Race;
 import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
+import net.kvrobi.chimod.world.gui.RaceSelectionMenu;
 import net.kvrobi.chimod.world.inventory.ChiMenu;
 import net.minecraft.ChatFormatting;
-//import net.minecraft.client.Minecraft;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 @EventBusSubscriber
 public class ChiHandler {
+
+    @SubscribeEvent
+    public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            CompoundTag persistentData = player.getPersistentData();
+            CompoundTag modData = persistentData.getCompound(Player.PERSISTED_NBT_TAG);
+            if (!modData.getBoolean("chimod_has_chosen_race")) {
+                player.openMenu(new SimpleMenuProvider(
+                        (id, inv, p) -> new RaceSelectionMenu(id, inv),
+                        Component.literal("Select your Tribe")
+                ));
+
+                persistentData.put(Player.PERSISTED_NBT_TAG, modData);
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {

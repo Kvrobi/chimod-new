@@ -16,8 +16,6 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.common.extensions.IFluidExtension;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -83,6 +81,7 @@ public class ModBlocks {
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WATER)
                             .noCollission()
                             .noLootTable()
+                            .liquid()
                             .pushReaction(PushReaction.DESTROY)
             ));
 
@@ -92,7 +91,6 @@ public class ModBlocks {
 
 
     //custom blocks
-
     public static final DeferredBlock<Block> CHI_ORB_BLOCK = onlyRegisterBlock("chi_orb_block",
             () -> new Orb(UniformInt.of(1, 4), BlockBehaviour.Properties.of()
                     .strength(1f).instabreak().sound(SoundType.AMETHYST).noOcclusion()));
