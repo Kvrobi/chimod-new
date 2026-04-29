@@ -1,5 +1,10 @@
 {
   "values": [
-    "kvrobichimod:lion_rock_tiles_wall"
+    "kvrobichimod:lion_rock_tiles_wall",
+    "kvrobichimod:lion_rock_tiles_wall",
+    "kvrobichimod:lion_tiles_wall",
+    "kvrobichimod:lion_bricks_wall",
+    "kvrobichimod:lion_stone_wall",
+    "kvrobichimod:smooth_lion_stone_wall"
   ]
 }

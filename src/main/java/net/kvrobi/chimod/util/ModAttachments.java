@@ -3,6 +3,7 @@ package net.kvrobi.chimod.util;
 import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.data.FlightData;
+import net.kvrobi.chimod.util.data.FluidData;
 import net.kvrobi.chimod.util.data.RaceData;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -18,21 +19,20 @@ public class ModAttachments {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES =
             DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, ChiMod.MOD_ID);
 
-    // Make sure this method is called in your main Mod constructor!
     public static void register(IEventBus eventBus) {
         ATTACHMENT_TYPES.register(eventBus);
     }
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<ChiData>> CHI_ENERGY =
             ATTACHMENT_TYPES.register("chi_energy", () -> AttachmentType.builder(() -> new ChiData())
-                    .serialize(new ChiDataSerializer()) // Point to our new class
+                    .serialize(new ChiDataSerializer())
                     .copyOnDeath()
                     .build());
 
     public static final Supplier<AttachmentType<RaceData>> RACE_DATA = ATTACHMENT_TYPES.register(
             "race_data",
             () -> AttachmentType.builder(() -> new RaceData())
-                    .serialize(RaceData.CODEC) // 1. Forces the game to save it to the hard drive
-                    .copyOnDeath()             // 2. Ensures the player doesn't revert to Human when they respawn!
+                    .serialize(RaceData.CODEC)
+                    .copyOnDeath()
                     .build()
     );
 
@@ -41,6 +41,13 @@ public class ModAttachments {
             () -> net.neoforged.neoforge.attachment.AttachmentType.builder(() -> new FlightData())
                     .serialize(FlightData.CODEC)
                     .copyOnDeath()
+                    .build()
+    );
+
+    public static final Supplier<net.neoforged.neoforge.attachment.AttachmentType<FluidData>> FLUID_DATA = ATTACHMENT_TYPES.register(
+            "fluid_data",
+            () -> net.neoforged.neoforge.attachment.AttachmentType.builder(() -> new FluidData())
+                    .serialize(FluidData.CODEC)
                     .build()
     );
 

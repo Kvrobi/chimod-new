@@ -7,6 +7,7 @@ import net.kvrobi.chimod.network.ChiSyncPayload;
 import net.kvrobi.chimod.network.RaceSyncPayload;
 import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.data.RaceData;
+import net.kvrobi.chimod.world.RaceExtraHandler;
 import net.kvrobi.chimod.world.gui.RaceSelectionMenu;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -102,11 +103,12 @@ public class ChiCommand {
 
                     RaceData data = player.getData(ModAttachments.RACE_DATA);
                     data.setRace(Race.fromString(raceName));
-
                     PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.getRace(), player.getId()));
+                    RaceExtraHandler.applyRaceAttributes(player);
+
 
                     context.getSource().sendSuccess(() ->
-                            Component.literal("Race set to: " + raceName), true);
+                            Component.literal("Tribe set to: " + raceName), true);
                     return 1;
                 })
         )).then(Commands.literal("query").requires(source -> source.hasPermission(0))
@@ -114,7 +116,7 @@ public class ChiCommand {
                                 ServerPlayer player = context.getSource().getPlayerOrException();
                                 RaceData data = player.getData(ModAttachments.RACE_DATA);
                                 context.getSource().sendSuccess(() ->
-                                        Component.literal("Current Race: " + data.getRace()), false);
+                                        Component.literal("Current Tribe: " + data.getRace()), false);
                                 return 1;
                             })
                 )

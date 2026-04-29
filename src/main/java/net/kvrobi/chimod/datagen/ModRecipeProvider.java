@@ -21,6 +21,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
         List<ItemLike> CHI_ORB_SMELTABLES = List.of(ModItems.RAW_CHI,ModBlocks.CHI_ORE_BLOCK,ModBlocks.DEEPSLATE_CHI_ORE_BLOCK);
+        List<ItemLike> L_STONE = List.of(ModBlocks.LION_COBBLESTONE);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RAW_CHI_BLOCK.get())
                 .pattern("BBB")
                 .pattern("BBB")
@@ -35,6 +36,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('G', Items.GLASS)
                 .define('T',ModBlocks.LION_ROCK_TILES.get())
                 .unlockedBy("has_lion_rock_tiles", has(ModBlocks.LION_ROCK_TILES)).save(recipeOutput);
+
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.LION_BRICKS.get(),4)
+                .requires(ModBlocks.LION_STONE)
+                .unlockedBy("has_lion_stone_block", has(ModBlocks.LION_STONE)).save(recipeOutput, "kvrobichimod:lion_bricks_from_four_lion_stone");
 
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RAW_CHI.get(),9)
@@ -55,6 +61,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(recipeOutput, CHI_ORB_SMELTABLES, RecipeCategory.MISC, ModItems.CHI_ORB.get(), 0.25f,200, "chi_orb");
         oreBlasting(recipeOutput, CHI_ORB_SMELTABLES, RecipeCategory.MISC, ModItems.CHI_ORB.get(), 0.25f,100, "chi_orb");
+
+        oreSmelting(recipeOutput, L_STONE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LION_STONE.get(), 0.25f,100, "lion_stone");
+        oreBlasting(recipeOutput, L_STONE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LION_STONE.get(), 0.25f,100, "lion_stone");
 
         stairBuilder(ModBlocks.LION_ROCK_TILES_STAIRS.get(), Ingredient.of(ModBlocks.LION_ROCK_TILES)).group("lion_rock_tiles")
                 .unlockedBy("has_lion_rock_tiles", has(ModBlocks.LION_ROCK_TILES)).save(recipeOutput);

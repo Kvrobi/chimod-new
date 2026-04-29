@@ -67,6 +67,7 @@ public class ChiMod {
 
             net.kvrobi.chimod.client.gui.FlightEnergyOverlay energyOverlay = new net.kvrobi.chimod.client.gui.FlightEnergyOverlay();
             NeoForge.EVENT_BUS.register(energyOverlay);
+            NeoForge.EVENT_BUS.register(RaceSyncEvents.class);
 
         }
 

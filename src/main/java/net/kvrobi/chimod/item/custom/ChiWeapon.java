@@ -173,7 +173,6 @@ public class ChiWeapon extends Item implements GeoItem {
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
         if(isTool) {
             if (!level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F) {
-                // Damage the item by 2 (standard sword behavior)
                 stack.hurtAndBreak(2, miningEntity, LivingEntity.getSlotForHand(miningEntity.getUsedItemHand()));
             }
             return true;
@@ -229,8 +228,6 @@ public class ChiWeapon extends Item implements GeoItem {
                     player.displayClientMessage(Component.literal("You need more Chi Energy to be able to activate this!").withStyle(ChatFormatting.RED), true);
                     return InteractionResultHolder.fail(stack);
                 }
-
-                // Toggle state
                 boolean newState = !currentState;
                 stack.set(ModDataComponents.IS_ACTIVE.get(), newState);
 

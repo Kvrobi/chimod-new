@@ -1,6 +1,9 @@
 package net.kvrobi.chimod;
 
+import net.kvrobi.chimod.fluid.ModFluids;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -21,6 +24,9 @@ public class ChiModClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-
+        event.enqueueWork(() -> {
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.CHI_WATER_SOURCE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.CHI_WATER_FLOWING.get(), RenderType.translucent());
+        });
     }
 }

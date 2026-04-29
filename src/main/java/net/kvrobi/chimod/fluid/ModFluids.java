@@ -6,6 +6,7 @@ import net.kvrobi.chimod.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
@@ -33,7 +34,11 @@ public class ModFluids {
                     .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
                     .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
+                    .pathType(PathType.WATER)
+                    .canHydrate(true)
+                    .adjacentPathType(PathType.WATER_BORDER)
                     .temperature(200))
+
     );
 
 

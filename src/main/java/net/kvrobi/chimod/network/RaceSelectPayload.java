@@ -4,6 +4,7 @@ import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.util.Race;
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.util.data.RaceData;
+import net.kvrobi.chimod.world.RaceExtraHandler;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -36,6 +37,8 @@ public record RaceSelectPayload(Race race) implements CustomPacketPayload {
                     modData.putBoolean("chimod_has_chosen_race", true);
                 }
 
+                RaceExtraHandler.applyRaceAttributes(player);
+
                 PacketDistributor.sendToPlayer(player, new RaceSyncPayload(data.race(), player.getId()));
 
                 var flightData = player.getData(ModAttachments.FLIGHT_DATA.get());
@@ -52,6 +55,7 @@ public record RaceSelectPayload(Race race) implements CustomPacketPayload {
                     PacketDistributor.sendToPlayer(player, new FlightSyncPayload(flightData.currentEnergy, flightData.maxEnergy));
 
                 }
+
             }
         });
     }

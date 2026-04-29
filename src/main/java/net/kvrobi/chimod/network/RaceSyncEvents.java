@@ -2,6 +2,7 @@ package net.kvrobi.chimod.network;
 
 import net.kvrobi.chimod.util.ModAttachments;
 import net.kvrobi.chimod.util.Race;
+import net.kvrobi.chimod.world.RaceExtraHandler;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -13,6 +14,7 @@ public class RaceSyncEvents {
         if(event.getEntity() instanceof ServerPlayer serverPlayer) {
             Race race = serverPlayer.getData(ModAttachments.RACE_DATA.get()).getRace();
             PacketDistributor.sendToPlayer(serverPlayer, new RaceSyncPayload(race, serverPlayer.getId()));
+            RaceExtraHandler.applyRaceAttributes(serverPlayer);
         }
     }
     @SubscribeEvent
@@ -20,6 +22,7 @@ public class RaceSyncEvents {
         if(event.getEntity() instanceof ServerPlayer serverPlayer) {
             Race race = serverPlayer.getData(ModAttachments.RACE_DATA.get()).getRace();
             PacketDistributor.sendToPlayer(serverPlayer, new RaceSyncPayload(race, serverPlayer.getId()));
+            RaceExtraHandler.applyRaceAttributes(serverPlayer);
         }
     }
     @SubscribeEvent

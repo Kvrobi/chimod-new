@@ -14,7 +14,7 @@ public class DebugFluidType extends FluidType {
 
     @Override
     public @Nullable SoundEvent getSound(SoundAction action) {
-        System.out.println("[CHI MOD DEBUG] Fluid SoundAction requested: " + action.name());
+        //System.out.println("[CHI MOD DEBUG] Fluid SoundAction requested: " + action.name());
 
         return super.getSound(action);
     }

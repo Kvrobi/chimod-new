@@ -27,25 +27,94 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.RAW_CHI_BLOCK);
         blockWithItem(ModBlocks.DEEPSLATE_CHI_ORE_BLOCK);
         blockWithItem(ModBlocks.LION_ROCK_TILES);
+        blockWithItem(ModBlocks.LION_TILES);
+        blockWithItem(ModBlocks.LION_BRICKS);
+        blockWithItem(ModBlocks.LION_STONE);
+        blockWithItem(ModBlocks.SMOOTH_LION_STONE);
+        blockWithItem(ModBlocks.LION_COBBLESTONE);
 
 
+        stairsBlock(ModBlocks.LION_BRICKS_STAIRS.get(), blockTexture(ModBlocks.LION_BRICKS.get()));
+        slabBlock(ModBlocks.LION_BRICKS_SLAB.get(), blockTexture(ModBlocks.LION_BRICKS.get()), blockTexture(ModBlocks.LION_BRICKS.get()));
+        stairsBlock(ModBlocks.LION_STONE_STAIRS.get(), blockTexture(ModBlocks.LION_STONE.get()));
+        slabBlock(ModBlocks.LION_STONE_SLAB.get(), blockTexture(ModBlocks.LION_STONE.get()), blockTexture(ModBlocks.LION_STONE.get()));
+        stairsBlock(ModBlocks.SMOOTH_LION_STONE_STAIRS.get(), blockTexture(ModBlocks.SMOOTH_LION_STONE.get()));
+        slabBlock(ModBlocks.SMOOTH_LION_STONE_SLAB.get(), blockTexture(ModBlocks.SMOOTH_LION_STONE.get()), blockTexture(ModBlocks.SMOOTH_LION_STONE.get()));
+        stairsBlock(ModBlocks.LION_TILES_STAIRS.get(), blockTexture(ModBlocks.LION_TILES.get()));
+        slabBlock(ModBlocks.LION_TILES_SLAB.get(), blockTexture(ModBlocks.LION_TILES.get()), blockTexture(ModBlocks.LION_TILES.get()));
         stairsBlock(ModBlocks.LION_ROCK_TILES_STAIRS.get(), blockTexture(ModBlocks.LION_ROCK_TILES.get()));
         slabBlock(ModBlocks.LION_ROCK_TILES_SLAB.get(), blockTexture(ModBlocks.LION_ROCK_TILES.get()), blockTexture(ModBlocks.LION_ROCK_TILES.get()));
+        stairsBlock(ModBlocks.LION_COBBLESTONE_STAIRS.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
+        slabBlock(ModBlocks.LION_COBBLESTONE_SLAB.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
+
+
 
         buttonBlock(ModBlocks.LION_ROCK_TILES_BUTTON.get(), blockTexture(ModBlocks.LION_ROCK_TILES.get()));
         pressurePlateBlock(ModBlocks.LION_ROCK_TILES_PRESSURE_PLATE.get(), blockTexture(ModBlocks.LION_ROCK_TILES.get()));
+        buttonBlock(ModBlocks.LION_TILES_BUTTON.get(), blockTexture(ModBlocks.LION_TILES.get()));
+        pressurePlateBlock(ModBlocks.LION_TILES_PRESSURE_PLATE.get(), blockTexture(ModBlocks.LION_TILES.get()));
+        buttonBlock(ModBlocks.LION_BRICKS_BUTTON.get(), blockTexture(ModBlocks.LION_BRICKS.get()));
+        pressurePlateBlock(ModBlocks.LION_BRICKS_PRESSURE_PLATE.get(), blockTexture(ModBlocks.LION_BRICKS.get()));
+        buttonBlock(ModBlocks.LION_STONE_BUTTON.get(), blockTexture(ModBlocks.LION_STONE.get()));
+        pressurePlateBlock(ModBlocks.LION_STONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.LION_STONE.get()));
+        buttonBlock(ModBlocks.SMOOTH_LION_STONE_BUTTON.get(), blockTexture(ModBlocks.SMOOTH_LION_STONE.get()));
+        pressurePlateBlock(ModBlocks.SMOOTH_LION_STONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.SMOOTH_LION_STONE.get()));
+        buttonBlock(ModBlocks.LION_COBBLESTONE_BUTTON.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
+        pressurePlateBlock(ModBlocks.LION_COBBLESTONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
+
+
 
         fenceBlock(ModBlocks.LION_ROCK_TILES_FENCE.get(), blockTexture(ModBlocks.LION_ROCK_TILES.get()));
         fenceGateBlock(ModBlocks.LION_ROCK_TILES_FENCE_GATE.get(), blockTexture(ModBlocks.LION_ROCK_TILES.get()));
         wallBlock(ModBlocks.LION_ROCK_TILES_WALL.get(), blockTexture(ModBlocks.LION_ROCK_TILES.get()));
+        fenceBlock(ModBlocks.LION_TILES_FENCE.get(), blockTexture(ModBlocks.LION_TILES.get()));
+        fenceGateBlock(ModBlocks.LION_TILES_FENCE_GATE.get(), blockTexture(ModBlocks.LION_TILES.get()));
+        wallBlock(ModBlocks.LION_TILES_WALL.get(), blockTexture(ModBlocks.LION_TILES.get()));
+        fenceBlock(ModBlocks.LION_BRICKS_FENCE.get(), blockTexture(ModBlocks.LION_BRICKS.get()));
+        fenceGateBlock(ModBlocks.LION_BRICKS_FENCE_GATE.get(), blockTexture(ModBlocks.LION_BRICKS.get()));
+        wallBlock(ModBlocks.LION_BRICKS_WALL.get(), blockTexture(ModBlocks.LION_BRICKS.get()));
+        fenceBlock(ModBlocks.LION_STONE_FENCE.get(), blockTexture(ModBlocks.LION_STONE.get()));
+        fenceGateBlock(ModBlocks.LION_STONE_FENCE_GATE.get(), blockTexture(ModBlocks.LION_STONE.get()));
+        fenceBlock(ModBlocks.SMOOTH_LION_STONE_FENCE.get(), blockTexture(ModBlocks.SMOOTH_LION_STONE.get()));
+        fenceGateBlock(ModBlocks.SMOOTH_LION_STONE_FENCE_GATE.get(), blockTexture(ModBlocks.SMOOTH_LION_STONE.get()));
+        wallBlock(ModBlocks.SMOOTH_LION_STONE_WALL.get(), blockTexture(ModBlocks.SMOOTH_LION_STONE.get()));
+        wallBlock(ModBlocks.LION_STONE_WALL.get(), blockTexture(ModBlocks.LION_STONE.get()));
+        fenceGateBlock(ModBlocks.LION_COBBLESTONE_FENCE_GATE.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
+        wallBlock(ModBlocks.LION_COBBLESTONE_WALL.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
+
+
 
         trapdoorBlockWithRenderType(ModBlocks.LION_ROCK_TILES_TRAPDOOR.get(), modLoc("block/lion_rock_tiles_trapdoor"), true, "solid"); //ha lenne átlátszó pixel, akkor lenne "cutout" a "solid" helyett
         doorBlockWithRenderType(ModBlocks.LION_ROCK_TILES_DOOR.get(), modLoc("block/lion_rock_tiles_door_bottom"), modLoc("block/lion_rock_tiles_door_bottom"), "solid");
+
+
 
         blockItem(ModBlocks.LION_ROCK_TILES_PRESSURE_PLATE);
         blockItem(ModBlocks.LION_ROCK_TILES_STAIRS);
         blockItem(ModBlocks.LION_ROCK_TILES_SLAB);
         blockItem(ModBlocks.LION_ROCK_TILES_FENCE_GATE);
+        blockItem(ModBlocks.LION_TILES_PRESSURE_PLATE);
+        blockItem(ModBlocks.LION_TILES_STAIRS);
+        blockItem(ModBlocks.LION_TILES_SLAB);
+        blockItem(ModBlocks.LION_TILES_FENCE_GATE);
+        blockItem(ModBlocks.LION_BRICKS_PRESSURE_PLATE);
+        blockItem(ModBlocks.LION_BRICKS_STAIRS);
+        blockItem(ModBlocks.LION_BRICKS_SLAB);
+        blockItem(ModBlocks.LION_BRICKS_FENCE_GATE);
+        blockItem(ModBlocks.LION_STONE_PRESSURE_PLATE);
+        blockItem(ModBlocks.LION_STONE_STAIRS);
+        blockItem(ModBlocks.LION_STONE_SLAB);
+        blockItem(ModBlocks.LION_STONE_FENCE_GATE);
+        blockItem(ModBlocks.SMOOTH_LION_STONE_PRESSURE_PLATE);
+        blockItem(ModBlocks.SMOOTH_LION_STONE_STAIRS);
+        blockItem(ModBlocks.SMOOTH_LION_STONE_SLAB);
+        blockItem(ModBlocks.SMOOTH_LION_STONE_FENCE_GATE);
+        blockItem(ModBlocks.LION_COBBLESTONE_PRESSURE_PLATE);
+        blockItem(ModBlocks.LION_COBBLESTONE_STAIRS);
+        blockItem(ModBlocks.LION_COBBLESTONE_SLAB);
+        blockItem(ModBlocks.LION_COBBLESTONE_FENCE_GATE);
+
+
         blockItem(ModBlocks.LION_ROCK_TILES_TRAPDOOR, "_bottom");
 
         simpleBlock(ModBlocks.CHI_WATER_BLOCK.get(), models().getExistingFile(mcLoc("air")));
@@ -108,23 +177,22 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
 
-private void lampBlock(DeferredBlock<?> block, String name) {
+    private void lampBlock(DeferredBlock<?> block, String name) {
 
-    getVariantBuilder(block.get()).forAllStates(state -> {
+        getVariantBuilder(block.get()).forAllStates(state -> {
 
-        boolean isActivated = state.getValue(ChiLampBlock.ACTIVE);
-        boolean isClicked = state.getValue(ChiLampBlock.CLICKED);
+            boolean isActivated = state.getValue(ChiLampBlock.ACTIVE);
+            boolean isClicked = state.getValue(ChiLampBlock.CLICKED);
 
-        String suffix = isActivated ? "_active" : "_inactive";
-        suffix += isClicked ? "_lit" : "_unlit";
+            String suffix = isActivated ? "_active" : "_inactive";
+            suffix += isClicked ? "_lit" : "_unlit";
 
 
-        return ConfiguredModel.builder().modelFile(models()
-                .cubeAll(name + suffix, modLoc("block/" + name + suffix))).build();
+            return ConfiguredModel.builder().modelFile(models()
+                    .cubeAll(name + suffix, modLoc("block/" + name + suffix))).build();
 
-    });
-}
-
+        });
+    }
 
     private void simpleWaterloggedBlock(Block block, ModelFile model) {
         getVariantBuilder(block)

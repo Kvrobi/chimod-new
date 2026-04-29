@@ -36,6 +36,51 @@ public class ModCreativeTabs {
                 output.accept(ModBlocks.LION_ROCK_TILES_PRESSURE_PLATE);
                 output.accept(ModBlocks.LION_ROCK_TILES_BUTTON);
 
+                output.accept(ModBlocks.LION_TILES);
+                output.accept(ModBlocks.LION_TILES_STAIRS);
+                output.accept(ModBlocks.LION_TILES_SLAB);
+                output.accept(ModBlocks.LION_TILES_WALL);
+                output.accept(ModBlocks.LION_TILES_FENCE);
+                output.accept(ModBlocks.LION_TILES_FENCE_GATE);
+                output.accept(ModBlocks.LION_TILES_PRESSURE_PLATE);
+                output.accept(ModBlocks.LION_TILES_BUTTON);
+
+                output.accept(ModBlocks.LION_BRICKS);
+                output.accept(ModBlocks.LION_BRICKS_STAIRS);
+                output.accept(ModBlocks.LION_BRICKS_SLAB);
+                output.accept(ModBlocks.LION_BRICKS_WALL);
+                output.accept(ModBlocks.LION_BRICKS_FENCE);
+                output.accept(ModBlocks.LION_BRICKS_FENCE_GATE);
+                output.accept(ModBlocks.LION_BRICKS_PRESSURE_PLATE);
+                output.accept(ModBlocks.LION_BRICKS_BUTTON);
+
+                output.accept(ModBlocks.LION_STONE);
+                output.accept(ModBlocks.LION_STONE_STAIRS);
+                output.accept(ModBlocks.LION_STONE_SLAB);
+                output.accept(ModBlocks.LION_STONE_WALL);
+                output.accept(ModBlocks.LION_STONE_FENCE);
+                output.accept(ModBlocks.LION_STONE_FENCE_GATE);
+                output.accept(ModBlocks.LION_STONE_PRESSURE_PLATE);
+
+                output.accept(ModBlocks.SMOOTH_LION_STONE);
+                output.accept(ModBlocks.SMOOTH_LION_STONE_STAIRS);
+                output.accept(ModBlocks.SMOOTH_LION_STONE_SLAB);
+                output.accept(ModBlocks.SMOOTH_LION_STONE_WALL);
+                output.accept(ModBlocks.SMOOTH_LION_STONE_FENCE);
+                output.accept(ModBlocks.SMOOTH_LION_STONE_FENCE_GATE);
+                output.accept(ModBlocks.SMOOTH_LION_STONE_PRESSURE_PLATE);
+                output.accept(ModBlocks.SMOOTH_LION_STONE_BUTTON);
+
+                output.accept(ModBlocks.LION_STONE_BUTTON);
+                output.accept(ModBlocks.LION_COBBLESTONE);
+                output.accept(ModBlocks.LION_COBBLESTONE_STAIRS);
+                output.accept(ModBlocks.LION_COBBLESTONE_SLAB);
+                output.accept(ModBlocks.LION_COBBLESTONE_WALL);
+                output.accept(ModBlocks.LION_COBBLESTONE_FENCE);
+                output.accept(ModBlocks.LION_COBBLESTONE_FENCE_GATE);
+                output.accept(ModBlocks.LION_COBBLESTONE_PRESSURE_PLATE);
+                output.accept(ModBlocks.LION_COBBLESTONE_BUTTON);
+
                 output.accept(ModBlocks.BLUE_CHI_LAMP);
 
             }).build());

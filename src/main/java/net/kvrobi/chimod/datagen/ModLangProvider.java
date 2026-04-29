@@ -26,8 +26,8 @@ public class ModLangProvider extends LanguageProvider {
         addBlock(ModBlocks.CHI_ORB_BLOCK, "Chi Orb");
         addBlock(ModBlocks.FIRE_CHI_ORB_BLOCK   , "Fire Chi Orb");
         addBlock(ModBlocks.LION_ROCK_TILES, "Lion Rock Tiles");
-        addBlock(ModBlocks.LION_ROCK_TILES_STAIRS, "Lion Rock Tiles stairs");
-        addBlock(ModBlocks.LION_ROCK_TILES_SLAB, "Lion Rock Tiles slab");
+        addBlock(ModBlocks.LION_ROCK_TILES_STAIRS, "Lion Rock Tiles Stairs");
+        addBlock(ModBlocks.LION_ROCK_TILES_SLAB, "Lion Rock Tiles Slab");
         addBlock(ModBlocks.LION_ROCK_TILES_DOOR, "Lion Rock Tiles Door");
         addBlock(ModBlocks.LION_ROCK_TILES_TRAPDOOR, "Lion Rock Tiles Trapdoor");
         addBlock(ModBlocks.LION_ROCK_TILES_FENCE_GATE, "Lion Rock Tiles Fence Gate");
@@ -35,6 +35,46 @@ public class ModLangProvider extends LanguageProvider {
         addBlock(ModBlocks.LION_ROCK_TILES_FENCE, "Lion Rock Tiles Fence");
         addBlock(ModBlocks.LION_ROCK_TILES_BUTTON, "Lion Rock Tiles Button");
         addBlock(ModBlocks.LION_ROCK_TILES_PRESSURE_PLATE, "Lion Rock Tiles Pressure Plate");
+        addBlock(ModBlocks.LION_TILES, "Lion Tiles");
+        addBlock(ModBlocks.LION_TILES_STAIRS, "Lion Tiles Stairs");
+        addBlock(ModBlocks.LION_TILES_SLAB, "Lion Tiles Slab");
+        addBlock(ModBlocks.LION_TILES_FENCE_GATE, "Lion Tiles Fence Gate");
+        addBlock(ModBlocks.LION_TILES_WALL, "Lion Tiles Wall");
+        addBlock(ModBlocks.LION_TILES_FENCE, "Lion Tiles Fence");
+        addBlock(ModBlocks.LION_TILES_BUTTON, "Lion Tiles Button");
+        addBlock(ModBlocks.LION_TILES_PRESSURE_PLATE, "Lion Tiles Pressure Plate");
+        addBlock(ModBlocks.LION_BRICKS, "Lion Bricks");
+        addBlock(ModBlocks.LION_BRICKS_STAIRS, "Lion Bricks Stairs");
+        addBlock(ModBlocks.LION_BRICKS_SLAB, "Lion Bricks Slab");
+        addBlock(ModBlocks.LION_BRICKS_FENCE_GATE, "Lion Bricks Fence Gate");
+        addBlock(ModBlocks.LION_BRICKS_WALL, "Lion Bricks Wall");
+        addBlock(ModBlocks.LION_BRICKS_FENCE, "Lion Bricks Fence");
+        addBlock(ModBlocks.LION_BRICKS_BUTTON, "Lion Bricks Button");
+        addBlock(ModBlocks.LION_BRICKS_PRESSURE_PLATE, "Lion Bricks Pressure Plate");
+        addBlock(ModBlocks.LION_STONE, "Lion Stone");
+        addBlock(ModBlocks.LION_STONE_STAIRS, "Lion Stone Stairs");
+        addBlock(ModBlocks.LION_STONE_SLAB, "Lion Stone Slab");
+        addBlock(ModBlocks.LION_STONE_FENCE_GATE, "Lion Stone Fence Gate");
+        addBlock(ModBlocks.LION_STONE_WALL, "Lion Stone Wall");
+        addBlock(ModBlocks.LION_STONE_FENCE, "Lion Stone Fence");
+        addBlock(ModBlocks.LION_STONE_BUTTON, "Lion Stone Button");
+        addBlock(ModBlocks.SMOOTH_LION_STONE, "Smooth Lion Stone");
+        addBlock(ModBlocks.SMOOTH_LION_STONE_STAIRS, "Smooth Lion Stone Stairs");
+        addBlock(ModBlocks.SMOOTH_LION_STONE_SLAB, "Smooth Lion Stone Slab");
+        addBlock(ModBlocks.SMOOTH_LION_STONE_FENCE_GATE, "Smooth Lion Stone Fence Gate");
+        addBlock(ModBlocks.SMOOTH_LION_STONE_WALL, "Smooth Lion Stone Wall");
+        addBlock(ModBlocks.SMOOTH_LION_STONE_FENCE, "Smooth Lion Stone Fence");
+        addBlock(ModBlocks.SMOOTH_LION_STONE_BUTTON, "Smooth Lion Stone Button");
+        addBlock(ModBlocks.SMOOTH_LION_STONE_PRESSURE_PLATE, "Smooth Lion Stone Pressure Plate");
+        addBlock(ModBlocks.LION_STONE_PRESSURE_PLATE, "Lion Stone Pressure Plate");
+        addBlock(ModBlocks.LION_COBBLESTONE, "Lion Cobblestone");
+        addBlock(ModBlocks.LION_COBBLESTONE_STAIRS, "Lion Cobblestone Stairs");
+        addBlock(ModBlocks.LION_COBBLESTONE_SLAB, "Lion Cobblestone Slab");
+        addBlock(ModBlocks.LION_COBBLESTONE_FENCE_GATE, "Lion Cobblestone Fence Gate");
+        addBlock(ModBlocks.LION_COBBLESTONE_WALL, "Lion Cobblestone Wall");
+        addBlock(ModBlocks.LION_COBBLESTONE_FENCE, "Lion Cobblestone Fence");
+        addBlock(ModBlocks.LION_COBBLESTONE_BUTTON, "Lion Cobblestone Button");
+        addBlock(ModBlocks.LION_COBBLESTONE_PRESSURE_PLATE, "Lion Cobblestone Pressure Plate");
         addBlock(ModBlocks.CHI_WATER_BLOCK, "Chi Water");
 
         //items
@@ -53,6 +93,9 @@ public class ModLangProvider extends LanguageProvider {
         addItem(ModItems.LION_FANGIOUS, "Fangious");
         addItem(ModItems.LION_JABAKA, "Jabaka");
         addItem(ModItems.LION_JAHAK, "Jahak");
+        addItem(ModItems.GOLDEN_SHOULDER_PADS, "Golden Shoulder Pads");
+        addItem(ModItems.GOLDEN_SHOULDER_SPIKED, "Golden Shoulder Spiked");
+
 
         add("menu.kvrobichimod.race_title", "Select Your Tribe");
 

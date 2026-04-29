@@ -1,5 +1,7 @@
 package net.kvrobi.chimod.world;
 
+import net.kvrobi.chimod.client.sound.ChiUnderwaterLoopSound;
+import net.kvrobi.chimod.fluid.ModFluids;
 import net.kvrobi.chimod.item.armor.custom.ChiArmor;
 import net.kvrobi.chimod.item.custom.ChiOrbItem;
 import net.kvrobi.chimod.item.custom.ChiWeapon;
@@ -8,21 +10,29 @@ import net.kvrobi.chimod.network.RaceSyncPayload;
 import net.kvrobi.chimod.util.Race;
 import net.kvrobi.chimod.util.data.ChiData;
 import net.kvrobi.chimod.util.ModAttachments;
+import net.kvrobi.chimod.util.data.FluidData;
 import net.kvrobi.chimod.world.gui.RaceSelectionMenu;
 import net.kvrobi.chimod.world.inventory.ChiMenu;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 @EventBusSubscriber
@@ -47,7 +57,24 @@ public class ChiHandler {
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
-        if (player.level().isClientSide) return;
+        if (player.level().isClientSide && player instanceof LocalPlayer localPlayer) {
+            FluidData fluidData = player.getData(ModAttachments.FLUID_DATA.get());
+            if (player.isEyeInFluidType(ModFluids.CHI_WATER_TYPE.get())) {
+                if (!fluidData.wasUnderChiFluid) {
+                    fluidData.wasUnderChiFluid = true;
+                    player.playSound(SoundEvents.AMBIENT_UNDERWATER_ENTER, 1.0F, 1.0F);
+                    Minecraft.getInstance().getSoundManager().play(new ChiUnderwaterLoopSound(localPlayer));
+
+                    player.setData(ModAttachments.FLUID_DATA, fluidData);
+                }
+            } else if (fluidData.wasUnderChiFluid) {
+                player.playSound(SoundEvents.AMBIENT_UNDERWATER_EXIT, 1.0F, 1.0F);
+                fluidData.wasUnderChiFluid = false;
+                player.setData(ModAttachments.FLUID_DATA, fluidData);
+            }
+
+            return;
+        }
 
         ChiData data = player.getData(ModAttachments.CHI_ENERGY);
         int oldEnergy = data.getEnergy();
@@ -83,7 +110,6 @@ public class ChiHandler {
         flightLogic(player);
 
 
-
     }
 
     private static void flightLogic(Player player) {
@@ -93,13 +119,13 @@ public class ChiHandler {
         var data = player.getData(ModAttachments.FLIGHT_DATA.get());
 
         if (race == Race.EAGLE || race == Race.RAVEN) {
-
             if (!player.getAbilities().flying /*player.isInWater() || player.isUnderWater() || player.onGround()*/ && data.getCurrentEnergy() < data.getMaxEnergy()) {
                 data.recharge(0.75f);
             }
 
+            FluidData fluidData = player.getData(ModAttachments.FLUID_DATA.get());
 
-            if (data.getCurrentEnergy() > 0) {
+            if (data.getCurrentEnergy() > 0 && !fluidData.wasUnderChiFluid && !player.isUnderWater()) {
                 if (!player.getAbilities().mayfly) {
                     player.getAbilities().mayfly = true;
                     player.onUpdateAbilities();

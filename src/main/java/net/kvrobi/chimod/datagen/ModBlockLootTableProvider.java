@@ -29,18 +29,70 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.CHI_ORB_BLOCK.get());
         dropSelf(ModBlocks.FIRE_CHI_ORB_BLOCK.get());
         dropSelf(ModBlocks.RAW_CHI_BLOCK.get());
+        dropSelf(ModBlocks.SMOOTH_LION_STONE.get());
+        dropSelf(ModBlocks.LION_BRICKS.get());
         dropSelf(ModBlocks.LION_ROCK_TILES.get());
-        dropSelf(ModBlocks.LION_ROCK_TILES_STAIRS.get());
+        dropSelf(ModBlocks.LION_TILES.get());
+        dropSelf(ModBlocks.LION_COBBLESTONE.get());
 
+        add(ModBlocks.LION_STONE.get(), block -> createSingleItemTableWithSilkTouch(block, ModBlocks.LION_COBBLESTONE.get()));
+
+
+        dropSelf(ModBlocks.LION_ROCK_TILES_STAIRS.get());
         add(ModBlocks.LION_ROCK_TILES_SLAB.get(), block -> createSlabItemTable(ModBlocks.LION_ROCK_TILES_SLAB.get()));
+        dropSelf(ModBlocks.LION_TILES_STAIRS.get());
+        add(ModBlocks.LION_TILES_SLAB.get(), block -> createSlabItemTable(ModBlocks.LION_TILES_SLAB.get()));
+        dropSelf(ModBlocks.LION_BRICKS_STAIRS.get());
+        add(ModBlocks.LION_BRICKS_SLAB.get(), block -> createSlabItemTable(ModBlocks.LION_BRICKS_SLAB.get()));
+        dropSelf(ModBlocks.LION_STONE_STAIRS.get());
+        dropSelf(ModBlocks.SMOOTH_LION_STONE_STAIRS.get());
+        add(ModBlocks.SMOOTH_LION_STONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.SMOOTH_LION_STONE_SLAB.get()));
+        add(ModBlocks.LION_STONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.LION_STONE_SLAB.get()));
+        dropSelf(ModBlocks.LION_COBBLESTONE_STAIRS.get());
+        add(ModBlocks.LION_COBBLESTONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.LION_COBBLESTONE_SLAB.get()));
+
+
+
         dropSelf(ModBlocks.LION_ROCK_TILES_WALL.get());
         dropSelf(ModBlocks.LION_ROCK_TILES_FENCE.get());
         dropSelf(ModBlocks.LION_ROCK_TILES_FENCE_GATE.get());
+        dropSelf(ModBlocks.LION_BRICKS_WALL.get());
+        dropSelf(ModBlocks.LION_BRICKS_FENCE.get());
+        dropSelf(ModBlocks.LION_BRICKS_FENCE_GATE.get());
+        dropSelf(ModBlocks.LION_TILES_WALL.get());
+        dropSelf(ModBlocks.LION_TILES_FENCE.get());
+        dropSelf(ModBlocks.LION_TILES_FENCE_GATE.get());
+        dropSelf(ModBlocks.LION_STONE_WALL.get());
+        dropSelf(ModBlocks.LION_STONE_FENCE.get());
+        dropSelf(ModBlocks.SMOOTH_LION_STONE_WALL.get());
+        dropSelf(ModBlocks.SMOOTH_LION_STONE_FENCE.get());
+        dropSelf(ModBlocks.SMOOTH_LION_STONE_FENCE_GATE.get());
+        dropSelf(ModBlocks.LION_STONE_FENCE_GATE.get());
+        dropSelf(ModBlocks.LION_COBBLESTONE_WALL.get());
+        dropSelf(ModBlocks.LION_COBBLESTONE_FENCE.get());
+        dropSelf(ModBlocks.LION_COBBLESTONE_FENCE_GATE.get());
+
+
 
         add(ModBlocks.LION_ROCK_TILES_DOOR.get(), block -> createDoorTable(ModBlocks.LION_ROCK_TILES_DOOR.get()));
         dropSelf(ModBlocks.LION_ROCK_TILES_TRAPDOOR.get());
+
+
+
         dropSelf(ModBlocks.LION_ROCK_TILES_BUTTON.get());
         dropSelf(ModBlocks.LION_ROCK_TILES_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.LION_BRICKS_BUTTON.get());
+        dropSelf(ModBlocks.LION_BRICKS_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.LION_TILES_BUTTON.get());
+        dropSelf(ModBlocks.LION_TILES_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.LION_STONE_BUTTON.get());
+        dropSelf(ModBlocks.SMOOTH_LION_STONE_BUTTON.get());
+        dropSelf(ModBlocks.SMOOTH_LION_STONE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.LION_STONE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.LION_COBBLESTONE_BUTTON.get());
+        dropSelf(ModBlocks.LION_COBBLESTONE_PRESSURE_PLATE.get());
+
+
 
         dropSelf(ModBlocks.BLUE_CHI_LAMP.get());
 
