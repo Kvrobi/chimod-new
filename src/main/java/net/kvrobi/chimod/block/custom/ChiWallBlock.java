@@ -2,7 +2,6 @@ package net.kvrobi.chimod.block.custom;
 
 import net.kvrobi.chimod.fluid.ModFluids;
 import net.kvrobi.chimod.item.ModItems;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
@@ -11,8 +10,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -20,7 +17,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import javax.annotation.Nullable;
-import java.util.Properties;
 
 public class ChiWallBlock extends WallBlock {
     public static final BooleanProperty CHI_WATERLOGGED = BooleanProperty.create("chi_waterlogged");
@@ -37,16 +33,16 @@ public class ChiWallBlock extends WallBlock {
     }
 
     @Override
-    @MethodsReturnNonnullByDefault
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState state = super.getStateForPlacement(context);
-        FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
-        return state.setValue(CHI_WATERLOGGED, fluidstate.getType() == ModFluids.CHI_WATER_SOURCE.get());
+        if (state != null) {
+            FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
+            return state.setValue(CHI_WATERLOGGED, fluidstate.getType() == ModFluids.CHI_WATER_SOURCE.get());
+        }
+        return null;
     }
 
-
     @Override
-    @MethodsReturnNonnullByDefault
     public FluidState getFluidState(BlockState state) {
         if (state.getValue(CHI_WATERLOGGED)) {
             return ModFluids.CHI_WATER_SOURCE.get().getSource(false);
@@ -55,7 +51,6 @@ public class ChiWallBlock extends WallBlock {
     }
 
     @Override
-    @MethodsReturnNonnullByDefault
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         if (state.getValue(CHI_WATERLOGGED)) {
             level.scheduleTick(currentPos, ModFluids.CHI_WATER_SOURCE.get(), ModFluids.CHI_WATER_SOURCE.get().getTickDelay(level));
@@ -87,7 +82,6 @@ public class ChiWallBlock extends WallBlock {
     }
 
     @Override
-    @MethodsReturnNonnullByDefault
     public ItemStack pickupBlock(@Nullable Player player, LevelAccessor level, BlockPos pos, BlockState state) {
         if (state.getValue(CHI_WATERLOGGED)) {
             level.setBlock(pos, state.setValue(CHI_WATERLOGGED, false), 3);
