@@ -31,7 +31,13 @@ public class DataGenerators {
         //generator.addProvider(event.includeServer(), new ModItemTagProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
 
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+                List.of(
+                        new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK),
+                        new LootTableProvider.SubProviderEntry(ModChestLootTables::new, LootContextParamSets.CHEST)
+                ),
+                lookupProvider));
+
+
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput, lookupProvider));
 
         generator.addProvider(event.includeServer(), new ModDatapackProvider(packOutput, lookupProvider));
@@ -41,6 +47,7 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(), new ModLangProvider(packOutput, "en_us" ));
         generator.addProvider(event.includeClient(), new ModAnimationProvider(packOutput));
         generator.addProvider(event.includeServer(), new ModFluidTagProvider(packOutput, lookupProvider, existingFileHelper));
+
     }
 
 

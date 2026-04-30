@@ -1,9 +1,7 @@
 package net.kvrobi.chimod.block;
 
 import net.kvrobi.chimod.ChiMod;
-import net.kvrobi.chimod.block.custom.ChiLampBlock;
-import net.kvrobi.chimod.block.custom.ChiWaterBlock;
-import net.kvrobi.chimod.block.custom.Orb;
+import net.kvrobi.chimod.block.custom.*;
 import net.kvrobi.chimod.fluid.ModFluids;
 import net.kvrobi.chimod.item.ModItems;
 import net.kvrobi.chimod.item.custom.ChiOrbItem;
@@ -64,40 +62,40 @@ public class ModBlocks {
 
     //non block blocks
     public static final DeferredBlock<StairBlock> LION_ROCK_TILES_STAIRS = registerBlock("lion_rock_tiles_stairs",
-            () -> new StairBlock(ModBlocks.LION_ROCK_TILES.get().defaultBlockState(),BlockBehaviour.Properties.of()
+            () -> new ChiStairBlock(ModBlocks.LION_ROCK_TILES.get().defaultBlockState(),BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<SlabBlock> LION_ROCK_TILES_SLAB = registerBlock("lion_rock_tiles_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of()
+            () -> new ChiSlabBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<StairBlock> LION_BRICKS_STAIRS = registerBlock("lion_bricks_stairs",
-            () -> new StairBlock(ModBlocks.LION_BRICKS.get().defaultBlockState(),BlockBehaviour.Properties.of()
+            () -> new ChiStairBlock(ModBlocks.LION_BRICKS.get().defaultBlockState(),BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<SlabBlock> LION_BRICKS_SLAB = registerBlock("lion_bricks_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of()
+            () -> new ChiSlabBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<StairBlock> LION_STONE_STAIRS = registerBlock("lion_stone_stairs",
-            () -> new StairBlock(ModBlocks.LION_STONE.get().defaultBlockState(),BlockBehaviour.Properties.of()
+            () -> new ChiStairBlock(ModBlocks.LION_STONE.get().defaultBlockState(),BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<SlabBlock> LION_STONE_SLAB = registerBlock("lion_stone_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of()
+            () -> new ChiSlabBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<StairBlock> SMOOTH_LION_STONE_STAIRS = registerBlock("smooth_lion_stone_stairs",
-            () -> new StairBlock(ModBlocks.SMOOTH_LION_STONE.get().defaultBlockState(),BlockBehaviour.Properties.of()
+            () -> new ChiStairBlock(ModBlocks.SMOOTH_LION_STONE.get().defaultBlockState(),BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<SlabBlock> SMOOTH_LION_STONE_SLAB = registerBlock("smooth_lion_stone_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of()
+            () -> new ChiSlabBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<StairBlock> LION_TILES_STAIRS = registerBlock("lion_tiles_stairs",
-            () -> new StairBlock(ModBlocks.LION_TILES.get().defaultBlockState(),BlockBehaviour.Properties.of()
+            () -> new ChiStairBlock(ModBlocks.LION_TILES.get().defaultBlockState(),BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<SlabBlock> LION_TILES_SLAB = registerBlock("lion_tiles_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of()
+            () -> new ChiSlabBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<StairBlock> LION_COBBLESTONE_STAIRS = registerBlock("lion_cobblestone_stairs",
-            () -> new StairBlock(ModBlocks.LION_TILES.get().defaultBlockState(),BlockBehaviour.Properties.of()
+            () -> new ChiStairBlock(ModBlocks.LION_TILES.get().defaultBlockState(),BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<SlabBlock> LION_COBBLESTONE_SLAB = registerBlock("lion_cobblestone_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of()
+            () -> new ChiSlabBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 
@@ -142,58 +140,58 @@ public class ModBlocks {
 
 
     public static final DeferredBlock<FenceBlock> LION_ROCK_TILES_FENCE = registerBlock("lion_rock_tiles_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.of()
+            () -> new ChiFenceBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceGateBlock> LION_ROCK_TILES_FENCE_GATE = registerBlock("lion_rock_tiles_fence_gate",
             () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<WallBlock> LION_ROCK_TILES_WALL = registerBlock("lion_rock_tiles_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of()
+            () -> new ChiWallBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceBlock> LION_BRICKS_FENCE = registerBlock("lion_bricks_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.of()
+            () -> new ChiFenceBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceGateBlock> LION_BRICKS_FENCE_GATE = registerBlock("lion_bricks_fence_gate",
             () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<WallBlock> LION_BRICKS_WALL = registerBlock("lion_bricks_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of()
+            () -> new ChiWallBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceBlock> LION_STONE_FENCE = registerBlock("lion_stone_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.of()
+            () -> new ChiFenceBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceGateBlock> LION_STONE_FENCE_GATE = registerBlock("lion_stone_fence_gate",
             () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<WallBlock> LION_STONE_WALL = registerBlock("lion_stone_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of()
+            () -> new ChiWallBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceBlock> SMOOTH_LION_STONE_FENCE = registerBlock("smooth_lion_stone_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.of()
+            () -> new ChiFenceBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceGateBlock> SMOOTH_LION_STONE_FENCE_GATE = registerBlock("smooth_lion_stone_fence_gate",
             () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<WallBlock> SMOOTH_LION_STONE_WALL = registerBlock("smooth_lion_stone_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of()
+            () -> new ChiWallBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceBlock> LION_TILES_FENCE = registerBlock("lion_tiles_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.of()
+            () -> new ChiFenceBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceGateBlock> LION_TILES_FENCE_GATE = registerBlock("lion_tiles_fence_gate",
             () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<WallBlock> LION_TILES_WALL = registerBlock("lion_tiles_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of()
+            () -> new ChiWallBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceBlock> LION_COBBLESTONE_FENCE = registerBlock("lion_cobblestone_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.of()
+            () -> new ChiFenceBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<FenceGateBlock> LION_COBBLESTONE_FENCE_GATE = registerBlock("lion_cobblestone_fence_gate",
             () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
     public static final DeferredBlock<WallBlock> LION_COBBLESTONE_WALL = registerBlock("lion_cobblestone_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of()
+            () -> new ChiWallBlock(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 

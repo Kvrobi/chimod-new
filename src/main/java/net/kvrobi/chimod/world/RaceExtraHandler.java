@@ -115,7 +115,7 @@ public class RaceExtraHandler {
         applySafeModifier(player.getAttribute(Attributes.MOVEMENT_SPEED), KVROBI_CHI_SPEED_MODI, -0.01, AttributeModifier.Operation.ADD_VALUE);
         applySafeModifier(player.getAttribute(Attributes.MAX_HEALTH), KVROBI_CHI_HEALTH_MODI, 2, AttributeModifier.Operation.ADD_VALUE);
         applySafeModifier(player.getAttribute(Attributes.WATER_MOVEMENT_EFFICIENCY), KVROBI_CHI_WATER_EFF_MODI, 0.5, AttributeModifier.Operation.ADD_VALUE);
-        applySafeModifier(player.getAttribute(NeoForgeMod.SWIM_SPEED), KVROBI_CHI_SWIM_SPD_MODI, 0., AttributeModifier.Operation.ADD_VALUE);
+        applySafeModifier(player.getAttribute(NeoForgeMod.SWIM_SPEED), KVROBI_CHI_SWIM_SPD_MODI, 0.5, AttributeModifier.Operation.ADD_VALUE);
         applySafeModifier(player.getAttribute(Attributes.OXYGEN_BONUS), KVROBI_CHI_OXY_BONUS_MODI, 6., AttributeModifier.Operation.ADD_VALUE);
     }
 
