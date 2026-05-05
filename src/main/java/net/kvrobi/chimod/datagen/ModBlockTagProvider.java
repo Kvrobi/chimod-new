@@ -65,6 +65,38 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SMOOTH_LION_STONE_WALL.get())
                 .add(ModBlocks.SMOOTH_LION_STONE_BUTTON.get())
                 .add(ModBlocks.SMOOTH_LION_STONE_PRESSURE_PLATE.get())
+                .add(ModBlocks.CROCODILE_TILES.get())
+                .add(ModBlocks.CROCODILE_TILES_SLAB.get())
+                .add(ModBlocks.CROCODILE_TILES_STAIRS.get())
+                .add(ModBlocks.CROCODILE_TILES_FENCE.get())
+                .add(ModBlocks.CROCODILE_TILES_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_TILES_WALL.get())
+                .add(ModBlocks.CROCODILE_TILES_BUTTON.get())
+                .add(ModBlocks.CROCODILE_TILES_PRESSURE_PLATE.get())
+                .add(ModBlocks.CROCODILE_BRICKS.get())
+                .add(ModBlocks.CROCODILE_BRICKS_SLAB.get())
+                .add(ModBlocks.CROCODILE_BRICKS_STAIRS.get())
+                .add(ModBlocks.CROCODILE_BRICKS_FENCE.get())
+                .add(ModBlocks.CROCODILE_BRICKS_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_BRICKS_WALL.get())
+                .add(ModBlocks.CROCODILE_BRICKS_BUTTON.get())
+                .add(ModBlocks.CROCODILE_BRICKS_PRESSURE_PLATE.get())
+                .add(ModBlocks.CROCODILE_STONE.get())
+                .add(ModBlocks.CROCODILE_STONE_SLAB.get())
+                .add(ModBlocks.CROCODILE_STONE_STAIRS.get())
+                .add(ModBlocks.CROCODILE_STONE_FENCE.get())
+                .add(ModBlocks.CROCODILE_STONE_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_STONE_WALL.get())
+                .add(ModBlocks.CROCODILE_STONE_BUTTON.get())
+                .add(ModBlocks.CROCODILE_STONE_PRESSURE_PLATE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_SLAB.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_STAIRS.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE_GATE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_WALL.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_BUTTON.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_PRESSURE_PLATE.get())
                 .add(ModBlocks.BLUE_CHI_LAMP.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.RAW_CHI_BLOCK.get()).add(ModBlocks.CHI_ORE_BLOCK.get());
@@ -127,6 +159,54 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SMOOTH_LION_STONE_PRESSURE_PLATE.get())
                 .add(ModBlocks.LION_COBBLESTONE_PRESSURE_PLATE.get())
 
+                .add(ModBlocks.CROCODILE_TILES.get())
+                .add(ModBlocks.CROCODILE_BRICKS.get())
+                .add(ModBlocks.CROCODILE_STONE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE.get())
+
+                .add(ModBlocks.CROCODILE_TILES_SLAB.get())
+                .add(ModBlocks.CROCODILE_BRICKS_SLAB.get())
+                .add(ModBlocks.CROCODILE_STONE_SLAB.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_SLAB.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_SLAB.get())
+
+                .add(ModBlocks.CROCODILE_TILES_STAIRS.get())
+                .add(ModBlocks.CROCODILE_BRICKS_STAIRS.get())
+                .add(ModBlocks.CROCODILE_STONE_STAIRS.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_STAIRS.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_STAIRS.get())
+
+                .add(ModBlocks.CROCODILE_TILES_FENCE.get())
+                .add(ModBlocks.CROCODILE_BRICKS_FENCE.get())
+                .add(ModBlocks.CROCODILE_STONE_FENCE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_FENCE.get())
+
+                .add(ModBlocks.CROCODILE_TILES_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_BRICKS_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_STONE_FENCE_GATE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_FENCE_GATE.get())
+
+                .add(ModBlocks.CROCODILE_TILES_WALL.get())
+                .add(ModBlocks.CROCODILE_BRICKS_WALL.get())
+                .add(ModBlocks.CROCODILE_STONE_WALL.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_WALL.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_WALL.get())
+
+                .add(ModBlocks.CROCODILE_TILES_BUTTON.get())
+                .add(ModBlocks.CROCODILE_BRICKS_BUTTON.get())
+                .add(ModBlocks.CROCODILE_STONE_BUTTON.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_BUTTON.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_BUTTON.get())
+
+                .add(ModBlocks.CROCODILE_TILES_PRESSURE_PLATE.get())
+                .add(ModBlocks.CROCODILE_BRICKS_PRESSURE_PLATE.get())
+                .add(ModBlocks.CROCODILE_STONE_PRESSURE_PLATE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_PRESSURE_PLATE.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_PRESSURE_PLATE.get())
+
                 .add(ModBlocks.LION_ROCK_TILES_DOOR.get())
 
                 .add(ModBlocks.LION_ROCK_TILES_TRAPDOOR.get());
@@ -136,21 +216,36 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.LION_TILES_FENCE.get())
                 .add(ModBlocks.LION_BRICKS_FENCE.get())
                 .add(ModBlocks.LION_STONE_FENCE.get())
-                .add(ModBlocks.SMOOTH_LION_STONE_FENCE.get());
+                .add(ModBlocks.SMOOTH_LION_STONE_FENCE.get())
+                .add(ModBlocks.CROCODILE_TILES_FENCE.get())
+                .add(ModBlocks.CROCODILE_BRICKS_FENCE.get())
+                .add(ModBlocks.CROCODILE_STONE_FENCE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_FENCE.get());
 
         tag(BlockTags.FENCE_GATES).add(ModBlocks.LION_ROCK_TILES_FENCE_GATE.get())
                 .add(ModBlocks.LION_ROCK_TILES_FENCE_GATE.get())
                 .add(ModBlocks.LION_TILES_FENCE_GATE.get())
                 .add(ModBlocks.LION_BRICKS_FENCE_GATE.get())
                 .add(ModBlocks.LION_STONE_FENCE_GATE.get())
-                .add(ModBlocks.SMOOTH_LION_STONE_FENCE_GATE.get());
+                .add(ModBlocks.SMOOTH_LION_STONE_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_TILES_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_BRICKS_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_STONE_FENCE_GATE.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE_GATE.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_FENCE_GATE.get());
 
         tag(BlockTags.WALLS).add(ModBlocks.LION_ROCK_TILES_WALL.get())
                 .add(ModBlocks.LION_ROCK_TILES_WALL.get())
                 .add(ModBlocks.LION_TILES_WALL.get())
                 .add(ModBlocks.LION_BRICKS_WALL.get())
                 .add(ModBlocks.LION_STONE_WALL.get())
-                .add(ModBlocks.SMOOTH_LION_STONE_WALL.get());
+                .add(ModBlocks.SMOOTH_LION_STONE_WALL.get())
+                .add(ModBlocks.CROCODILE_TILES_WALL.get())
+                .add(ModBlocks.CROCODILE_BRICKS_WALL.get())
+                .add(ModBlocks.CROCODILE_STONE_WALL.get())
+                .add(ModBlocks.SMOOTH_CROCODILE_STONE_WALL.get())
+                .add(ModBlocks.CROCODILE_COBBLESTONE_WALL.get());
 
     }
 }

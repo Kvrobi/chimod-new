@@ -15,6 +15,7 @@ public class ModKeyBindings {
             GLFW.GLFW_KEY_I,
             KEY_CATEGORY_CHI
     );
+
     public static final KeyMapping ACTIVATE_ARMOR = new KeyMapping(
             "key.kvrobichimod.toggle_armor",
             KeyConflictContext.IN_GAME,

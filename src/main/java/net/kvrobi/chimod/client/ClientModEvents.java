@@ -5,6 +5,7 @@ import net.kvrobi.chimod.client.renderer.ChiArmorRenderer;
 import net.kvrobi.chimod.client.renderer.ChiWeaponRenderer;
 import net.kvrobi.chimod.client.renderer.race.RaceLayerWrapper;
 import net.kvrobi.chimod.client.screen.ChiMenuScreen;
+import net.kvrobi.chimod.client.screen.LionCraftingScreen;
 import net.kvrobi.chimod.client.screen.RaceSelectionScreen;
 import net.kvrobi.chimod.fluid.ModFluids;
 import net.kvrobi.chimod.item.ModItems;
@@ -55,6 +56,7 @@ public class ClientModEvents {
         ChiMod.LOGGER.info("Registering Screen for: " + ModMenuTypes.CHI_MENU.getId());
         event.register(ModMenuTypes.CHI_MENU.get(), ChiMenuScreen::new);
         event.register(ModMenuTypes.RACE_MENU.get(), RaceSelectionScreen::new);
+        event.register(ModMenuTypes.LION_CRAFTING_MENU.get(), LionCraftingScreen::new);
     }
 
     private static void registerSimpleFluid(RegisterClientExtensionsEvent event, FluidType type, int tint) {

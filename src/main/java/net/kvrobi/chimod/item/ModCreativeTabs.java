@@ -24,6 +24,7 @@ public class ModCreativeTabs {
                 output.accept(ModBlocks.CHI_ORE_BLOCK);
                 output.accept(ModBlocks.FIRE_CHI_ORB_BLOCK);
                 output.accept(ModBlocks.DEEPSLATE_CHI_ORE_BLOCK);
+                output.accept(ModBlocks.LION_CRAFTING_TABLE.get());
 
                 output.accept(ModBlocks.LION_ROCK_TILES);
                 output.accept(ModBlocks.LION_ROCK_TILES_STAIRS);
@@ -80,6 +81,51 @@ public class ModCreativeTabs {
                 output.accept(ModBlocks.LION_COBBLESTONE_FENCE_GATE);
                 output.accept(ModBlocks.LION_COBBLESTONE_PRESSURE_PLATE);
                 output.accept(ModBlocks.LION_COBBLESTONE_BUTTON);
+
+                output.accept(ModBlocks.CROCODILE_TILES);
+                output.accept(ModBlocks.CROCODILE_TILES_STAIRS);
+                output.accept(ModBlocks.CROCODILE_TILES_SLAB);
+                output.accept(ModBlocks.CROCODILE_TILES_WALL);
+                output.accept(ModBlocks.CROCODILE_TILES_FENCE);
+                output.accept(ModBlocks.CROCODILE_TILES_FENCE_GATE);
+                output.accept(ModBlocks.CROCODILE_TILES_PRESSURE_PLATE);
+                output.accept(ModBlocks.CROCODILE_TILES_BUTTON);
+
+                output.accept(ModBlocks.CROCODILE_BRICKS);
+                output.accept(ModBlocks.CROCODILE_BRICKS_STAIRS);
+                output.accept(ModBlocks.CROCODILE_BRICKS_SLAB);
+                output.accept(ModBlocks.CROCODILE_BRICKS_WALL);
+                output.accept(ModBlocks.CROCODILE_BRICKS_FENCE);
+                output.accept(ModBlocks.CROCODILE_BRICKS_FENCE_GATE);
+                output.accept(ModBlocks.CROCODILE_BRICKS_PRESSURE_PLATE);
+                output.accept(ModBlocks.CROCODILE_BRICKS_BUTTON);
+
+                output.accept(ModBlocks.CROCODILE_STONE);
+                output.accept(ModBlocks.CROCODILE_STONE_STAIRS);
+                output.accept(ModBlocks.CROCODILE_STONE_SLAB);
+                output.accept(ModBlocks.CROCODILE_STONE_WALL);
+                output.accept(ModBlocks.CROCODILE_STONE_FENCE);
+                output.accept(ModBlocks.CROCODILE_STONE_FENCE_GATE);
+                output.accept(ModBlocks.CROCODILE_STONE_PRESSURE_PLATE);
+
+                output.accept(ModBlocks.SMOOTH_CROCODILE_STONE);
+                output.accept(ModBlocks.SMOOTH_CROCODILE_STONE_STAIRS);
+                output.accept(ModBlocks.SMOOTH_CROCODILE_STONE_SLAB);
+                output.accept(ModBlocks.SMOOTH_CROCODILE_STONE_WALL);
+                output.accept(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE);
+                output.accept(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE_GATE);
+                output.accept(ModBlocks.SMOOTH_CROCODILE_STONE_PRESSURE_PLATE);
+                output.accept(ModBlocks.SMOOTH_CROCODILE_STONE_BUTTON);
+
+                output.accept(ModBlocks.CROCODILE_STONE_BUTTON);
+                output.accept(ModBlocks.CROCODILE_COBBLESTONE);
+                output.accept(ModBlocks.CROCODILE_COBBLESTONE_STAIRS);
+                output.accept(ModBlocks.CROCODILE_COBBLESTONE_SLAB);
+                output.accept(ModBlocks.CROCODILE_COBBLESTONE_WALL);
+                output.accept(ModBlocks.CROCODILE_COBBLESTONE_FENCE);
+                output.accept(ModBlocks.CROCODILE_COBBLESTONE_FENCE_GATE);
+                output.accept(ModBlocks.CROCODILE_COBBLESTONE_PRESSURE_PLATE);
+                output.accept(ModBlocks.CROCODILE_COBBLESTONE_BUTTON);
 
                 output.accept(ModBlocks.BLUE_CHI_LAMP);
 

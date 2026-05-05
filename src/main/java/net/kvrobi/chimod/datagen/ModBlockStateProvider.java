@@ -32,6 +32,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.LION_STONE);
         blockWithItem(ModBlocks.SMOOTH_LION_STONE);
         blockWithItem(ModBlocks.LION_COBBLESTONE);
+        blockWithItem(ModBlocks.CROCODILE_TILES);
+        blockWithItem(ModBlocks.CROCODILE_BRICKS);
+        blockWithItem(ModBlocks.CROCODILE_STONE);
+        blockWithItem(ModBlocks.SMOOTH_CROCODILE_STONE);
+        blockWithItem(ModBlocks.CROCODILE_COBBLESTONE);
+
 
 
         stairsBlock(ModBlocks.LION_BRICKS_STAIRS.get(), blockTexture(ModBlocks.LION_BRICKS.get()));
@@ -46,6 +52,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlock(ModBlocks.LION_ROCK_TILES_SLAB.get(), blockTexture(ModBlocks.LION_ROCK_TILES.get()), blockTexture(ModBlocks.LION_ROCK_TILES.get()));
         stairsBlock(ModBlocks.LION_COBBLESTONE_STAIRS.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
         slabBlock(ModBlocks.LION_COBBLESTONE_SLAB.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
+        stairsBlock(ModBlocks.CROCODILE_BRICKS_STAIRS.get(), blockTexture(ModBlocks.CROCODILE_BRICKS.get()));
+        slabBlock(ModBlocks.CROCODILE_BRICKS_SLAB.get(), blockTexture(ModBlocks.CROCODILE_BRICKS.get()), blockTexture(ModBlocks.CROCODILE_BRICKS.get()));
+        stairsBlock(ModBlocks.CROCODILE_STONE_STAIRS.get(), blockTexture(ModBlocks.CROCODILE_STONE.get()));
+        slabBlock(ModBlocks.CROCODILE_STONE_SLAB.get(), blockTexture(ModBlocks.CROCODILE_STONE.get()), blockTexture(ModBlocks.CROCODILE_STONE.get()));
+        stairsBlock(ModBlocks.SMOOTH_CROCODILE_STONE_STAIRS.get(), blockTexture(ModBlocks.SMOOTH_CROCODILE_STONE.get()));
+        slabBlock(ModBlocks.SMOOTH_CROCODILE_STONE_SLAB.get(), blockTexture(ModBlocks.SMOOTH_CROCODILE_STONE.get()), blockTexture(ModBlocks.SMOOTH_CROCODILE_STONE.get()));
+        stairsBlock(ModBlocks.CROCODILE_TILES_STAIRS.get(), blockTexture(ModBlocks.CROCODILE_TILES.get()));
+        slabBlock(ModBlocks.CROCODILE_TILES_SLAB.get(), blockTexture(ModBlocks.CROCODILE_TILES.get()), blockTexture(ModBlocks.CROCODILE_TILES.get()));
+        stairsBlock(ModBlocks.CROCODILE_COBBLESTONE_STAIRS.get(), blockTexture(ModBlocks.CROCODILE_COBBLESTONE.get()));
+        slabBlock(ModBlocks.CROCODILE_COBBLESTONE_SLAB.get(), blockTexture(ModBlocks.CROCODILE_COBBLESTONE.get()), blockTexture(ModBlocks.CROCODILE_COBBLESTONE.get()));
 
 
 
@@ -61,6 +77,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         pressurePlateBlock(ModBlocks.SMOOTH_LION_STONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.SMOOTH_LION_STONE.get()));
         buttonBlock(ModBlocks.LION_COBBLESTONE_BUTTON.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
         pressurePlateBlock(ModBlocks.LION_COBBLESTONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
+        buttonBlock(ModBlocks.CROCODILE_TILES_BUTTON.get(), blockTexture(ModBlocks.CROCODILE_TILES.get()));
+        pressurePlateBlock(ModBlocks.CROCODILE_TILES_PRESSURE_PLATE.get(), blockTexture(ModBlocks.CROCODILE_TILES.get()));
+        buttonBlock(ModBlocks.CROCODILE_BRICKS_BUTTON.get(), blockTexture(ModBlocks.CROCODILE_BRICKS.get()));
+        pressurePlateBlock(ModBlocks.CROCODILE_BRICKS_PRESSURE_PLATE.get(), blockTexture(ModBlocks.CROCODILE_BRICKS.get()));
+        buttonBlock(ModBlocks.CROCODILE_STONE_BUTTON.get(), blockTexture(ModBlocks.CROCODILE_STONE.get()));
+        pressurePlateBlock(ModBlocks.CROCODILE_STONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.CROCODILE_STONE.get()));
+        buttonBlock(ModBlocks.SMOOTH_CROCODILE_STONE_BUTTON.get(), blockTexture(ModBlocks.SMOOTH_CROCODILE_STONE.get()));
+        pressurePlateBlock(ModBlocks.SMOOTH_CROCODILE_STONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.SMOOTH_CROCODILE_STONE.get()));
+        buttonBlock(ModBlocks.CROCODILE_COBBLESTONE_BUTTON.get(), blockTexture(ModBlocks.CROCODILE_COBBLESTONE.get()));
+        pressurePlateBlock(ModBlocks.CROCODILE_COBBLESTONE_PRESSURE_PLATE.get(), blockTexture(ModBlocks.CROCODILE_COBBLESTONE.get()));
 
 
 
@@ -81,6 +107,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(ModBlocks.LION_STONE_WALL.get(), blockTexture(ModBlocks.LION_STONE.get()));
         fenceGateBlock(ModBlocks.LION_COBBLESTONE_FENCE_GATE.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
         wallBlock(ModBlocks.LION_COBBLESTONE_WALL.get(), blockTexture(ModBlocks.LION_COBBLESTONE.get()));
+        fenceBlock(ModBlocks.CROCODILE_TILES_FENCE.get(), blockTexture(ModBlocks.CROCODILE_TILES.get()));
+        fenceGateBlock(ModBlocks.CROCODILE_TILES_FENCE_GATE.get(), blockTexture(ModBlocks.CROCODILE_TILES.get()));
+        wallBlock(ModBlocks.CROCODILE_TILES_WALL.get(), blockTexture(ModBlocks.CROCODILE_TILES.get()));
+        fenceBlock(ModBlocks.CROCODILE_BRICKS_FENCE.get(), blockTexture(ModBlocks.CROCODILE_BRICKS.get()));
+        fenceGateBlock(ModBlocks.CROCODILE_BRICKS_FENCE_GATE.get(), blockTexture(ModBlocks.CROCODILE_BRICKS.get()));
+        wallBlock(ModBlocks.CROCODILE_BRICKS_WALL.get(), blockTexture(ModBlocks.CROCODILE_BRICKS.get()));
+        fenceBlock(ModBlocks.CROCODILE_STONE_FENCE.get(), blockTexture(ModBlocks.CROCODILE_STONE.get()));
+        fenceGateBlock(ModBlocks.CROCODILE_STONE_FENCE_GATE.get(), blockTexture(ModBlocks.CROCODILE_STONE.get()));
+        fenceBlock(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE.get(), blockTexture(ModBlocks.SMOOTH_CROCODILE_STONE.get()));
+        fenceGateBlock(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE_GATE.get(), blockTexture(ModBlocks.SMOOTH_CROCODILE_STONE.get()));
+        wallBlock(ModBlocks.SMOOTH_CROCODILE_STONE_WALL.get(), blockTexture(ModBlocks.SMOOTH_CROCODILE_STONE.get()));
+        wallBlock(ModBlocks.CROCODILE_STONE_WALL.get(), blockTexture(ModBlocks.CROCODILE_STONE.get()));
+        fenceGateBlock(ModBlocks.CROCODILE_COBBLESTONE_FENCE_GATE.get(), blockTexture(ModBlocks.CROCODILE_COBBLESTONE.get()));
+        wallBlock(ModBlocks.CROCODILE_COBBLESTONE_WALL.get(), blockTexture(ModBlocks.CROCODILE_COBBLESTONE.get()));
 
 
 
@@ -113,6 +153,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.LION_COBBLESTONE_STAIRS);
         blockItem(ModBlocks.LION_COBBLESTONE_SLAB);
         blockItem(ModBlocks.LION_COBBLESTONE_FENCE_GATE);
+        blockItem(ModBlocks.CROCODILE_TILES_PRESSURE_PLATE);
+        blockItem(ModBlocks.CROCODILE_TILES_STAIRS);
+        blockItem(ModBlocks.CROCODILE_TILES_SLAB);
+        blockItem(ModBlocks.CROCODILE_TILES_FENCE_GATE);
+        blockItem(ModBlocks.CROCODILE_BRICKS_PRESSURE_PLATE);
+        blockItem(ModBlocks.CROCODILE_BRICKS_STAIRS);
+        blockItem(ModBlocks.CROCODILE_BRICKS_SLAB);
+        blockItem(ModBlocks.CROCODILE_BRICKS_FENCE_GATE);
+        blockItem(ModBlocks.CROCODILE_STONE_PRESSURE_PLATE);
+        blockItem(ModBlocks.CROCODILE_STONE_STAIRS);
+        blockItem(ModBlocks.CROCODILE_STONE_SLAB);
+        blockItem(ModBlocks.CROCODILE_STONE_FENCE_GATE);
+        blockItem(ModBlocks.SMOOTH_CROCODILE_STONE_PRESSURE_PLATE);
+        blockItem(ModBlocks.SMOOTH_CROCODILE_STONE_STAIRS);
+        blockItem(ModBlocks.SMOOTH_CROCODILE_STONE_SLAB);
+        blockItem(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE_GATE);
+        blockItem(ModBlocks.CROCODILE_COBBLESTONE_PRESSURE_PLATE);
+        blockItem(ModBlocks.CROCODILE_COBBLESTONE_STAIRS);
+        blockItem(ModBlocks.CROCODILE_COBBLESTONE_SLAB);
+        blockItem(ModBlocks.CROCODILE_COBBLESTONE_FENCE_GATE);
 
 
         blockItem(ModBlocks.LION_ROCK_TILES_TRAPDOOR, "_bottom");
@@ -121,6 +181,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
 
         lampBlock(ModBlocks.BLUE_CHI_LAMP, "blue_chi_lamp");
+        blockWithItem(ModBlocks.LION_CRAFTING_TABLE);
 
 
         BlockModelBuilder fire_chi_model = orbModel("fire_chi_orb_block", modLoc("block/fire_chi_particle"), modLoc("block/fire_chi_orb_block_top"), modLoc("block/fire_chi_orb_block_side"));

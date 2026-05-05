@@ -56,6 +56,21 @@ public class ModItemModelProvider extends ItemModelProvider {
         buttonItem(ModBlocks.LION_COBBLESTONE_BUTTON, ModBlocks.LION_COBBLESTONE);
         fenceItem(ModBlocks.LION_COBBLESTONE_FENCE, ModBlocks.LION_COBBLESTONE);
         wallItem(ModBlocks.LION_COBBLESTONE_WALL, ModBlocks.LION_COBBLESTONE);
+        buttonItem(ModBlocks.CROCODILE_TILES_BUTTON, ModBlocks.CROCODILE_TILES);
+        fenceItem(ModBlocks.CROCODILE_TILES_FENCE, ModBlocks.CROCODILE_TILES);
+        wallItem(ModBlocks.CROCODILE_TILES_WALL, ModBlocks.CROCODILE_TILES);
+        buttonItem(ModBlocks.CROCODILE_BRICKS_BUTTON, ModBlocks.CROCODILE_BRICKS);
+        fenceItem(ModBlocks.CROCODILE_BRICKS_FENCE, ModBlocks.CROCODILE_BRICKS);
+        wallItem(ModBlocks.CROCODILE_BRICKS_WALL, ModBlocks.CROCODILE_BRICKS);
+        buttonItem(ModBlocks.CROCODILE_STONE_BUTTON, ModBlocks.CROCODILE_STONE);
+        fenceItem(ModBlocks.CROCODILE_STONE_FENCE, ModBlocks.CROCODILE_STONE);
+        buttonItem(ModBlocks.SMOOTH_CROCODILE_STONE_BUTTON, ModBlocks.SMOOTH_CROCODILE_STONE);
+        fenceItem(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE, ModBlocks.SMOOTH_CROCODILE_STONE);
+        wallItem(ModBlocks.SMOOTH_CROCODILE_STONE_WALL, ModBlocks.SMOOTH_CROCODILE_STONE);
+        wallItem(ModBlocks.CROCODILE_STONE_WALL, ModBlocks.CROCODILE_STONE);
+        buttonItem(ModBlocks.CROCODILE_COBBLESTONE_BUTTON, ModBlocks.CROCODILE_COBBLESTONE);
+        fenceItem(ModBlocks.CROCODILE_COBBLESTONE_FENCE, ModBlocks.CROCODILE_COBBLESTONE);
+        wallItem(ModBlocks.CROCODILE_COBBLESTONE_WALL, ModBlocks.CROCODILE_COBBLESTONE);
 
         chiLampItem(ModBlocks.BLUE_CHI_LAMP);
 

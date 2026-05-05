@@ -1,16 +1,24 @@
 package net.kvrobi.chimod.datagen;
 
+import net.kvrobi.chimod.ChiMod;
 import net.kvrobi.chimod.block.ModBlocks;
 import net.kvrobi.chimod.item.ModItems;
+import net.kvrobi.chimod.world.recipe.ShapedLionCraftingRecipe;
+import net.kvrobi.chimod.world.recipe.ShapelessLionCraftingRecipe;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.ShapedRecipePattern;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
@@ -93,5 +101,48 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         buttonBuilder(ModBlocks.LION_ROCK_TILES_BUTTON.get(), Ingredient.of(ModBlocks.LION_ROCK_TILES)).group("lion_rock_tiles")
                 .unlockedBy("has_lion_rock_tiles", has(ModBlocks.LION_ROCK_TILES)).save(recipeOutput);
+
+
+
+
+
+        /// MY CUSTOM RECIPES
+
+        /// THE SHAPELESS RECIPES FOR LION CRAFTING
+
+        NonNullList<Ingredient> shapelessInputs = NonNullList.create();
+        shapelessInputs.add(Ingredient.of(ModItems.BANANA.get()));
+        shapelessInputs.add(Ingredient.of(ModBlocks.CHI_ORB_BLOCK.get()));
+
+        ShapelessLionCraftingRecipe shapelessRecipe = new ShapelessLionCraftingRecipe(
+                shapelessInputs,
+                new ItemStack(ModItems.LION_CLUBIUS_MAXIMUS.get(), 1)
+        );
+
+        recipeOutput.accept(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "lion_clubius_maximus_1"), shapelessRecipe, null);
+
+
+        /// THE SHAPED RECIPES FOR LION CRAFTING
+
+
+        Map<Character, Ingredient> key = Map.of(
+                'F', Ingredient.of(ModBlocks.CHI_ORB_BLOCK.get()),
+                'S', Ingredient.of(Items.STICK)
+        );
+
+        ShapedRecipePattern pattern = ShapedRecipePattern.of(key, List.of(
+                " F ",
+                " F ",
+                " S "
+        ));
+
+        ShapedLionCraftingRecipe shapedRecipe = new ShapedLionCraftingRecipe(
+                pattern.width(),
+                pattern.height(),
+                pattern.ingredients(),
+                new ItemStack(ModItems.LION_VALIOUS_GRAY.get(), 1)
+        );
+
+        recipeOutput.accept(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "lion_sword"), shapedRecipe, null);
     }
 }

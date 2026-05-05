@@ -5,6 +5,11 @@
     "kvrobichimod:lion_tiles_wall",
     "kvrobichimod:lion_bricks_wall",
     "kvrobichimod:lion_stone_wall",
-    "kvrobichimod:smooth_lion_stone_wall"
+    "kvrobichimod:smooth_lion_stone_wall",
+    "kvrobichimod:crocodile_tiles_wall",
+    "kvrobichimod:crocodile_bricks_wall",
+    "kvrobichimod:crocodile_stone_wall",
+    "kvrobichimod:smooth_crocodile_stone_wall",
+    "kvrobichimod:crocodile_cobblestone_wall"
   ]
 }

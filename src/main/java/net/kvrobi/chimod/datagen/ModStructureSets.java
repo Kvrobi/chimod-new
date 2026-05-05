@@ -1,5 +1,6 @@
-package net.kvrobi.chimod.worldgen;
+package net.kvrobi.chimod.datagen;
 
+import net.kvrobi.chimod.ChiMod;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -11,8 +12,9 @@ import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStruct
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
 
 public class ModStructureSets {
-    public static final ResourceKey<StructureSet> LION_HOUSE_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath("kvrobichimod", "lion_small_houses"));
-    public static final ResourceKey<StructureSet> LION_FORT_RUIN_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath("kvrobichimod", "lion_fort_ruin"));
+    public static final ResourceKey<StructureSet> LION_HOUSE_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "lion_small_houses"));
+    public static final ResourceKey<StructureSet> LION_FORT_RUIN_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "lion_fort_ruins"));
+    public static final ResourceKey<StructureSet> CROCODILE_FORT_RUIN_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID, "crocodile_fort_ruins"));
 
     public static void bootstrap(BootstrapContext<StructureSet> context) {
         HolderGetter<Structure> structureGetter = context.lookup(Registries.STRUCTURE);
@@ -23,7 +25,7 @@ public class ModStructureSets {
                         32,
                         8,
                         RandomSpreadType.LINEAR,
-                        19483724
+                        194837245
                 )
         ));
 
@@ -33,7 +35,17 @@ public class ModStructureSets {
                         64,
                         16,
                         RandomSpreadType.LINEAR,
-                        19483724
+                        194837242
+                )
+        ));
+
+        context.register(CROCODILE_FORT_RUIN_SET, new StructureSet(
+                structureGetter.getOrThrow(ModStructures.CROCODILE_FORT_RUIN_STRUCTURE),
+                new RandomSpreadStructurePlacement(
+                        64,
+                        16,
+                        RandomSpreadType.LINEAR,
+                        194837642
                 )
         ));
     }

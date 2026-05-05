@@ -1,5 +1,6 @@
-package net.kvrobi.chimod.worldgen;
+package net.kvrobi.chimod.datagen;
 
+import net.kvrobi.chimod.worldgen.structure.WaterJigsawStructure;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -25,6 +26,7 @@ import java.util.Optional;
 public class ModStructures {
     public static final ResourceKey<Structure> LION_HOUSE_STRUCTURE1 = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath("kvrobichimod", "lion_small_house1"));
     public static final ResourceKey<Structure> LION_FORT_RUIN_STRUCTURE = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath("kvrobichimod", "lion_fort_ruin"));
+    public static final ResourceKey<Structure> CROCODILE_FORT_RUIN_STRUCTURE = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath("kvrobichimod", "crocodile_fort_ruin"));
 
     public static void bootstrap(BootstrapContext<Structure> context) {
         HolderGetter<Biome> biomeGetter = context.lookup(Registries.BIOME);
@@ -66,6 +68,16 @@ public class ModStructures {
                 List.of(),
                 DimensionPadding.ZERO,
                 LiquidSettings.IGNORE_WATERLOGGING
+        ));
+
+        context.register(CROCODILE_FORT_RUIN_STRUCTURE, new WaterJigsawStructure(
+                new Structure.StructureSettings(
+                        biomeGetter.getOrThrow(BiomeTags.HAS_SWAMP_HUT),
+                        Map.of(),
+                        GenerationStep.Decoration.SURFACE_STRUCTURES,
+                        TerrainAdjustment.NONE
+                ),
+                poolGetter.getOrThrow(ModTemplatePools.CROCODILE_FORT_RUIN_POOL)
         ));
     }
 }

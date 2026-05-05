@@ -51,8 +51,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LION_COBBLESTONE_STAIRS.get());
         add(ModBlocks.LION_COBBLESTONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.LION_COBBLESTONE_SLAB.get()));
 
-
-
         dropSelf(ModBlocks.LION_ROCK_TILES_WALL.get());
         dropSelf(ModBlocks.LION_ROCK_TILES_FENCE.get());
         dropSelf(ModBlocks.LION_ROCK_TILES_FENCE_GATE.get());
@@ -71,14 +69,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LION_COBBLESTONE_WALL.get());
         dropSelf(ModBlocks.LION_COBBLESTONE_FENCE.get());
         dropSelf(ModBlocks.LION_COBBLESTONE_FENCE_GATE.get());
-
-
-
-        add(ModBlocks.LION_ROCK_TILES_DOOR.get(), block -> createDoorTable(ModBlocks.LION_ROCK_TILES_DOOR.get()));
-        dropSelf(ModBlocks.LION_ROCK_TILES_TRAPDOOR.get());
-
-
-
         dropSelf(ModBlocks.LION_ROCK_TILES_BUTTON.get());
         dropSelf(ModBlocks.LION_ROCK_TILES_PRESSURE_PLATE.get());
         dropSelf(ModBlocks.LION_BRICKS_BUTTON.get());
@@ -93,8 +83,60 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LION_COBBLESTONE_PRESSURE_PLATE.get());
 
 
+        dropSelf(ModBlocks.SMOOTH_CROCODILE_STONE.get());
+        dropSelf(ModBlocks.CROCODILE_BRICKS.get());
+        dropSelf(ModBlocks.CROCODILE_TILES.get());
+        dropSelf(ModBlocks.CROCODILE_COBBLESTONE.get());
+
+        add(ModBlocks.CROCODILE_STONE.get(), block -> createSingleItemTableWithSilkTouch(block, ModBlocks.CROCODILE_COBBLESTONE.get()));
+
+
+        dropSelf(ModBlocks.CROCODILE_TILES_STAIRS.get());
+        add(ModBlocks.CROCODILE_TILES_SLAB.get(), block -> createSlabItemTable(ModBlocks.CROCODILE_TILES_SLAB.get()));
+        dropSelf(ModBlocks.CROCODILE_BRICKS_STAIRS.get());
+        add(ModBlocks.CROCODILE_BRICKS_SLAB.get(), block -> createSlabItemTable(ModBlocks.CROCODILE_BRICKS_SLAB.get()));
+        dropSelf(ModBlocks.CROCODILE_STONE_STAIRS.get());
+        dropSelf(ModBlocks.SMOOTH_CROCODILE_STONE_STAIRS.get());
+        add(ModBlocks.SMOOTH_CROCODILE_STONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.SMOOTH_CROCODILE_STONE_SLAB.get()));
+        add(ModBlocks.CROCODILE_STONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.CROCODILE_STONE_SLAB.get()));
+        dropSelf(ModBlocks.CROCODILE_COBBLESTONE_STAIRS.get());
+        add(ModBlocks.CROCODILE_COBBLESTONE_SLAB.get(), block -> createSlabItemTable(ModBlocks.CROCODILE_COBBLESTONE_SLAB.get()));
+
+        dropSelf(ModBlocks.CROCODILE_BRICKS_WALL.get());
+        dropSelf(ModBlocks.CROCODILE_BRICKS_FENCE.get());
+        dropSelf(ModBlocks.CROCODILE_BRICKS_FENCE_GATE.get());
+        dropSelf(ModBlocks.CROCODILE_TILES_WALL.get());
+        dropSelf(ModBlocks.CROCODILE_TILES_FENCE.get());
+        dropSelf(ModBlocks.CROCODILE_TILES_FENCE_GATE.get());
+        dropSelf(ModBlocks.CROCODILE_STONE_WALL.get());
+        dropSelf(ModBlocks.CROCODILE_STONE_FENCE.get());
+        dropSelf(ModBlocks.SMOOTH_CROCODILE_STONE_WALL.get());
+        dropSelf(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE.get());
+        dropSelf(ModBlocks.SMOOTH_CROCODILE_STONE_FENCE_GATE.get());
+        dropSelf(ModBlocks.CROCODILE_STONE_FENCE_GATE.get());
+        dropSelf(ModBlocks.CROCODILE_COBBLESTONE_WALL.get());
+        dropSelf(ModBlocks.CROCODILE_COBBLESTONE_FENCE.get());
+        dropSelf(ModBlocks.CROCODILE_COBBLESTONE_FENCE_GATE.get());
+        dropSelf(ModBlocks.CROCODILE_BRICKS_BUTTON.get());
+        dropSelf(ModBlocks.CROCODILE_BRICKS_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.CROCODILE_TILES_BUTTON.get());
+        dropSelf(ModBlocks.CROCODILE_TILES_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.CROCODILE_STONE_BUTTON.get());
+        dropSelf(ModBlocks.SMOOTH_CROCODILE_STONE_BUTTON.get());
+        dropSelf(ModBlocks.SMOOTH_CROCODILE_STONE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.CROCODILE_STONE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.CROCODILE_COBBLESTONE_BUTTON.get());
+        dropSelf(ModBlocks.CROCODILE_COBBLESTONE_PRESSURE_PLATE.get());
+
+
+
+        add(ModBlocks.LION_ROCK_TILES_DOOR.get(), block -> createDoorTable(ModBlocks.LION_ROCK_TILES_DOOR.get()));
+        dropSelf(ModBlocks.LION_ROCK_TILES_TRAPDOOR.get());
+
+
 
         dropSelf(ModBlocks.BLUE_CHI_LAMP.get());
+        dropSelf(ModBlocks.LION_CRAFTING_TABLE.get());
 
         add(ModBlocks.CHI_ORE_BLOCK.get(),
                 block -> createOreDrop(ModBlocks.CHI_ORE_BLOCK.get(), ModItems.RAW_CHI.get()));

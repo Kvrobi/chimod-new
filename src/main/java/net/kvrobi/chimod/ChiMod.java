@@ -17,6 +17,8 @@ import net.kvrobi.chimod.network.ModNetworking;
 import net.kvrobi.chimod.network.RaceSyncEvents;
 import net.kvrobi.chimod.util.ChiCommand;
 import net.kvrobi.chimod.util.ModAttachments;
+import net.kvrobi.chimod.world.registration.ModRecipes;
+import net.kvrobi.chimod.worldgen.ModStructureTypes;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -91,6 +93,8 @@ public class ChiMod {
         ModItems.register(modEventBus);
         ModFluids.register(modEventBus);
         ModDataComponents.register(modEventBus);
+        ModStructureTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
 
         // Register the item to a creative tab

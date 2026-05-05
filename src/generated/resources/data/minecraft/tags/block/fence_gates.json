@@ -5,6 +5,11 @@
     "kvrobichimod:lion_tiles_fence_gate",
     "kvrobichimod:lion_bricks_fence_gate",
     "kvrobichimod:lion_stone_fence_gate",
-    "kvrobichimod:smooth_lion_stone_fence_gate"
+    "kvrobichimod:smooth_lion_stone_fence_gate",
+    "kvrobichimod:crocodile_tiles_fence_gate",
+    "kvrobichimod:crocodile_bricks_fence_gate",
+    "kvrobichimod:crocodile_stone_fence_gate",
+    "kvrobichimod:smooth_crocodile_stone_fence_gate",
+    "kvrobichimod:crocodile_cobblestone_fence_gate"
   ]
 }
