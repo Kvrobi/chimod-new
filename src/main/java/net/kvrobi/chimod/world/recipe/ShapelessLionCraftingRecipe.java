@@ -8,14 +8,10 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
-public record ShapelessLionCraftingRecipe(NonNullList<Ingredient> ingredients, ItemStack output) implements Recipe<CraftingInput> {
+public record ShapelessLionCraftingRecipe(NonNullList<Ingredient> ingredients, ItemStack output) implements CraftingRecipe {
 
     @Override
     public boolean matches(CraftingInput input, Level level) {
@@ -69,6 +65,11 @@ public record ShapelessLionCraftingRecipe(NonNullList<Ingredient> ingredients, I
     @Override
     public RecipeType<?> getType() {
         return ModRecipes.LION_CRAFTING_TYPE.get();
+    }
+
+    @Override
+    public CraftingBookCategory category() {
+        return CraftingBookCategory.MISC;
     }
 
     public static class Serializer implements RecipeSerializer<ShapelessLionCraftingRecipe> {

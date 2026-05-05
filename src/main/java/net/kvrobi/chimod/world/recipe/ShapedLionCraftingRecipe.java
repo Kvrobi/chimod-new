@@ -9,16 +9,12 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public record ShapedLionCraftingRecipe(int width, int height, NonNullList<Ingredient> ingredients, ItemStack result) implements Recipe<CraftingInput> {
+public record ShapedLionCraftingRecipe(int width, int height, NonNullList<Ingredient> ingredients, ItemStack result) implements CraftingRecipe {
 
     @Override
     public boolean matches(CraftingInput input, Level level) {
@@ -40,16 +36,21 @@ public record ShapedLionCraftingRecipe(int width, int height, NonNullList<Ingred
                 int recipeY = gridY - startY;
                 Ingredient ingredient = Ingredient.EMPTY;
 
-                // If the slot is inside our recipe's bounding box
                 if (recipeX >= 0 && recipeY >= 0 && recipeX < this.width && recipeY < this.height) {
+                    // Calculate the index for the ingredient list
+                    int listIndex;
                     if (mirrored) {
-                        ingredient = this.ingredients.get(this.width - recipeX - 1 + recipeY * this.width);
+                        listIndex = this.width - recipeX - 1 + recipeY * this.width;
                     } else {
-                        ingredient = this.ingredients.get(recipeX + recipeY * this.width);
+                        listIndex = recipeX + recipeY * this.width;
+                    }
+
+                    // --- THE FIX: Check if the index is within the list size ---
+                    if (listIndex >= 0 && listIndex < this.ingredients.size()) {
+                        ingredient = this.ingredients.get(listIndex);
                     }
                 }
 
-                // input.getItem expects a 1D index (0 to 24)
                 if (!ingredient.test(input.getItem(gridX + gridY * 3))) {
                     return false;
                 }
@@ -86,6 +87,11 @@ public record ShapedLionCraftingRecipe(int width, int height, NonNullList<Ingred
     @Override
     public RecipeType<?> getType() {
         return ModRecipes.LION_CRAFTING_TYPE.get();
+    }
+
+    @Override
+    public CraftingBookCategory category() {
+        return CraftingBookCategory.MISC;
     }
 
     // --- CUSTOM 5x5 SERIALIZER ---
