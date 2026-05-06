@@ -11,7 +11,6 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ModItemModelProvider extends ItemModelProvider {
@@ -23,7 +22,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        basicItem(ModItems.RAW_CHI.get());
+        basicItem(ModItems.CHI_SHARD.get());
         basicItem(ModItems.CHISEL.get());
         basicItem(ModItems.CHI_ORB.get());
         basicItem(ModItems.BANANA.get());
@@ -34,6 +33,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.CHI_WATER_BUCKET.getId());
         basicItem(ModItems.GOLDEN_SHOULDER_PADS.get());
         basicItem(ModItems.GOLDEN_SHOULDER_SPIKED.get());
+        basicItem(ModItems.IRON_HAMMER.get());
+        basicItem(ModItems.IRON_CHI_HOLDER.get());
+        basicItem(ModItems.IRON_CROSS_GUARD.get());
+        basicItem(ModItems.IRON_ROD.get());
+        basicItem(ModItems.IRON_PLATE.get());
+        basicItem(ModItems.GOLD_CHI_HOLDER.get());
+        basicItem(ModItems.GOLD_CROSS_GUARD.get());
+        basicItem(ModItems.GOLD_ROD.get());
+        basicItem(ModItems.GOLD_PLATE.get());
 
 
         basicItem(ModBlocks.LION_ROCK_TILES_DOOR.asItem());

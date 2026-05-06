@@ -16,7 +16,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import java.util.Optional;
 
 public abstract class AbstractCraftingMenu extends AbstractContainerMenu {
-    protected final CraftingContainer craftSlots = new TransientCraftingContainer(this, 3, 3);
+    protected final CraftingContainer craftSlots = new TransientCraftingContainer(this, 5, 5);
     protected final ResultContainer resultSlots = new ResultContainer();
     protected final ContainerLevelAccess access;
     protected final Player player;
@@ -28,22 +28,22 @@ public abstract class AbstractCraftingMenu extends AbstractContainerMenu {
         this.player = playerInv.player;
         this.recipeType = recipeType;
 
-        this.addSlot(new ResultSlot(playerInv.player, this.craftSlots, this.resultSlots, 0, 124, 35));
+        this.addSlot(new LionResultSlot(playerInv.player, this.craftSlots, this.resultSlots, 0, 142, 53));
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                this.addSlot(new Slot(this.craftSlots, j + i * 3, 30 + j * 18, 17 + i * 18));
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                this.addSlot(new Slot(this.craftSlots, j + i * 5, 12 + j * 18, 17 + i * 18));
             }
         }
 
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 9; j++) {
-                this.addSlot(new Slot(playerInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+                this.addSlot(new Slot(playerInv, j + i * 9 + 9, 8 + j * 18, 120 + i * 18));
             }
         }
 
         for (int i = 0; i < 9; i++) {
-            this.addSlot(new Slot(playerInv, i, 8 + i * 18, 142));
+            this.addSlot(new Slot(playerInv, i, 8 + i * 18, 178));
         }
     }
 
@@ -87,21 +87,21 @@ public abstract class AbstractCraftingMenu extends AbstractContainerMenu {
                 this.access.execute((level, pos) -> {
                     itemStack1.getItem().onCraftedBy(itemStack1, level, player);
                 });
-                if(!this.moveItemStackTo(itemStack1, 10, 46, true)) {
+                if(!this.moveItemStackTo(itemStack1, 26, 62, true)) {
                     return ItemStack.EMPTY;
                 }
                 slot.onQuickCraft(itemStack1, itemStack);
-            } else if(index >= 10 && index < 46) {
-                if(!this.moveItemStackTo(itemStack1, 1,10, false)) {
-                    if(index < 37) {
-                        if(!this.moveItemStackTo(itemStack1, 37, 46, false)) {
+            } else if(index >= 26 && index < 62) {
+                if(!this.moveItemStackTo(itemStack1, 1,26, false)) {
+                    if(index < 53) {
+                        if(!this.moveItemStackTo(itemStack1, 53, 62, false)) {
                             return ItemStack.EMPTY;
                         }
-                    } else if (!this.moveItemStackTo(itemStack1, 10, 37, false)) {
+                    } else if (!this.moveItemStackTo(itemStack1, 26, 53, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
-            } else if (!this.moveItemStackTo(itemStack1,10, 37, false)) {
+            } else if (!this.moveItemStackTo(itemStack1,26, 62, false)) {
                 return ItemStack.EMPTY;
             }
 

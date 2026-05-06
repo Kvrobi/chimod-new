@@ -139,9 +139,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LION_CRAFTING_TABLE.get());
 
         add(ModBlocks.CHI_ORE_BLOCK.get(),
-                block -> createOreDrop(ModBlocks.CHI_ORE_BLOCK.get(), ModItems.RAW_CHI.get()));
+                block -> createOreDrop(ModBlocks.CHI_ORE_BLOCK.get(), ModItems.CHI_SHARD.get()));
         add(ModBlocks.DEEPSLATE_CHI_ORE_BLOCK.get(),
-                block -> createMultipleOreDrops(ModBlocks.DEEPSLATE_CHI_ORE_BLOCK.get(), ModItems.RAW_CHI.get(), 1, 2));
+                block -> createMultipleOreDrops(ModBlocks.DEEPSLATE_CHI_ORE_BLOCK.get(), ModItems.CHI_SHARD.get(), 1, 2));
     }
 
 

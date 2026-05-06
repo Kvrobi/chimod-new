@@ -119,7 +119,7 @@ public class ModLangProvider extends LanguageProvider {
 
         //items
         addItem(ModItems.CHISEL, "Chisel");
-        addItem(ModItems.RAW_CHI, "Raw Chi");
+        addItem(ModItems.CHI_SHARD, "Raw Chi");
         addItem(ModItems.CHI_ORB, "Chi Orb");
         addItem(ModItems.CRUDE_OIL_DROP, "Crude Oil Drop");
         addItem(ModItems.OIL_DROP, "Oil Drop");

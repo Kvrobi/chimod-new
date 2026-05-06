@@ -21,7 +21,25 @@ public class ModItems {
 
     //simple items
 
-    public static final DeferredItem<Item> RAW_CHI = ITEMS.register("rawchi",
+    public static final DeferredItem<Item> CHI_SHARD = ITEMS.register("chi_shard",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> IRON_PLATE = ITEMS.register("iron_plate",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRON_ROD = ITEMS.register("iron_rod",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRON_CHI_HOLDER = ITEMS.register("iron_chi_holder",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRON_CROSS_GUARD = ITEMS.register("iron_cross_guard",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> GOLD_PLATE = ITEMS.register("gold_plate",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_ROD = ITEMS.register("gold_rod",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_CHI_HOLDER = ITEMS.register("gold_chi_holder",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_CROSS_GUARD = ITEMS.register("gold_cross_guard",
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> CHI_ORB = ITEMS.register("chiorb",
@@ -43,6 +61,9 @@ public class ModItems {
     //special itemek
     public static final DeferredItem<Item> CHISEL = ITEMS.register("chisel",
             () -> new ChiselItem(new Item.Properties().durability(32)));
+
+    public static final DeferredItem<Item> IRON_HAMMER = ITEMS.register("iron_hammer",
+            () -> new CraftingToolItem(new Item.Properties().durability(128)));
 
     public static final DeferredItem<Item> BANANA = ITEMS.register("banana",
             () -> new ModFood(ModItems.BANANA_PEEL.get(), false, 4, 0.5f, new Item.Properties()));

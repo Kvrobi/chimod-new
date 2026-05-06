@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -181,7 +182,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
 
         lampBlock(ModBlocks.BLUE_CHI_LAMP, "blue_chi_lamp");
-        blockWithItem(ModBlocks.LION_CRAFTING_TABLE);
 
 
         BlockModelBuilder fire_chi_model = orbModel("fire_chi_orb_block", modLoc("block/fire_chi_particle"), modLoc("block/fire_chi_orb_block_top"), modLoc("block/fire_chi_orb_block_side"));
@@ -189,6 +189,19 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleWaterloggedBlock(ModBlocks.FIRE_CHI_ORB_BLOCK.get(), fire_chi_model);
         simpleWaterloggedBlock(ModBlocks.CHI_ORB_BLOCK.get(), chi_model);
+
+
+        ModelFile lionCraftingTableModel = models().cube("lion_crafting_table",
+                modLoc("block/smooth_lion_stone"),         // down
+                modLoc("block/lion_crafting_table_top"),   // up
+                modLoc("block/lion_crafting_table_front"), // north
+                modLoc("block/lion_crafting_table_front"), // south
+                modLoc("block/lion_crafting_table_side"),  // east
+                modLoc("block/lion_crafting_table_side")   // west
+        ).texture("particle", modLoc("block/lion_crafting_table_front"));
+
+        simpleBlock(ModBlocks.LION_CRAFTING_TABLE.get(), lionCraftingTableModel);
+        simpleBlockItem(ModBlocks.LION_CRAFTING_TABLE.get(), lionCraftingTableModel);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {

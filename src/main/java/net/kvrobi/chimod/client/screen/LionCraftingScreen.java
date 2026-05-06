@@ -19,7 +19,7 @@ public class LionCraftingScreen extends AbstractContainerScreen<LionCraftingMenu
         super(menu, playerInventory, title);
         // Default vanilla UI size. If your chi_menu.png is a different size, change these!
         this.imageWidth = 176;
-        this.imageHeight = 166;
+        this.imageHeight = 202;
     }
 
     @Override

@@ -134,16 +134,31 @@ public class ModCreativeTabs {
     public static final Supplier<CreativeModeTab> CHI_ITEMS_TAB = CREATIVE_MODE_TAB.register("chi_items_tab",
             () -> CreativeModeTab.builder().icon( () -> new ItemStack(ModItems.CHI_ORB.get())).withTabsBefore(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
                     "chi_blocks_tab")).title(Component.translatable("creativetab.kvrobichimod.chi_items")).displayItems((parameters, output) -> {
-                        output.accept(ModItems.CHI_ORB);
-                        output.accept(ModItems.RAW_CHI);
-                        output.accept(ModItems.BANANA_PEEL);
-                        output.accept((ItemLike) ModItems.CHI_WATER_BUCKET);
+                output.accept(ModItems.CHI_ORB);
+                output.accept(ModItems.CHI_SHARD);
+                output.accept(ModItems.BANANA_PEEL);
+                output.accept((ItemLike) ModItems.CHI_WATER_BUCKET);
+                output.accept(ModItems.IRON_PLATE);
+                output.accept(ModItems.IRON_ROD);
+                output.accept(ModItems.IRON_CROSS_GUARD);
+                output.accept(ModItems.IRON_CHI_HOLDER);
+                output.accept(ModItems.GOLD_PLATE);
+                output.accept(ModItems.GOLD_ROD);
+                output.accept(ModItems.GOLD_CROSS_GUARD);
+                output.accept(ModItems.GOLD_CHI_HOLDER);
+
+            }).build());
+
+    public static final Supplier<CreativeModeTab> CHI_TOOLS_TAB = CREATIVE_MODE_TAB.register("chi_tools_tab",
+            () -> CreativeModeTab.builder().icon( () -> new ItemStack(ModItems.IRON_HAMMER.get())).withTabsBefore(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
+                    "chi_items_tab")).title(Component.translatable("creativetab.kvrobichimod.chi_tools")).displayItems((parameters, output) -> {
+                output.accept(ModItems.IRON_HAMMER);
 
             }).build());
 
     public static final Supplier<CreativeModeTab> CHI_WEAPONS_TAB = CREATIVE_MODE_TAB.register("chi_weapons_tab",
             () -> CreativeModeTab.builder().icon( () -> new ItemStack(ModItems.LION_VALIOUS_GRAY.get())).withTabsBefore(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
-                    "chi_items_tab")).title(Component.translatable("creativetab.kvrobichimod.chi_weapons")).displayItems((parameters, output) -> {
+                    "chi_tools_tab")).title(Component.translatable("creativetab.kvrobichimod.chi_weapons")).displayItems((parameters, output) -> {
                         output.accept(ModItems.LION_VALIOUS_GRAY);
                         output.accept(ModItems.LION_CLUBIUS_MAXIMUS);
                         output.accept(ModItems.LION_JABAKA);
@@ -161,15 +176,6 @@ public class ModCreativeTabs {
                 output.accept(ModItems.GOLDEN_SHOULDER_SPIKED);
 
             }).build());
-
-    /*public static final Supplier<CreativeModeTab> CHI_TOOLS_TAB = CREATIVE_MODE_TAB.register("chi_tools_tab",
-            () -> CreativeModeTab.builder().icon( () -> new ItemStack(ModItems.LION_VALIOUS_GRAY.get())).withTabsBefore(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,
-                    "chi_armors_tab")).title(Component.translatable("creativetab.kvrobichimod.chi_tools")).displayItems((parameters, output) -> {
-                output.accept(ModItems.LION_VALIOUS_GRAY);
-                output.accept(ModItems.LION_CLUBIUS_MAXIMUS);
-                output.accept(ModItems.LION_JABAKA);
-
-            }).build());*/
 
     public static final Supplier<CreativeModeTab> CHI_FOODS_TAB = CREATIVE_MODE_TAB.register("chi_foods_tab",
             () -> CreativeModeTab.builder().icon( () -> new ItemStack(ModItems.BANANA_JUICE.get())).withTabsBefore(ResourceLocation.fromNamespaceAndPath(ChiMod.MOD_ID,

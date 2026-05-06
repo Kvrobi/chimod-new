@@ -5,7 +5,6 @@ import net.kvrobi.chimod.block.ModBlocks;
 import net.kvrobi.chimod.block.entity.ModBlockEntities;
 import net.kvrobi.chimod.client.ClientInputHandler;
 import net.kvrobi.chimod.client.ClientModEvents;
-import net.kvrobi.chimod.client.renderer.race.RaceLayer;
 import net.kvrobi.chimod.client.renderer.race.RaceRenderHandler;
 import net.kvrobi.chimod.component.ModDataComponents;
 import net.kvrobi.chimod.datagen.DataGenerators;
@@ -113,7 +112,7 @@ public class ChiMod {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.RAW_CHI);
+            event.accept(ModItems.CHI_SHARD);
             event.accept(ModItems.CHI_ORB);
         }
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
