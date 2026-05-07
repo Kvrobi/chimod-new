@@ -12,21 +12,17 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.List;
 import java.util.Map;
 
-// We store the key and pattern strings directly so the Codec is extremely easy to read/write!
 public record LionShapedRecipePattern(int width, int height, NonNullList<Ingredient> ingredients, Map<Character, Ingredient> key, List<String> patternStrings) {
 
-    // --- JSON CODEC ---
     public static final MapCodec<LionShapedRecipePattern> MAP_CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
             Codec.unboundedMap(Codec.STRING.xmap(s -> s.charAt(0), String::valueOf), Ingredient.CODEC_NONEMPTY).fieldOf("key").forGetter(LionShapedRecipePattern::key),
             Codec.STRING.listOf().fieldOf("pattern").forGetter(LionShapedRecipePattern::patternStrings)
     ).apply(inst, LionShapedRecipePattern::of));
 
-    // --- NETWORK CODEC ---
     public static final StreamCodec<RegistryFriendlyByteBuf, LionShapedRecipePattern> STREAM_CODEC = StreamCodec.of(
             LionShapedRecipePattern::toNetwork, LionShapedRecipePattern::fromNetwork
     );
 
-    // Factory method used by Datagen and the JSON Codec
     public static LionShapedRecipePattern of(Map<Character, Ingredient> key, List<String> pattern) {
         int height = pattern.size();
         int width = pattern.getFirst().length();
@@ -52,7 +48,6 @@ public record LionShapedRecipePattern(int width, int height, NonNullList<Ingredi
         return new LionShapedRecipePattern(width, height, ingredients, key, pattern);
     }
 
-    // The Sliding Window Matching Logic
     public boolean matches(CraftingInput input) {
         for (int i = 0; i <= input.width() - this.width; ++i) {
             for (int j = 0; j <= input.height() - this.height; ++j) {
@@ -84,7 +79,6 @@ public record LionShapedRecipePattern(int width, int height, NonNullList<Ingredi
         return true;
     }
 
-    // Network Syncing (Server -> Client)
     private static void toNetwork(RegistryFriendlyByteBuf buf, LionShapedRecipePattern pattern) {
         buf.writeVarInt(pattern.width);
         buf.writeVarInt(pattern.height);

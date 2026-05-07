@@ -15,15 +15,12 @@ public record ShapelessLionCraftingRecipe(NonNullList<Ingredient> ingredients, I
 
     @Override
     public boolean matches(CraftingInput input, Level level) {
-        // 1. Instantly fail if the item count is wrong (Vanilla optimization)
         if (input.ingredientCount() != this.ingredients.size()) {
             return false;
         }
-        // 2. Ultra-fast check if it's a 1-item recipe (like crafting a block into ingots)
         else if (input.size() == 1 && this.ingredients.size() == 1) {
             return this.ingredients.getFirst().test(input.getItem(0));
         }
-        // 3. Delegate to Minecraft's built-in StackedContents matching engine
         else {
             return input.stackedContents().canCraft(this, null);
         }

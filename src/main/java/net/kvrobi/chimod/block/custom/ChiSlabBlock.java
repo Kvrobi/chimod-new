@@ -27,34 +27,28 @@ public class ChiSlabBlock extends SlabBlock {
         this.registerDefaultState(this.defaultBlockState().setValue(CHI_WATERLOGGED, false));
     }
 
-    // 2. Add the custom property to the block state definition
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(CHI_WATERLOGGED);
     }
 
-    // 3. Handle what happens when placed inside a fluid
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        // Let super handle normal waterlogging and stair facing/half
         BlockState state = super.getStateForPlacement(context);
         FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
 
-        // If it's placed in Chi Water, set our property to true
-        return state.setValue(CHI_WATERLOGGED, fluidstate.getType() == ModFluids.CHI_WATER_SOURCE.get()); // Assuming CHI_WATER is your source fluid
+        return state.setValue(CHI_WATERLOGGED, fluidstate.getType() == ModFluids.CHI_WATER_SOURCE.get());
     }
 
-    // 4. Render the correct fluid inside the block
     @Override
     public FluidState getFluidState(BlockState state) {
         if (state.getValue(CHI_WATERLOGGED)) {
             return ModFluids.CHI_WATER_SOURCE.get().getSource(false);
         }
-        return super.getFluidState(state); // Handles normal water falling back
+        return super.getFluidState(state);
     }
 
-    // 5. Allow Chi Water to flow outward from the block
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         if (state.getValue(CHI_WATERLOGGED)) {
@@ -63,7 +57,6 @@ public class ChiSlabBlock extends SlabBlock {
         return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
-    // 6. Handle the player right-clicking with a bucket TO PLACE fluid
     @Override
     public boolean canPlaceLiquid(@Nullable Player player, BlockGetter level, BlockPos pos, BlockState state, Fluid fluid) {
         if (fluid == ModFluids.CHI_WATER_SOURCE.get()) {
@@ -87,7 +80,6 @@ public class ChiSlabBlock extends SlabBlock {
         return super.placeLiquid(level, pos, state, fluidState);
     }
 
-    // 7. Handle the player right-clicking with an empty bucket TO PICK UP fluid
     @Override
     public ItemStack pickupBlock(@Nullable Player player, LevelAccessor level, BlockPos pos, BlockState state) {
         if (state.getValue(CHI_WATERLOGGED)) {
@@ -95,7 +87,6 @@ public class ChiSlabBlock extends SlabBlock {
             if (!state.canSurvive(level, pos)) {
                 level.destroyBlock(pos, true);
             }
-            // Return your custom Chi Water bucket
             return new ItemStack(ModItems.CHI_WATER_BUCKET.get());
         }
         return super.pickupBlock(player, level, pos, state);

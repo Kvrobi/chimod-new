@@ -24,7 +24,7 @@ public class ChiCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("chi_energy")
                 .then(Commands.literal("set")
-                        .requires(source -> source.hasPermission(2)) // Require Operator level 2
+                        .requires(source -> source.hasPermission(2))
                         .then(Commands.argument("amount", IntegerArgumentType.integer(0, 1500))
                                 .executes(context -> {
                                     int amount = IntegerArgumentType.getInteger(context, "amount");

@@ -6,7 +6,6 @@ import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.inventory.ResultSlot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CraftingRecipe;
@@ -35,17 +34,14 @@ public class LionResultSlot extends ResultSlot {
             ItemStack currentStack = this.craftSlots.getItem(i);
 
             if (!currentStack.isEmpty()) {
-                // 1. Grab the remainder BEFORE shrinking the stack
                 ItemStack remainingStack = ItemStack.EMPTY;
                 if (currentStack.getItem().hasCraftingRemainingItem(currentStack)) {
                     remainingStack = currentStack.getItem().getCraftingRemainingItem(currentStack);
                 }
 
-                // 2. Consume 1 item from the grid
                 this.craftSlots.removeItem(i, 1);
-                currentStack = this.craftSlots.getItem(i); // Update current stack reference
+                currentStack = this.craftSlots.getItem(i);
 
-                // 3. Place the remainder back in the EXACT same slot
                 if (!remainingStack.isEmpty()) {
                     if (currentStack.isEmpty()) {
                         this.craftSlots.setItem(i, remainingStack);

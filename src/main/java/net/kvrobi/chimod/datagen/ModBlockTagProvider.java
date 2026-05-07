@@ -247,5 +247,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SMOOTH_CROCODILE_STONE_WALL.get())
                 .add(ModBlocks.CROCODILE_COBBLESTONE_WALL.get());
 
+        tag(BlockTags.STONE_ORE_REPLACEABLES).add(ModBlocks.LION_STONE.get());
     }
 }

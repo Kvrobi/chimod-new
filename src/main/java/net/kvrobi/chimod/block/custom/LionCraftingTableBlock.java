@@ -1,6 +1,6 @@
 package net.kvrobi.chimod.block.custom;
 
-import net.kvrobi.chimod.world.inventory.LionCraftingMenu; // Make sure to import your Menu class!
+import net.kvrobi.chimod.world.inventory.LionCraftingMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;

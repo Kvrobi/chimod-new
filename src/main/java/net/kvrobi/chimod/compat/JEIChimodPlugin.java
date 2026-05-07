@@ -39,7 +39,6 @@ public class JEIChimodPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         RecipeManager recipeManager = Minecraft.getInstance().level.getRecipeManager();
 
-        // Allow both Shaped AND Shapeless recipes into the list
         List<CraftingRecipe> lionRecipes = recipeManager
                 .getAllRecipesFor((RecipeType<CraftingRecipe>) ModRecipes.LION_CRAFTING_TYPE.get()).stream()
                 .map(RecipeHolder::value)

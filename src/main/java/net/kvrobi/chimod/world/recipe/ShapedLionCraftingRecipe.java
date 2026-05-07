@@ -40,7 +40,7 @@ public record ShapedLionCraftingRecipe(LionShapedRecipePattern pattern, ItemStac
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipes.LION_SHAPED_CRAFTING_SERIALIZER.get(); // Make sure this matches your registry!
+        return ModRecipes.LION_SHAPED_CRAFTING_SERIALIZER.get();
     }
 
     @Override
